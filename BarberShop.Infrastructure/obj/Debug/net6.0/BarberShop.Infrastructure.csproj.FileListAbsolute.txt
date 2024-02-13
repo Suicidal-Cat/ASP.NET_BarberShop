@@ -1,0 +1,17 @@
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\bin\Debug\net6.0\BarberShop.Infrastructure.deps.json
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\bin\Debug\net6.0\BarberShop.Infrastructure.runtimeconfig.json
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\bin\Debug\net6.0\BarberShop.Infrastructure.dll
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\bin\Debug\net6.0\BarberShop.Infrastructure.pdb
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\bin\Debug\net6.0\BarberShop.Domain.dll
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\bin\Debug\net6.0\BarberShop.Domain.pdb
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.AssemblyInfo.cs
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.csproj.CopyComplete
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.dll
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\refint\BarberShop.Infrastructure.dll
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.pdb
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.genruntimeconfig.cache
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\ref\BarberShop.Infrastructure.dll

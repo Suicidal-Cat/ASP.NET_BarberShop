@@ -1,0 +1,12 @@
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Utils\bin\Debug\net6.0\BarberShop.Utils.deps.json
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Utils\bin\Debug\net6.0\BarberShop.Utils.dll
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Utils\bin\Debug\net6.0\BarberShop.Utils.pdb
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Utils\obj\Debug\net6.0\BarberShop.Utils.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Utils\obj\Debug\net6.0\BarberShop.Utils.AssemblyInfoInputs.cache
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Utils\obj\Debug\net6.0\BarberShop.Utils.AssemblyInfo.cs
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Utils\obj\Debug\net6.0\BarberShop.Utils.csproj.CoreCompileInputs.cache
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Utils\obj\Debug\net6.0\BarberShop.Utils.dll
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Utils\obj\Debug\net6.0\refint\BarberShop.Utils.dll
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Utils\obj\Debug\net6.0\BarberShop.Utils.pdb
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Utils\obj\Debug\net6.0\ref\BarberShop.Utils.dll
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Utils\obj\Debug\net6.0\BarberShop.Utils.csproj.AssemblyReference.cache

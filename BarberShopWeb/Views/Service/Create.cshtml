@@ -1,0 +1,36 @@
+﻿@model AddServiceVM
+
+<form method="POST" asp-controller="Service" asp-action="Create">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h3 class="text-primary">Create service</h3>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label asp-for="Service.Name"></label>
+			<input asp-for="Service.Name" class="form-control" />
+			<span asp-validation-for="Service.Name" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Service.Price"></label>
+			<input asp-for="Service.Price" class="form-control" />
+			<span asp-validation-for="Service.Price" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Service.Duration"></label>
+			<input asp-for="Service.Duration" class="form-control" />
+			<span asp-validation-for="Service.Duration" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" asp-for="@Model.Service.ServiceCategory.Id">Service category: </label>
+			<select class="form-select" asp-for="@Model.Service.ServiceCategory.Id" asp-items="@Model.ServiceCategory"></select>
+		</div>
+		<button type="submit" class="btn btn-primary" style="width:200px">Create</button>
+
+	</div>
+</form>
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}

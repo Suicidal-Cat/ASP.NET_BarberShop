@@ -1,5 +1,6 @@
 ﻿using BarberShop.Domain;
 using BarberShop.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,12 +30,12 @@ namespace DataAccessLayer.ServiceRepo
 
 		public List<Service> GetAll()
 		{
-			return context.Services.ToList();
+			return context.Services.Include(s=>s.ServiceCategory).ToList();
 		}
 
 		public Service GetById(int id)
 		{
-			return context.Services.Single(b => b.ServiceId == id);
+			return context.Services.Include(s => s.ServiceCategory).Single(b => b.ServiceId == id);
 		}
 
 		public void Update(Service t)

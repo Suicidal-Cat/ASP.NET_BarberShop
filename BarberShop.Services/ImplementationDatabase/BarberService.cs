@@ -23,7 +23,6 @@ namespace BarberShop.Services.ImplementationDatabase
 			uow.BarberRepository.Add(barber);
 			uow.SaveChanges();
 		}
-		//ovde da mu se promeni uloga, zapravo u update samo
 		public void Delete(int id)
 		{
 			throw new NotImplementedException();

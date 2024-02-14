@@ -224,14 +224,14 @@ namespace BarberShop.Infrastructure.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
                     Duration = table.Column<int>(type: "int", nullable: false),
-                    ServiceCategoriesId = table.Column<int>(type: "int", nullable: false)
+                    ServiceCategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Services", x => x.ServiceId);
                     table.ForeignKey(
-                        name: "FK_Services_ServiceCategories_ServiceCategoriesId",
-                        column: x => x.ServiceCategoriesId,
+                        name: "FK_Services_ServiceCategories_ServiceCategoryId",
+                        column: x => x.ServiceCategoryId,
                         principalTable: "ServiceCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -260,6 +260,21 @@ namespace BarberShop.Infrastructure.Migrations
                         principalColumn: "ServiceId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "ServiceCategories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 1, "Haircuts" });
+
+            migrationBuilder.InsertData(
+                table: "ServiceCategories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 2, "Beard cuts" });
+
+            migrationBuilder.InsertData(
+                table: "ServiceCategories",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 3, "Other" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appointments_BarberId",
@@ -316,9 +331,9 @@ namespace BarberShop.Infrastructure.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Services_ServiceCategoriesId",
+                name: "IX_Services_ServiceCategoryId",
                 table: "Services",
-                column: "ServiceCategoriesId");
+                column: "ServiceCategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

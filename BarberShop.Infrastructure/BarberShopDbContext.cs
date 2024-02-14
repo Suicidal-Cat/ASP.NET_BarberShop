@@ -20,6 +20,16 @@ namespace BarberShop.Infrastructure
 			optionsBuilder.LogTo(m => Console.WriteLine(m))
 				.EnableSensitiveDataLogging();
 		}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
-	}
+            modelBuilder.Entity<ServiceCategory>().HasData(
+                new ServiceCategory { Id = 1, Name = "Haircuts" },
+                new ServiceCategory { Id = 2, Name = "Beard cuts" },
+                new ServiceCategory { Id = 3, Name = "Other" }
+            );
+        }
+
+    }
 }

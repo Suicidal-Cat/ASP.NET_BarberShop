@@ -87,6 +87,10 @@ namespace BarberShop.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -121,12 +125,12 @@ namespace BarberShop.Infrastructure.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<int>("ServiceCategoriesId")
+                    b.Property<int>("ServiceCategoryId")
                         .HasColumnType("int");
 
                     b.HasKey("ServiceId");
 
-                    b.HasIndex("ServiceCategoriesId");
+                    b.HasIndex("ServiceCategoryId");
 
                     b.ToTable("Services");
                 });
@@ -146,6 +150,23 @@ namespace BarberShop.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ServiceCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Haircuts"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Beard cuts"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Other"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -401,13 +422,13 @@ namespace BarberShop.Infrastructure.Migrations
 
             modelBuilder.Entity("BarberShop.Domain.Service", b =>
                 {
-                    b.HasOne("BarberShop.Domain.ServiceCategory", "ServiceCategories")
+                    b.HasOne("BarberShop.Domain.ServiceCategory", "ServiceCategory")
                         .WithMany()
-                        .HasForeignKey("ServiceCategoriesId")
+                        .HasForeignKey("ServiceCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ServiceCategories");
+                    b.Navigation("ServiceCategory");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

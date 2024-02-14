@@ -3,6 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using BarberShop.Infrastructure;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using BarberShop.Utils;
+using DataAccessLayer.UnitOfWork;
+using BarberShop.Services.Interfaces;
+using BarberShop.Services.ImplementationDatabase;
+using BarberShop.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +14,10 @@ builder.Services.AddDbContext<BarberShopDbContext>();
 builder.Services.AddRazorPages();
 builder.Services.AddIdentity<IdentityUser,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<BarberShopDbContext>().AddDefaultTokenProviders();
 builder.Services.AddScoped< IEmailSender, EmailSender > ();
-
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IServiceService,ServiceService>();
+builder.Services.AddScoped<IServiceCategoryService, ServiceCategoryService>();
+builder.Services.AddScoped<IBarberService, BarberService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,10 +13,14 @@ namespace BarberShop.Domain
 	{
         public int ServiceId { get; set; }
 		[Required]
-        public string Name { get; set; } = null!;
+		[MinLength(2, ErrorMessage = "Name must be at least 2 characters long.")]
+		public string Name { get; set; } = null!;
+		[Range(1, int.MaxValue, ErrorMessage = "Price must be greater than 0.")]
 		public int Price { get; set; }
+		[Range(1, int.MaxValue, ErrorMessage = "Duration must be greater than 0.")]
 		public int Duration { get; set; }
-        public ServiceCategory ServiceCategories { get; set; } = null!;
+		[ValidateNever]
+		public ServiceCategory ServiceCategory { get; set; } = null!;
         public List<Appointment>? Appointments { get; set; }
 
     }

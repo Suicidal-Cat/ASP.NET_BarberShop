@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Barber>
+
+<div class="container p-3">
+    <div class="d-flex justify-content-between align-items-center p-3">
+        <h3 class="text-primary">Barbers</h3>
+        <a asp-controller="Barber" asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus"></i>
+            Add Barber
+        </a>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    First name
+                </th>
+                <th>
+                    Last name
+                </th>
+                <th>
+                    Phone
+                </th>
+                <th>
+                    Status
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>
+                        @obj.FirstName
+                    </td>
+                    <td>
+                        @obj.LastName
+                    </td>
+                    <td>
+                        @obj.PhoneNumber
+                    </td>
+                    <td>
+                        @obj.Status.ToString()
+                    </td>
+                    <td width="10%">
+                        <a asp-controller="Barber" asp-action="Update" asp-route-id=@obj.BarberId class="btn btn-primary">
+                            <i class="bi bi-pen"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

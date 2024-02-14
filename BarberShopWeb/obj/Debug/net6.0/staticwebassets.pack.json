@@ -5,12 +5,28 @@
       "PackagePath": "staticwebassets\\BarberShopWeb.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\css\\bootstrapLux.css",
+      "PackagePath": "staticwebassets\\css\\bootstrapLux.css"
+    },
+    {
       "Id": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\images\\barber\\29d93ca3-0654-4607-8080-a782c2bba831.png",
+      "PackagePath": "staticwebassets\\images\\barber\\29d93ca3-0654-4607-8080-a782c2bba831.png"
+    },
+    {
+      "Id": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\images\\barber\\68812887-c872-43f6-8ea9-20c91b711777.png",
+      "PackagePath": "staticwebassets\\images\\barber\\68812887-c872-43f6-8ea9-20c91b711777.png"
+    },
+    {
+      "Id": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\images\\barber\\8f204a32-7d79-4b96-9c65-0794e6ea0acc.png",
+      "PackagePath": "staticwebassets\\images\\barber\\8f204a32-7d79-4b96-9c65-0794e6ea0acc.png"
     },
     {
       "Id": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\js\\site.js",

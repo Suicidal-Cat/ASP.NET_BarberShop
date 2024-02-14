@@ -20,7 +20,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BarberShop.Infrastructure\BarberShop.Infrastructure.csproj" />
+    <ProjectReference Include="..\BarberShop.Services\BarberShop.Services.csproj" />
     <ProjectReference Include="..\BarberShop.Utils\BarberShop.Utils.csproj" />
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\barber\" />
   </ItemGroup>
 
 </Project>

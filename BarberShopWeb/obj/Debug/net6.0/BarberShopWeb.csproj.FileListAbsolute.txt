@@ -289,3 +289,7 @@ C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\bin\Debug\net6.0\runtimes\win
 C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\obj\Debug\net6.0\BarberShopWeb.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\bin\Debug\net6.0\BarberShop.Utils.dll
 C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\bin\Debug\net6.0\BarberShop.Utils.pdb
+C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\bin\Debug\net6.0\BarberShop.Services.dll
+C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\bin\Debug\net6.0\DataAccessLayer.dll
+C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\bin\Debug\net6.0\BarberShop.Services.pdb
+C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\bin\Debug\net6.0\DataAccessLayer.pdb

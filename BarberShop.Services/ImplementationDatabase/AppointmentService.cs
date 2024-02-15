@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BarberShop.Services.ImplementationDatabase
 {
-	internal class AppointmentService : IAppointmentService
+	public class AppointmentService : IAppointmentService
 	{
 		private readonly IUnitOfWork uow;
 

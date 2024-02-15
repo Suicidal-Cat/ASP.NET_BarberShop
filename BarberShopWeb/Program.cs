@@ -18,6 +18,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IServiceService,ServiceService>();
 builder.Services.AddScoped<IServiceCategoryService, ServiceCategoryService>();
 builder.Services.AddScoped<IBarberService, BarberService>();
+builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

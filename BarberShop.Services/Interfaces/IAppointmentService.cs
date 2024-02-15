@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BarberShop.Services.Interfaces
 {
-	internal interface IAppointmentService
+	public interface IAppointmentService
 	{
 		public void Add(Appointment appointment);
 		public void Update(Appointment appointment);

@@ -16,3 +16,34 @@ html {
 body {
   margin-bottom: 60px;
 }
+.category-list {
+    width:400px;
+    border: 2px solid #a55233;
+    align-self: flex-start;
+
+}
+#dropDownCategory {
+    display: none;
+    position: relative !important;
+}
+.show {
+    display: block !important;
+    animation-name: drop;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes drop {
+    from {
+        top: -50px;
+        opacity:0;
+    }
+
+    to {
+        top: 0px;
+        opacity:1;
+    }
+}
+
+input[type="checkbox"] {
+    zoom: 1.6;
+}

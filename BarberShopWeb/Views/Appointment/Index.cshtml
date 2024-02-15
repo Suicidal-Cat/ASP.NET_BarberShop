@@ -1,14 +1,116 @@
-﻿<div class="d-flex flex-wrap justify-content-between p-3" style="width:100%">
-	<div class="btn btn-outline-primary" style="min-width:32%">
-		Hairstyles
-		<i class="bi bi-caret-down bi-sm float-end"></i>
+﻿@model ListAddServicesReservation
+
+<div class="p-3">
+	<form method="POST" asp-controller="Appointment" asp-action="NextChoseBarber">
+		<div class="d-flex flex-wrap justify-content-between mt-2 gap-2" style="width:100%; min-height:60vh">
+		<div id="hairCategory" class="category-list p-3">
+			<div style="cursor:pointer">
+				<h3 class="d-inline-block">Hairstyles</h3>
+				<i class="bi bi-caret-down h3 float-end"></i>
+			</div>
+			<div id="dropDownCategory">
+			@foreach(AddServiceReservation sr in Model.Haircuts)
+			{
+				<div class="d-flex align-items-center justify-content-between" style="height:70px">
+					<div>
+						@sr.Service.Name
+						<br>
+						@sr.Service.Duration min
+					</div>
+					<div class="d-flex gap-2 align-items-center">
+						@sr.Service.Price RSD
+						<input asp-for="@Model.Haircuts[@Model.Haircuts.IndexOf(sr)].IsChecked" class="fs-1"/>
+						<input asp-for="@Model.Haircuts[@Model.Haircuts.IndexOf(sr)].Service.ServiceId" hidden />
+					</div>
+				</div>
+			}
+			</div>
+		</div>
+		<div id="beardCategory" class="category-list p-3">
+			<div style="cursor:pointer">
+				<h3 class="d-inline-block">Beard</h3>
+				<i class="bi bi-caret-down h3 float-end"></i>
+			</div>
+			<div id="dropDownCategory">
+			@foreach (AddServiceReservation sr in Model.Beard)
+			{
+				<div class="d-flex align-items-center justify-content-between" style="height:70px">
+					<div>
+						@sr.Service.Name
+						<br>
+						@sr.Service.Duration min
+					</div>
+					<div class="d-flex gap-2 align-items-center">
+						@sr.Service.Price RSD
+						<input asp-for="@Model.Beard[@Model.Beard.IndexOf(sr)].IsChecked" class="fs-1" />
+						<input asp-for="@Model.Beard[@Model.Beard.IndexOf(sr)].Service.ServiceId" hidden />
+					</div>
+				</div>
+			}
+			</div>
+		</div>
+		<div id="otherCategory"class="category-list p-3">
+			<div style="cursor:pointer">
+				<h3 class="d-inline-block">Other</h3>
+				<i class="bi bi-caret-down h3 float-end"></i>
+			</div>
+			<div id="dropDownCategory">
+			@foreach (AddServiceReservation sr in Model.Other)
+			{
+				<div class="d-flex align-items-center justify-content-between" style="height:70px">
+					<div>
+						@sr.Service.Name
+						<br>
+						@sr.Service.Duration min
+					</div>
+					<div class="d-flex gap-2 align-items-center">
+						@sr.Service.Price RSD
+						<input asp-for="@Model.Other[@Model.Other.IndexOf(sr)].IsChecked" class="fs-1" />
+						<input asp-for="@Model.Other[@Model.Other.IndexOf(sr)].Service.ServiceId" hidden />
+					</div>
+				</div>
+			}
+			</div>
+		</div>
 	</div>
-	<div class="btn btn-outline-primary bg-#f3bc77" style="min-width:32%">
-		Beard
-		<i class="bi bi-caret-down bi-sm float-end"></i>
-	</div>
-	<div class="btn btn-outline-primary" style="min-width:32%">
-		Other
-		<i class="bi bi-caret-down bi-sm float-end"></i>
-	</div>
+	<button type="submit" class="btn btn-outline-primary mt-4 mb-2 float-end" style="width:150px">Next</button>
+	</form>
+	
 </div>
+
+<script>
+	function updateCheckboxes(checkboxes) {
+		let check = this.checked;
+		for (var i = 0; i < checkboxes.length; i++) {
+			checkboxes[i].checked = false;
+		}
+		this.checked = check;
+	}
+
+	function showDrops() {
+		this.children[1].classList.toggle("show");
+	}
+	
+	var divsDropdown = document.querySelectorAll('.category-list');
+	console.log(divsDropdown);
+	divsDropdown.forEach(function (divDrop) {
+		divDrop.children[0].addEventListener('click', function () {
+			showDrops.call(divDrop);
+		});
+	});
+
+
+	var haircutCheckboxes = document.querySelectorAll('#hairCategory input[type="checkbox"]')
+	haircutCheckboxes.forEach(function (checkbox) {
+		checkbox.addEventListener('change', function () {
+			updateCheckboxes.call(this, haircutCheckboxes);
+		});
+	});
+
+	var beardCheckboxes = document.querySelectorAll('#beardCategory input[type="checkbox"]')
+	beardCheckboxes.forEach(function (checkbox) {
+		checkbox.addEventListener('change', function () {
+			updateCheckboxes.call(this, beardCheckboxes);
+		});
+	});
+</script>

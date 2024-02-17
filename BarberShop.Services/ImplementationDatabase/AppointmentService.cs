@@ -1,4 +1,4 @@
-﻿using BarberShop.Domain;
+﻿	using BarberShop.Domain;
 using BarberShop.Services.Interfaces;
 using DataAccessLayer.UnitOfWork;
 using System;
@@ -33,6 +33,12 @@ namespace BarberShop.Services.ImplementationDatabase
 		public Appointment Get(int id)
 		{
 			return uow.AppointmentRepository.GetById(id);
+		}
+
+		public List<Appointment> SearchByDate(string date,int id)
+		{
+			Func<Appointment, bool> func = (ap => ap.Date.ToString("yyyy-MM-dd") == date && ap.Barber?.BarberId == id);
+			return uow.AppointmentRepository.GetByCondition(ap=>ap.Date.ToString("yyyy-MM-dd")==date).ToList();
 		}
 
 		public void Update(Appointment appointment)

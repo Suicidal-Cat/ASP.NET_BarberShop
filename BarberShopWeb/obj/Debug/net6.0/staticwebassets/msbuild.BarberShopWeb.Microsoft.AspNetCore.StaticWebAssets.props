@@ -64,12 +64,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\barber\29d93ca3-0654-4607-8080-a782c2bba831.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\barber\088635a5-f5bf-4356-89bb-5d1df75f7fb7.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>BarberShopWeb</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/BarberShopWeb</BasePath>
-      <RelativePath>images/barber/29d93ca3-0654-4607-8080-a782c2bba831.png</RelativePath>
+      <RelativePath>images/barber/088635a5-f5bf-4356-89bb-5d1df75f7fb7.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -78,14 +78,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\barber\29d93ca3-0654-4607-8080-a782c2bba831.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\barber\088635a5-f5bf-4356-89bb-5d1df75f7fb7.jpg))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\barber\68812887-c872-43f6-8ea9-20c91b711777.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\barber\114c7532-f132-4095-90cf-0aed63755f8b.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>BarberShopWeb</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/BarberShopWeb</BasePath>
-      <RelativePath>images/barber/68812887-c872-43f6-8ea9-20c91b711777.png</RelativePath>
+      <RelativePath>images/barber/114c7532-f132-4095-90cf-0aed63755f8b.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -94,14 +94,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\barber\68812887-c872-43f6-8ea9-20c91b711777.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\barber\114c7532-f132-4095-90cf-0aed63755f8b.jpg))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\barber\8f204a32-7d79-4b96-9c65-0794e6ea0acc.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\barber\b1704ae0-33f7-4c01-9484-ebeb8020b85f.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>BarberShopWeb</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/BarberShopWeb</BasePath>
-      <RelativePath>images/barber/8f204a32-7d79-4b96-9c65-0794e6ea0acc.png</RelativePath>
+      <RelativePath>images/barber/b1704ae0-33f7-4c01-9484-ebeb8020b85f.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -110,7 +110,7 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\barber\8f204a32-7d79-4b96-9c65-0794e6ea0acc.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\barber\b1704ae0-33f7-4c01-9484-ebeb8020b85f.jpg))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\js\site.js))">
       <SourceType>Package</SourceType>

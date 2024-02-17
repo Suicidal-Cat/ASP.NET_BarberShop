@@ -1,0 +1,102 @@
+﻿@model NextChoseDateTimeVM
+
+<form method="POST" asp-controller="Appointment" asp-action="CreateAppointment">
+<input asp-for="Appointment.StartTime" hidden/>
+<input asp-for="Appointment.AppDuration" hidden />
+<input asp-for="Appointment.Price" hidden />
+<input asp-for="Appointment.Barber.BarberId" hidden />
+@for (int i = 0; i < Model.Appointment.Services.Count; i++)
+{
+	<input asp-for="@Model.Appointment.Services[i].ServiceId" hidden />
+}
+<div class="d-flex flex-wrap justify-content-evenly gap-4 p-3 mt-4" style="width:100%">
+	<div class="align-self-start">
+		<div>
+			<h5>Chose reservation date</h5>
+			<input asp-for="Appointment.Date" type="date"/>
+		</div>
+			<div style="margin-top:50%;color:black;font-size:18px;border:2px solid #a55233;border-radius:10px;padding:15px 10px">
+			Barber: @Model.Appointment.Barber.FirstName @Model.Appointment.Barber.LastName
+			<br />
+			Price: @Model.Appointment.Price RSD
+			<br />
+			Duration(min): @Model.Appointment.AppDuration
+		</div>
+	</div>
+	<div style="width:35%">
+		<h5>Chose your time</h5>
+		<div id="#times">
+			
+		</div>
+	</div>
+</div>
+<div class="d-flex justify-content-center mb-2" style="margin-top:100px">
+<button type="submit" class="btn btn-outline-primary float-end h2" style="width:300px">Confirm reservation</button>
+</div>
+</form>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	//date picker setup
+	var date = document.getElementById("Appointment_Date");
+	let today = new Date();
+	let dd = String(today.getDate()+1).padStart(2, '0');
+	let mm = String(today.getMonth() + 1).padStart(2, '0');
+	let yyyy = today.getFullYear();
+
+
+	let maxDate = new Date();
+	maxDate.setMonth(maxDate.getMonth() + 3);
+	let max_dd = String(maxDate.getDate()).padStart(2, '0');
+	let max_mm = String(maxDate.getMonth() + 1).padStart(2, '0');
+	var max_yyyy = maxDate.getFullYear();
+
+	today = yyyy + '-' + mm + '-' + dd;
+	maxDate = max_yyyy + '-' + max_mm + '-' + max_dd;
+	date.setAttribute("min", today);
+	date.setAttribute("value", today);
+	date.setAttribute("max", maxDate);
+	var clickedTime;
+
+	//partial view GenerateTimes
+	var url = '@Url.Action("GenerateTimes", "Appointment")';
+	function getTimes() {
+		let element = document.getElementById('#times');
+		console.log('da');
+		$.ajax({
+			url: url,
+			type: 'GET',
+			data: { reservationDate: date.value, id: @Model.Appointment.Barber.BarberId, duration: @Model.Appointment.AppDuration },
+			success: function (result) {
+				element.innerHTML = '';
+				element.insertAdjacentHTML('beforeend', result);
+
+				let times = document.querySelectorAll('.timeItem');
+				console.log(times);
+				clickedTime = times[0];
+				clickedTime.classList.toggle("timeItemClicked");
+
+				times.forEach(function (time) {
+					time.addEventListener('click', function () {
+						clickedTime.classList.toggle("timeItemClicked");
+						this.classList.toggle("timeItemClicked");
+						clickedTime = this;
+						document.getElementById('Appointment_StartTime').setAttribute('value', clickedTime.innerText);
+					})
+				});
+			}
+		});
+	}
+	$(document).ready(function () {
+		getTimes();
+	}); 
+	
+
+	date.addEventListener('change', function () {
+		getTimes();
+	});
+
+</script>

@@ -22,31 +22,18 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                        @if (User.IsInRole(UserRoles.Role_Admin))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Service" asp-action="Index">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Barber" asp-action="Index">Barbers</a>
+                            </li>
+                        }
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Service" asp-action="Index">Services</a>
+                            <a class="nav-link" asp-area="" asp-controller="Appointment" asp-action="Index">Appointment</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Barber" asp-action="Index">Barbers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Appointment" asp-action="Index">Make Reservation</a>
-                        </li>
-                        @*  <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
-                        </div>
-                        </li> *@
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

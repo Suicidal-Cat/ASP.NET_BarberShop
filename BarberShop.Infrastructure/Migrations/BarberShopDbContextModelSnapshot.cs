@@ -45,19 +45,18 @@ namespace BarberShop.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AppointmentId"), 1L, 1);
 
-                    b.Property<string>("AppDuration")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("AppDuration")
+                        .HasColumnType("int");
 
                     b.Property<int?>("BarberId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("IdentityUserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("MyProperty")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");

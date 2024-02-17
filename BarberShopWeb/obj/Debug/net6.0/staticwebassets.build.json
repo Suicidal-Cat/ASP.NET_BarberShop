@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "W+dhBg+iBFU/RMK1BfV0E1fZW3I/aX6+PjLsbfDQUNQ=",
+  "Hash": "KXie4stP6YNg49WHlSVL+t7KVlYJPsv1mGmwsiTLgQY=",
   "Source": "BarberShopWeb",
   "BasePath": "_content/BarberShopWeb",
   "Mode": "Default",
@@ -1122,12 +1122,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\images\\barber\\29d93ca3-0654-4607-8080-a782c2bba831.png",
+      "Identity": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\images\\barber\\088635a5-f5bf-4356-89bb-5d1df75f7fb7.jpg",
       "SourceId": "BarberShopWeb",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\",
       "BasePath": "_content/BarberShopWeb",
-      "RelativePath": "images/barber/29d93ca3-0654-4607-8080-a782c2bba831.png",
+      "RelativePath": "images/barber/088635a5-f5bf-4356-89bb-5d1df75f7fb7.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1136,15 +1136,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\barber\\29d93ca3-0654-4607-8080-a782c2bba831.png"
+      "OriginalItemSpec": "wwwroot\\images\\barber\\088635a5-f5bf-4356-89bb-5d1df75f7fb7.jpg"
     },
     {
-      "Identity": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\images\\barber\\68812887-c872-43f6-8ea9-20c91b711777.png",
+      "Identity": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\images\\barber\\114c7532-f132-4095-90cf-0aed63755f8b.jpg",
       "SourceId": "BarberShopWeb",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\",
       "BasePath": "_content/BarberShopWeb",
-      "RelativePath": "images/barber/68812887-c872-43f6-8ea9-20c91b711777.png",
+      "RelativePath": "images/barber/114c7532-f132-4095-90cf-0aed63755f8b.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1153,15 +1153,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\barber\\68812887-c872-43f6-8ea9-20c91b711777.png"
+      "OriginalItemSpec": "wwwroot\\images\\barber\\114c7532-f132-4095-90cf-0aed63755f8b.jpg"
     },
     {
-      "Identity": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\images\\barber\\8f204a32-7d79-4b96-9c65-0794e6ea0acc.png",
+      "Identity": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\images\\barber\\b1704ae0-33f7-4c01-9484-ebeb8020b85f.jpg",
       "SourceId": "BarberShopWeb",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\",
       "BasePath": "_content/BarberShopWeb",
-      "RelativePath": "images/barber/8f204a32-7d79-4b96-9c65-0794e6ea0acc.png",
+      "RelativePath": "images/barber/b1704ae0-33f7-4c01-9484-ebeb8020b85f.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1170,7 +1170,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\barber\\8f204a32-7d79-4b96-9c65-0794e6ea0acc.png"
+      "OriginalItemSpec": "wwwroot\\images\\barber\\b1704ae0-33f7-4c01-9484-ebeb8020b85f.jpg"
     },
     {
       "Identity": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\js\\site.js",

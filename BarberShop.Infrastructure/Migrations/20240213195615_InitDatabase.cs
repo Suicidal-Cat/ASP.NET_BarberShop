@@ -192,10 +192,10 @@ namespace BarberShop.Infrastructure.Migrations
                 {
                     AppointmentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MyProperty = table.Column<DateTime>(type: "datetime2", nullable: false),
+					Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StartTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AppDuration = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<int>(type: "int", nullable: false),
+                    AppDuration = table.Column<int>(type: "int", nullable: false),
+					Price = table.Column<int>(type: "int", nullable: false),
                     BarberId = table.Column<int>(type: "int", nullable: true),
                     IdentityUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },

@@ -33,6 +33,11 @@ namespace DataAccessLayer.ServiceRepo
 			return context.Services.Include(s=>s.ServiceCategory).ToList();
 		}
 
+		public IQueryable<Service> GetByCondition(Func<Service, bool> predicate)
+		{
+			throw new NotImplementedException();
+		}
+
 		public Service GetById(int id)
 		{
 			return context.Services.Include(s => s.ServiceCategory).Single(b => b.ServiceId == id);

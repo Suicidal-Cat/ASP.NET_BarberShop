@@ -1,15 +1,16 @@
-﻿@model ListAddServicesReservation
+﻿@model ListAddServicesReservationVM
 
+<h3 class="mt-4 mb-3">Select your services</h3>
 <div class="p-3">
 	<form method="POST" asp-controller="Appointment" asp-action="NextChoseBarber">
 		<div class="d-flex flex-wrap justify-content-between mt-2 gap-2" style="width:100%; min-height:60vh">
-		<div id="hairCategory" class="category-list p-3">
+		<div id="hairCategory" class="category-list p-2">
 			<div style="cursor:pointer">
 				<h3 class="d-inline-block">Hairstyles</h3>
 				<i class="bi bi-caret-down h3 float-end"></i>
 			</div>
 			<div id="dropDownCategory">
-			@foreach(AddServiceReservation sr in Model.Haircuts)
+			@foreach(AddServiceReservationVM sr in Model.Haircuts)
 			{
 				<div class="d-flex align-items-center justify-content-between" style="height:70px">
 					<div>
@@ -26,13 +27,13 @@
 			}
 			</div>
 		</div>
-		<div id="beardCategory" class="category-list p-3">
+		<div id="beardCategory" class="category-list p-2">
 			<div style="cursor:pointer">
 				<h3 class="d-inline-block">Beard</h3>
 				<i class="bi bi-caret-down h3 float-end"></i>
 			</div>
 			<div id="dropDownCategory">
-			@foreach (AddServiceReservation sr in Model.Beard)
+			@foreach (AddServiceReservationVM sr in Model.Beard)
 			{
 				<div class="d-flex align-items-center justify-content-between" style="height:70px">
 					<div>
@@ -49,13 +50,13 @@
 			}
 			</div>
 		</div>
-		<div id="otherCategory"class="category-list p-3">
+		<div id="otherCategory"class="category-list p-2">
 			<div style="cursor:pointer">
 				<h3 class="d-inline-block">Other</h3>
 				<i class="bi bi-caret-down h3 float-end"></i>
 			</div>
 			<div id="dropDownCategory">
-			@foreach (AddServiceReservation sr in Model.Other)
+			@foreach (AddServiceReservationVM sr in Model.Other)
 			{
 				<div class="d-flex align-items-center justify-content-between" style="height:70px">
 					<div>
@@ -73,7 +74,7 @@
 			</div>
 		</div>
 	</div>
-	<button type="submit" class="btn btn-outline-primary mt-4 mb-2 float-end" style="width:150px">Next</button>
+	<button type="submit" class="btn btn-outline-primary mt-2 mb-2 float-end" style="width:150px">Next</button>
 	</form>
 	
 </div>

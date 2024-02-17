@@ -31,6 +31,11 @@ namespace DataAccessLayer.BarberRepo
 			return context.Barbers.ToList();
 		}
 
+		public IQueryable<Barber> GetByCondition(Func<Barber, bool> predicate)
+		{
+			throw new NotImplementedException();
+		}
+
 		public Barber GetById(int id)
 		{
 			return context.Barbers.Single(b => b.BarberId == id);

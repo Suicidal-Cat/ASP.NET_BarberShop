@@ -176,12 +176,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/darek/Desktop/BarberShopMVC/BarberShopWeb/Views/Appointment/GenerateTimes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcR2VuZXJhdGVUaW1lcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/darek/Desktop/BarberShopMVC/BarberShopWeb/Views/Appointment/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/darek/Desktop/BarberShopMVC/BarberShopWeb/Views/Appointment/NextChoseBarber.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcTmV4dENob3NlQmFyYmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/darek/Desktop/BarberShopMVC/BarberShopWeb/Views/Appointment/NextChoseDateTime.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcTmV4dENob3NlRGF0ZVRpbWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/darek/Desktop/BarberShopMVC/BarberShopWeb/Views/Barber/Create.cshtml]

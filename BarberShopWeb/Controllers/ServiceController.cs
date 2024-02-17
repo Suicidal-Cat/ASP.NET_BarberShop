@@ -1,11 +1,14 @@
 ﻿using BarberShop.Domain;
 using BarberShop.Services.Interfaces;
+using BarberShop.Utils;
 using BarberShopWeb.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BarberShopWeb.Controllers
 {
+    [Authorize(Roles = UserRoles.Role_Admin)]
     public class ServiceController : Controller
     {
         private readonly IServiceService serviceService;

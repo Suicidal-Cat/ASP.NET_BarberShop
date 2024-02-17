@@ -1,5 +1,6 @@
 ﻿using BarberShop.Domain;
 using BarberShop.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,11 @@ namespace DataAccessLayer.AppointmentRepo
 		}
         public void Add(Appointment t)
 		{
+			
 			context.Add(t);
+			context.Entry(t.IdentityUser).State = EntityState.Unchanged;
+			context.Entry(t.Barber).State = EntityState.Unchanged;
+			foreach(Service service in t.Services) context.Entry(service).State = EntityState.Unchanged;
 		}
 
 		public void Delete(Appointment t)
@@ -30,6 +35,11 @@ namespace DataAccessLayer.AppointmentRepo
 		public List<Appointment> GetAll()
 		{
 			return context.Appointments.ToList();
+		}
+
+		public IQueryable<Appointment> GetByCondition(Func<Appointment, bool> predicate)
+		{
+			return context.Appointments.Where(predicate).AsQueryable();
 		}
 
 		public Appointment GetById(int id)

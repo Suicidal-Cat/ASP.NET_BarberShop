@@ -1,0 +1,14 @@
+﻿@model GenerateTimesVM
+
+<div class="d-flex flex-wrap gap-3">
+	@foreach(string obj in Model.Times)
+	{
+		@if (obj != "0")
+		{
+			<div class="timeItem">
+				@obj
+			</div>
+		}
+		
+	}
+</div>

@@ -1,11 +1,14 @@
 ﻿using BarberShop.Domain;
 using BarberShop.Services.Interfaces;
+using BarberShop.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BarberShopWeb.Controllers
 {
-	public class BarberController : Controller
+    [Authorize(Roles = UserRoles.Role_Admin)]
+    public class BarberController : Controller
 	{
 		private readonly IBarberService barberService;
 		private readonly IWebHostEnvironment webHostEnvironment;

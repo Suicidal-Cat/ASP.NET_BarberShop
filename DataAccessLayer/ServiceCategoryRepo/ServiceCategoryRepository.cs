@@ -32,7 +32,12 @@ namespace DataAccessLayer.ServiceCategoryRepo
             return context.ServiceCategories.ToList();
         }
 
-        public ServiceCategory GetById(int id)
+		public IQueryable<ServiceCategory> GetByCondition(Func<ServiceCategory, bool> predicate)
+		{
+			throw new NotImplementedException();
+		}
+
+		public ServiceCategory GetById(int id)
         {
             return context.ServiceCategories.Single(b => b.Id == id);
         }

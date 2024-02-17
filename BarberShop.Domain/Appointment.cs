@@ -12,14 +12,14 @@ namespace BarberShop.Domain
     {
         public int AppointmentId { get; set; }
         [Required]
-        public DateTime MyProperty { get; set; }
+        public DateTime Date { get; set; }
         [Required]
         public string StartTime { get; set; } = null!;
-        public string AppDuration { get; set; } = null!;
+        public int AppDuration { get; set; }
         public int Price { get; set; }
-        public Barber? Barber { get; set; }
+        public Barber Barber { get; set; } = null!;
         [Required]
         public IdentityUser IdentityUser { get; set; } = null!;
-        public List<Service>? Services { get; set; }
+        public List<Service> Services { get; set; } = null!;
     }
 }

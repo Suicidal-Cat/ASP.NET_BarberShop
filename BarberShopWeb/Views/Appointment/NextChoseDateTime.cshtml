@@ -12,19 +12,19 @@
 <div class="d-flex flex-wrap justify-content-evenly gap-4 p-3 mt-4" style="width:100%">
 	<div class="align-self-start">
 		<div>
-			<h5>Chose reservation date</h5>
+			<h5 style="font-weight:700">Chose reservation date</h5>
 			<input asp-for="Appointment.Date" type="date"/>
 		</div>
-			<div style="margin-top:50%;color:black;font-size:18px;border:2px solid #a55233;border-radius:10px;padding:15px 10px">
+			<div class="border border-primary border-3 rounded" style="box-shadow: 2px 2px 5px #a55233;margin-top:40%;color:black;font-size:18px;padding:15px 10px;font-weight:500;border-color:#a55233 !important">
 			Barber: @Model.Appointment.Barber.FirstName @Model.Appointment.Barber.LastName
 			<br />
 			Price: @Model.Appointment.Price RSD
 			<br />
-			Duration(min): @Model.Appointment.AppDuration
+			Duration: @Model.Appointment.AppDuration MIN
 		</div>
 	</div>
 	<div style="width:35%">
-		<h5>Chose your time</h5>
+		<h5 style="font-weight:700">Chose your time</h5>
 		<div id="#times">
 			
 		</div>

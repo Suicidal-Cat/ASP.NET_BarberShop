@@ -16,8 +16,8 @@ namespace BarberShop.Domain
         public DateTime Date { get; set; }
         [Required]
         public string StartTime { get; set; } = null!;
-        public int AppDuration { get; set; }
-        public int Price { get; set; }
+		public int AppDuration { get; set; }
+		public int Price { get; set; }
         public Barber Barber { get; set; } = null!;
         [Required]
         public IdentityUser IdentityUser { get; set; } = null!;

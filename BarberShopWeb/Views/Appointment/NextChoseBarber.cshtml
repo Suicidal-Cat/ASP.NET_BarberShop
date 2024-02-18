@@ -11,13 +11,13 @@
 		@foreach(var obj in Model.Barbers)
 	{
 		<div class="row">
-			<div class="col mb-3">
+				<div class="col mb-3  border border-3 p-2" style="box-shadow: 1px 1px 5px 3px;">
 				<div class="d-flex align-items-center justify-content-between">
 					<div>
 						<div class="d-inline-block">
 							<img src=@obj.Barber.ImageUrl style="width:130px;height:130px;border-radius:50%">
 						</div>
-						<div class="d-inline-block ms-4">
+						<div class="d-inline-block ms-4" style="color:black;font-weight:600">
 								@obj.Barber.FirstName @obj.Barber.LastName
 								<br>
 								@obj.Barber.PhoneNumber

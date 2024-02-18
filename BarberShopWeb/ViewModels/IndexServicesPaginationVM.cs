@@ -1,4 +1,6 @@
 ﻿using BarberShop.Domain;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BarberShopWeb.ViewModels
 {
@@ -9,5 +11,9 @@ namespace BarberShopWeb.ViewModels
         public bool Prev { get; set; } = false;
         public int CurrentPage { get; set; }
         public string Search { get; set; }
+        [ValidateNever]
+        public IEnumerable<SelectListItem> ServiceCategory { get; set; }
+        [ValidateNever]
+        public int category { get; set; } = -1;
     }
 }

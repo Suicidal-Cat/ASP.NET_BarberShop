@@ -20,7 +20,7 @@ namespace BarberShopWeb.Controllers
             this.serviceService = serviceService;
             this.serviceCategory = serviceCategory;
         }
-        public IActionResult Index(int pageNumber=1,string search="")
+        public IActionResult Index(int pageNumber = 1, string search = "", int category = -1)
         {
             const int perPage = 5;
             search = search ?? "";
@@ -28,19 +28,26 @@ namespace BarberShopWeb.Controllers
             int maxPages = 1;
             if (search == "")
             {
-                model = serviceService.Services.Skip((pageNumber - 1) * 5).Take(perPage);
-                maxPages = (int)Math.Ceiling((double)serviceService.Services.Count() / perPage);
+                if (category != -1) model = serviceService.Services.Where(s => s.ServiceCategory.Id == category);
+                else model = serviceService.Services;
             }
             else
             {
-                model = serviceService.SearchByName(search);
-                maxPages = (int)Math.Ceiling((double)model.Count() / perPage);
-                model = model.Skip((pageNumber - 1) * 5).Take(perPage);  
+                model = serviceService.SearchByName(search);             
+                if (category != -1) model = model.Where(model => model.ServiceCategory.Id == category);
             }
+            maxPages = (int)Math.Ceiling((double)model.Count() / perPage);
+            model = model.Skip((pageNumber - 1) * 5).Take(perPage);
             IndexServicesPaginationVM vm = new IndexServicesPaginationVM();
+            vm.ServiceCategory = serviceCategory.ServiceCategories.Select(sc => new SelectListItem
+            {
+                Text = sc.Name,
+                Value = sc.Id.ToString()
+            }).ToList();
             vm.Services = model;
             vm.CurrentPage= pageNumber;
             vm.Search = search;
+            vm.category = category;
             if (pageNumber > 1) vm.Prev = true;
             else vm.Prev = false;
             if(pageNumber< maxPages) vm.Next = true;

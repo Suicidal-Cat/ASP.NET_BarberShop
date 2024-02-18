@@ -4,9 +4,12 @@
     <div class="d-flex justify-content-between align-items-center p-3">
         <div class="d-flex gap-4 align-items-center">    
             <h3 class="text-primary">Services</h3>
-            <form  class="d-flex" method="GET" asp-controller="Service" asp-action="Index" asp-route-pageNumber="1" asp-route-search="@(Model.Search)">
+            <form class="d-flex" method="GET" asp-controller="Service" asp-action="Index" asp-route-pageNumber="1" asp-route-search="@(Model.Search)" asp-route-category="@Model.category">
                 <input asp-for="Search" class="form-control me-sm-2" type="search" placeholder="Search by name...">
-                <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                <select class="form-select" asp-for="@Model.category" asp-items="@Model.ServiceCategory">
+                    <option value="-1">--Filter by category--</option>
+                </select>
+                <button class="btn btn-primary me-4 my-2 my-sm-0" style="margin-left:5px" type="submit">Search</button>
             </form>
         </div>
         <a asp-controller="Service" asp-action="Create" class="btn btn-primary">
@@ -14,7 +17,7 @@
             Add Service
         </a>
     </div>
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped align-middle">
         <thead>
             <tr>
                 <th>
@@ -35,7 +38,7 @@
         <tbody>
             @foreach (var obj in Model.Services)
             {
-                <tr>
+                <tr style="font-weight:400">
                     <td>
                         @obj.Name
                     </td>
@@ -63,10 +66,10 @@
     <div class="float-end p-3">
         <ul class="pagination pagination-lg">
             <li class="page-item">
-                <a asp-controller="Service" asp-action="Index" asp-route-pageNumber="@(Model.CurrentPage-1)" asp-route-search="@(Model.Search)" class="page-link @(Model.Prev == false ? "disabled-link" : "")" style="cursor:pointer;background-color:black;color:white">&laquo;</a>
+                <a asp-controller="Service" asp-action="Index" asp-route-pageNumber="@(Model.CurrentPage-1)" asp-route-search="@(Model.Search)" asp-route-category="@Model.category" class="page-link @(Model.Prev == false ? "disabled-link" : "")" style="cursor:pointer;background-color:black;color:white">&laquo;</a>
             </li>
             <li class="page-item">
-                <a asp-controller="Service" asp-action="Index" asp-route-pageNumber="@(Model.CurrentPage+1)" asp-route-search="@(Model.Search)" class="page-link @(Model.Next == false ? "disabled-link" : "")" style="cursor:pointer;background-color:black;color:white">&raquo;</a>
+                <a asp-controller="Service" asp-action="Index" asp-route-pageNumber="@(Model.CurrentPage+1)" asp-route-search="@(Model.Search)" asp-route-category="@Model.category" class="page-link @(Model.Next == false ? "disabled-link" : "")" style="cursor:pointer;background-color:black;color:white">&raquo;</a>
             </li>
         </ul>
     </div>

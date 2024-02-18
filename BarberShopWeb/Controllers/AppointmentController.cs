@@ -135,7 +135,6 @@ namespace BarberShopWeb.Controllers
 			appointmentService.Add(vm.Appointment);
 			return RedirectToAction("Index", "Home");
 		}
-        [Authorize]
         [HttpGet]
 		public IActionResult ShowNextAppointmentPV()
 		{

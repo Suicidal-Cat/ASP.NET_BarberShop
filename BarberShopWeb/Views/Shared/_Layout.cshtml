@@ -64,18 +64,20 @@
     var url2 = '@Url.Action("ShowNextAppointmentPV", "Appointment")';
     function getNextApp() {
         let element = document.getElementById('nextApp');
-        $.ajax({
-            url: url2,
-            type: 'GET',
-            data: {},
-            success: function (result) {
-                if (result !== 204) {
-                    console.log(result);
-                    element.innerHTML = '';
-                    element.insertAdjacentHTML('beforeend', result);
+        if (element != null) {
+            $.ajax({
+                url: url2,
+                type: 'GET',
+                data: {},
+                success: function (result) {
+                    if (result !== 204) {
+                        console.log(result);
+                        element.innerHTML = '';
+                        element.insertAdjacentHTML('beforeend', result);
+                    }
                 }
-            }
-        });
+            });
+        }  
     }
 
     $(document).ready(function () {

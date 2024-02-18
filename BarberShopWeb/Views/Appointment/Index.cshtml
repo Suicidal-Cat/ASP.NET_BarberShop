@@ -20,7 +20,7 @@
 					</div>
 					<div class="d-flex gap-2 align-items-center">
 						@sr.Service.Price RSD
-						<input asp-for="@Model.Haircuts[@Model.Haircuts.IndexOf(sr)].IsChecked" class="fs-1"/>
+						<input asp-for="@Model.Haircuts[@Model.Haircuts.IndexOf(sr)].IsChecked" class="fs-1" />
 						<input asp-for="@Model.Haircuts[@Model.Haircuts.IndexOf(sr)].Service.ServiceId" hidden />
 					</div>
 				</div>
@@ -94,7 +94,7 @@
 	
 	var divsDropdown = document.querySelectorAll('.category-list');
 	console.log(divsDropdown);
-	divsDropdown.forEach(function (divDrop) {
+	divsDropdown.forEach(function (divDrop,index) {
 		divDrop.children[0].addEventListener('click', function () {
 			showDrops.call(divDrop);
 		});

@@ -39,7 +39,7 @@ namespace DataAccessLayer.AppointmentRepo
 
 		public IQueryable<Appointment> GetByCondition(Func<Appointment, bool> predicate)
 		{
-			return context.Appointments.Where(predicate).AsQueryable();
+			return context.Appointments.Include(ap=>ap.Barber).Where(predicate).AsQueryable();
 		}
 
 		public Appointment GetById(int id)

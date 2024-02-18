@@ -16,6 +16,7 @@ namespace BarberShop.Services.Interfaces
 		public IEnumerable<Appointment> Appointments { get; }
 		public Appointment Get(int id);
 
-		public List<Appointment> SearchByDate(string date,int id);
+		public List<Appointment> SearchByDateBarber(string date,int idBarber);
+		public Appointment? SearchByDateFirst(string date,string idUser);
 	}
 }

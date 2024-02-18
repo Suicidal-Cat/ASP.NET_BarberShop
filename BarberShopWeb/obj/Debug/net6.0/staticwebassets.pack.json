@@ -29,6 +29,18 @@
       "PackagePath": "staticwebassets\\images\\barber\\b1704ae0-33f7-4c01-9484-ebeb8020b85f.jpg"
     },
     {
+      "Id": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\images\\logo.png",
+      "PackagePath": "staticwebassets\\images\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\images\\logo2.png",
+      "PackagePath": "staticwebassets\\images\\logo2.png"
+    },
+    {
+      "Id": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\images\\logo3.png",
+      "PackagePath": "staticwebassets\\images\\logo3.png"
+    },
+    {
       "Id": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

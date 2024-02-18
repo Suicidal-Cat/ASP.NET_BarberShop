@@ -192,6 +192,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcTmV4dENob3NlRGF0ZVRpbWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/darek/Desktop/BarberShopMVC/BarberShopWeb/Views/Appointment/ShowNextAppointmentPV.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcU2hvd05leHRBcHBvaW50bWVudFBWLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/darek/Desktop/BarberShopMVC/BarberShopWeb/Views/Barber/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFyYmVyXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

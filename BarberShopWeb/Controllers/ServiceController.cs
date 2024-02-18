@@ -5,6 +5,7 @@ using BarberShopWeb.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Drawing.Printing;
 
 namespace BarberShopWeb.Controllers
 {
@@ -19,9 +20,32 @@ namespace BarberShopWeb.Controllers
             this.serviceService = serviceService;
             this.serviceCategory = serviceCategory;
         }
-        public IActionResult Index()
+        public IActionResult Index(int pageNumber=1,string search="")
         {
-            return View(serviceService.Services);
+            const int perPage = 5;
+            search = search ?? "";
+            IEnumerable<Service> model;
+            int maxPages = 1;
+            if (search == "")
+            {
+                model = serviceService.Services.Skip((pageNumber - 1) * 5).Take(perPage);
+                maxPages = (int)Math.Ceiling((double)serviceService.Services.Count() / perPage);
+            }
+            else
+            {
+                model = serviceService.SearchByName(search);
+                maxPages = (int)Math.Ceiling((double)model.Count() / perPage);
+                model = model.Skip((pageNumber - 1) * 5).Take(perPage);  
+            }
+            IndexServicesPaginationVM vm = new IndexServicesPaginationVM();
+            vm.Services = model;
+            vm.CurrentPage= pageNumber;
+            vm.Search = search;
+            if (pageNumber > 1) vm.Prev = true;
+            else vm.Prev = false;
+            if(pageNumber< maxPages) vm.Next = true;
+            else vm.Next = false;
+            return View(vm);
         }
         public IActionResult Create()
         {

@@ -36,7 +36,12 @@ namespace BarberShop.Services.ImplementationDatabase
 			return uow.ServiceRepository.GetById(id);
 		}
 
-		public void Update(Service service)
+        public IEnumerable<Service> SearchByName(string name)
+        {
+            return uow.ServiceRepository.GetByCondition(s=>s.Name.Contains(name));
+        }
+
+        public void Update(Service service)
 		{
 			uow.ServiceRepository.Update(service);
 		}

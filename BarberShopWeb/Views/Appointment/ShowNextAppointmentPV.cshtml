@@ -1,0 +1,19 @@
+﻿@model Appointment
+
+<div class="nextAppShow">
+    <div class="card border-success rounded border-2 mb-3" style="max-width: 20rem;">
+        <div class="card-header h5 text-primary" style="font-weight:700">Next appointment</div>
+        <div class="card-body">
+            <h4 class="card-title text-primary" style="font-weight:600">
+                @Model.Date.ToString("dd/MM/yyyy") @Model.StartTime @(string.Compare(Model.StartTime,"12:00")<0?"AM":"PM")
+            </h4>
+            <p class="card-text h6" style="font-size:15px">
+                Barber: @Model.Barber.FirstName @Model.Barber.LastName
+                <br />
+                Duration: @Model.AppDuration min
+                <br />
+                Price: @Model.Price RSD
+            </p>
+        </div>
+    </div>
+</div>

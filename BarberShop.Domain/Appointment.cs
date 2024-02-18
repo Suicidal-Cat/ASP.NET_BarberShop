@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,7 @@ namespace BarberShop.Domain
         public Barber Barber { get; set; } = null!;
         [Required]
         public IdentityUser IdentityUser { get; set; } = null!;
+        public string IdentityUserId { get; set; } = null!;
         public List<Service> Services { get; set; } = null!;
     }
 }

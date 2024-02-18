@@ -35,11 +35,19 @@ namespace BarberShop.Services.ImplementationDatabase
 			return uow.AppointmentRepository.GetById(id);
 		}
 
-		public List<Appointment> SearchByDate(string date,int id)
+		public List<Appointment> SearchByDateBarber(string date,int idBarber)
 		{
-			Func<Appointment, bool> func = (ap => ap.Date.ToString("yyyy-MM-dd") == date && ap.Barber?.BarberId == id);
+			Func<Appointment, bool> func = (ap => ap.Date.ToString("yyyy-MM-dd") == date && ap.Barber?.BarberId == idBarber);
 			return uow.AppointmentRepository.GetByCondition(ap=>ap.Date.ToString("yyyy-MM-dd")==date).ToList();
 		}
+
+		public Appointment? SearchByDateFirst(string date,string idUser)
+		{
+			Func<Appointment, bool> func = (ap => string.Compare(ap.Date.ToString("yyyy-MM-dd"), date) >= 0 && ap.IdentityUserId == idUser);
+			string time = DateTime.Now.ToString("HH:mm");
+			return uow.AppointmentRepository.GetByCondition(func).OrderBy(ap=>ap.Date).FirstOrDefault(ap=> !(string.Compare(ap.StartTime, time) < 0 && ap.Date==DateTime.Now.Date));
+		}
+
 
 		public void Update(Appointment appointment)
 		{

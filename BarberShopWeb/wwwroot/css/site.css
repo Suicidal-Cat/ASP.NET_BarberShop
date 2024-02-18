@@ -73,3 +73,29 @@ input[type=date] {
     background-color: #a55233;
     color: white;
 }
+.disabled-link {
+    pointer-events: none;
+    text-decoration: none;
+    cursor: default;
+    background-color: #cccccc !important;
+}
+.nextAppShow {
+    position: absolute;
+    top: 100px;
+    right: 10px;
+    animation-name: right;
+    animation-duration: 1.8s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes right{
+    from {
+        right: -100px;
+        opacity: 0;
+    }
+
+    to {
+        right: 10px;
+        opacity: 1;
+    }
+}

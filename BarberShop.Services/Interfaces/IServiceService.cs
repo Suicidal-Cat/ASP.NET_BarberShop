@@ -15,5 +15,6 @@ namespace BarberShop.Services.Interfaces
 		public void Delete(int id);
 		public IEnumerable<Service> Services { get; }
 		public Service Get(int id);
+		public IEnumerable<Service> SearchByName(string name);
 	}
 }

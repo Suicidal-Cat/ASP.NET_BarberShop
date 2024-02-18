@@ -2,8 +2,10 @@
 using BarberShop.Services.Interfaces;
 using BarberShop.Utils;
 using BarberShopWeb.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Configuration;
 
 namespace BarberShopWeb.Controllers
 {
@@ -23,7 +25,11 @@ namespace BarberShopWeb.Controllers
 		}
 		//services
         public IActionResult Index()
-		{
+		{	
+            if (!User.Identity.IsAuthenticated)
+			{
+				return Redirect("/Identity/Account/Login");
+			}
 			ListAddServicesReservationVM list=new ListAddServicesReservationVM();
 			foreach (Service service in serviceService.Services)
 			{
@@ -36,9 +42,11 @@ namespace BarberShopWeb.Controllers
 			}
 			return View(list);
 		}
-		//barbers
-		[HttpPost]
-		public IActionResult NextChoseBarber(ListAddServicesReservationVM list) {
+        //barbers
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult NextChoseBarber(ListAddServicesReservationVM list) {
 
 			AddServiceReservationVM? hair = list.Haircuts.FirstOrDefault(h => h.IsChecked == true);
 			AddServiceReservationVM? beard = list.Beard.FirstOrDefault(h => h.IsChecked == true);
@@ -61,8 +69,10 @@ namespace BarberShopWeb.Controllers
 
 			return View(addBarberReservationVM);
 		}
-		//date and time
-		[HttpPost]
+        //date and time
+        [Authorize]
+        [HttpPost]
+		[ValidateAntiForgeryToken]
 		public IActionResult NextChoseDateTime(AddBarberReservationVM list)
 		{
 
@@ -80,11 +90,11 @@ namespace BarberShopWeb.Controllers
 			vm.Appointment = app;
 			return View(vm);
 		}
-		//partial view for available times
-		[HttpGet]
+        //partial view for available times
+        [HttpGet]
 		public IActionResult GenerateTimes(string reservationDate,int id,int duration)
 		{
-            List<Appointment> reservations= appointmentService.SearchByDate(reservationDate, id).OrderBy(ap=>ap.StartTime).ToList();
+            List<Appointment> reservations= appointmentService.SearchByDateBarber(reservationDate, id).OrderBy(ap=>ap.StartTime).ToList();
 
 			List<string> reservationTimes = GenerateTimesReservationHelper.GenereteTimes("10:00", "20:00");
 
@@ -114,14 +124,30 @@ namespace BarberShopWeb.Controllers
 			vm.Times = reservationTimes;
             return PartialView("GenerateTimes", vm);
 		}
-		//create appointment
-		[HttpPost]
-		public IActionResult CreateAppointment(NextChoseDateTimeVM vm)
+        //create appointment
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateAppointment(NextChoseDateTimeVM vm)
 		{
 			vm.Appointment.IdentityUser = new IdentityUser();
 			vm.Appointment.IdentityUser.Id = userManager.GetUserId(this.User);
 			appointmentService.Add(vm.Appointment);
 			return RedirectToAction("Index", "Home");
+		}
+        [Authorize]
+        [HttpGet]
+		public IActionResult ShowNextAppointmentPV()
+		{
+			string now = DateTime.Now.Date.ToString("yyyy-MM-dd");
+			string idUser = userManager.GetUserId(this.User) ?? "";
+			if (idUser == "") return Ok(204);
+			Appointment appointment = appointmentService.SearchByDateFirst(now,idUser);
+			if (appointment != null )
+			{
+				return PartialView("ShowNextAppointmentPV", appointment);
+			}
+			else return Ok(204);	
 		}
 	}
 }

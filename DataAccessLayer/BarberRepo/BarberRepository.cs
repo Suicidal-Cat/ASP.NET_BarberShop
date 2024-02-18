@@ -33,7 +33,7 @@ namespace DataAccessLayer.BarberRepo
 
 		public IQueryable<Barber> GetByCondition(Func<Barber, bool> predicate)
 		{
-			throw new NotImplementedException();
+			return context.Barbers.Where(predicate).AsQueryable();
 		}
 
 		public Barber GetById(int id)

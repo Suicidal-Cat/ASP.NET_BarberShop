@@ -35,8 +35,8 @@ namespace DataAccessLayer.ServiceRepo
 
 		public IQueryable<Service> GetByCondition(Func<Service, bool> predicate)
 		{
-			throw new NotImplementedException();
-		}
+            return context.Services.Include(s=>s.ServiceCategory).Where(predicate).AsQueryable();
+        }
 
 		public Service GetById(int id)
 		{

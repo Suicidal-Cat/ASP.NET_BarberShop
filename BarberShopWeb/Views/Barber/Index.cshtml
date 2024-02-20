@@ -1,8 +1,14 @@
-﻿@model IEnumerable<Barber>
+﻿@model IndexBarbersPaginationVM
 
 <div class="container p-3">
     <div class="d-flex justify-content-between align-items-center p-3">
-        <h3 class="text-primary">Barbers</h3>
+        <div class="d-flex gap-4 align-items-center">
+            <h3 class="text-primary">Barbers</h3>
+            <form class="d-flex" method="GET" asp-controller="Barber" asp-action="Index" asp-route-pageNumber="1" asp-route-search="@(Model.Search)">
+                <input asp-for="Search" class="form-control me-sm-2" type="search" placeholder="Search by name...">
+                <button class="btn btn-primary me-4 my-2 my-sm-0" style="margin-left:5px" type="submit">Search</button>
+            </form>
+        </div>
         <a asp-controller="Barber" asp-action="Create" class="btn btn-primary">
             <i class="bi bi-plus"></i>
             Add Barber
@@ -27,7 +33,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var obj in Model)
+            @foreach (var obj in Model.Barbers)
             {
                 <tr style="font-weight:400;color:black">
                     <td>
@@ -51,4 +57,14 @@
             }
         </tbody>
     </table>
+    <div class="float-end p-3">
+        <ul class="pagination pagination-lg">
+            <li class="page-item">
+                <a asp-controller="Barber" asp-action="Index" asp-route-pageNumber="@(Model.CurrentPage-1)" asp-route-search="@(Model.Search)" class="page-link @(Model.Prev == false ? "disabled-link" : "")" style="cursor:pointer;background-color:black;color:white">&laquo;</a>
+            </li>
+            <li class="page-item">
+                <a asp-controller="Barber" asp-action="Index" asp-route-pageNumber="@(Model.CurrentPage+1)" asp-route-search="@(Model.Search)" class="page-link @(Model.Next == false ? "disabled-link" : "")" style="cursor:pointer;background-color:black;color:white">&raquo;</a>
+            </li>
+        </ul>
+    </div>
 </div>

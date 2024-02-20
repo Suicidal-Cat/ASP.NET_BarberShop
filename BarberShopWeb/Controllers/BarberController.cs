@@ -1,6 +1,8 @@
 ﻿using BarberShop.Domain;
+using BarberShop.Services.ImplementationDatabase;
 using BarberShop.Services.Interfaces;
 using BarberShop.Utils;
+using BarberShopWeb.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,11 +20,30 @@ namespace BarberShopWeb.Controllers
 			this.barberService = barberService;
 			this.webHostEnvironment = webHostEnvironment;
 		}
-        public IActionResult Index()
+        public IActionResult Index(int pageNumber = 1, string search = "")
 		{
+            const int perPage = 3;
+            search = search ?? "";
+            int maxPages = 1;
+            IEnumerable<Barber> model;
 
-			return View(barberService.Barbers);
-		}
+            if (search == "")model = barberService.Barbers;
+            else model = barberService.SearchByName(search);
+
+            maxPages = (int)Math.Ceiling((double)model.Count() / perPage);
+            model = model.Skip((pageNumber - 1) * perPage).Take(perPage);
+
+            IndexBarbersPaginationVM vm = new IndexBarbersPaginationVM();
+            vm.Barbers = model;
+            vm.CurrentPage = pageNumber;
+            vm.Search = search;
+            if (pageNumber > 1) vm.Prev = true;
+            else vm.Prev = false;
+            if (pageNumber < maxPages) vm.Next = true;
+            else vm.Next = false;
+
+            return View(vm);
+        }
         public IActionResult Create()
         {
 

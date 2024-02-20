@@ -37,7 +37,7 @@ namespace BarberShopWeb.Controllers
                 if (category != -1) model = model.Where(model => model.ServiceCategory.Id == category);
             }
             maxPages = (int)Math.Ceiling((double)model.Count() / perPage);
-            model = model.Skip((pageNumber - 1) * 5).Take(perPage);
+            model = model.Skip((pageNumber - 1) * perPage).Take(perPage);
             IndexServicesPaginationVM vm = new IndexServicesPaginationVM();
             vm.ServiceCategory = serviceCategory.ServiceCategories.Select(sc => new SelectListItem
             {

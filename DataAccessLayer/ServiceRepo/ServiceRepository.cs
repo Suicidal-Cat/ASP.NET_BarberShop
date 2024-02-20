@@ -25,7 +25,11 @@ namespace DataAccessLayer.ServiceRepo
 		public void Delete(Service t)
 		{
 			context.Remove(t);
-			context.SaveChanges();
+			try
+			{
+				context.SaveChanges();
+			}catch (Exception ex) { }
+			
 		}
 
 		public List<Service> GetAll()

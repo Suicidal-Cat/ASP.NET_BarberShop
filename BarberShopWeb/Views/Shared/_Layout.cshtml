@@ -30,10 +30,15 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Barber" asp-action="Index">Barbers</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Appointment" asp-action="ShowAppointments">Appointments</a>
+                            </li>
                         }
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Appointment" asp-action="Index">Appointment</a>
-                        </li>
+                        else{
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Appointment" asp-action="Index">Appointment</a>
+                            </li>
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -71,7 +76,6 @@
                 data: {},
                 success: function (result) {
                     if (result !== 204) {
-                        console.log(result);
                         element.innerHTML = '';
                         element.insertAdjacentHTML('beforeend', result);
                     }

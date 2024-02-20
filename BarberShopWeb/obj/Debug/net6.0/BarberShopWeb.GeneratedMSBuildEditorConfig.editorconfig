@@ -180,16 +180,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcR2VuZXJhdGVUaW1lcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/darek/Desktop/BarberShopMVC/BarberShopWeb/Views/Appointment/GetAllAppointmentsDatePV.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcR2V0QWxsQXBwb2ludG1lbnRzRGF0ZVBWLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/darek/Desktop/BarberShopMVC/BarberShopWeb/Views/Appointment/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/darek/Desktop/BarberShopMVC/BarberShopWeb/Views/Appointment/NextChoseBarber.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcTmV4dENob3NlQmFyYmVyLmNzaHRtbA==
+[C:/Users/darek/Desktop/BarberShopMVC/BarberShopWeb/Views/Appointment/NextChooseBarber.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcTmV4dENob29zZUJhcmJlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/darek/Desktop/BarberShopMVC/BarberShopWeb/Views/Appointment/NextChoseDateTime.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcTmV4dENob3NlRGF0ZVRpbWUuY3NodG1s
+[C:/Users/darek/Desktop/BarberShopMVC/BarberShopWeb/Views/Appointment/NextChooseDateTime.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcTmV4dENob29zZURhdGVUaW1lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/darek/Desktop/BarberShopMVC/BarberShopWeb/Views/Appointment/ShowAppointments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcU2hvd0FwcG9pbnRtZW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/darek/Desktop/BarberShopMVC/BarberShopWeb/Views/Appointment/ShowNextAppointmentPV.cshtml]

@@ -2,19 +2,20 @@
 
 <h3 class="mt-4 mb-3 text-center">Select your services</h3>
 <div class="p-3">
-	<form method="POST" asp-controller="Appointment" asp-action="NextChoseBarber">
-		<div class="d-flex flex-wrap justify-content-between mt-2 gap-2" style="width:100%; min-height:60vh">
-		<div id="hairCategory" class="category-list p-2">
+	<form method="POST" asp-controller="Appointment" asp-action="NextChooseBarber">
+		<div class="d-flex flex-wrap justify-content-between mt-2 gap-2" style="width:100%; min-height:60vh;">
+		<div id="hairCategory" class="category-list p-2" style="box-shadow:3px 3px 3px;">
 			<div style="cursor:pointer">
 				<h3 class="d-inline-block">Hairstyles</h3>
+				<i class="bi bi-scissors h3 me-2"></i>
 				<i class="bi bi-caret-down h3 float-end"></i>
 			</div>
 			<div id="dropDownCategory">
 			@foreach(AddServiceReservationVM sr in Model.Haircuts)
 			{
-						<div class="d-flex align-items-center justify-content-between fw-bold" style="height:70px;color:black !important;font-weight:700">
+				<div class="d-flex align-items-center justify-content-between fw-bold" style="height:70px;color:black !important;font-weight:700;border-top:2px solid #a55233;">
 					<div style="">
-						@sr.Service.Name
+						<b>@sr.Service.Name</b>
 						<br>
 						@sr.Service.Duration min
 					</div>
@@ -27,17 +28,18 @@
 			}
 			</div>
 		</div>
-		<div id="beardCategory" class="category-list p-2">
+			<div id="beardCategory" class="category-list p-2" style="box-shadow:3px 3px 3px;">
 			<div style="cursor:pointer">
 				<h3 class="d-inline-block">Beard</h3>
+				<img src="/images/iconM1.png" style="height:25px;width:30px;margin-bottom:8px"/>
 				<i class="bi bi-caret-down h3 float-end"></i>
 			</div>
 			<div id="dropDownCategory">
 			@foreach (AddServiceReservationVM sr in Model.Beard)
 			{
-				<div class="d-flex align-items-center justify-content-between fw-bold" style="height:70px;color:black !important;font-weight:700">
+				<div class="d-flex align-items-center justify-content-between fw-bold" style="height:70px;color:black !important;font-weight:700;border-top:2px solid #a55233;">
 					<div>
-						@sr.Service.Name
+						<b>@sr.Service.Name</b>
 						<br>
 						@sr.Service.Duration min
 					</div>
@@ -50,7 +52,7 @@
 			}
 			</div>
 		</div>
-		<div id="otherCategory"class="category-list p-2">
+			<div id="otherCategory" class="category-list p-2" style="box-shadow:3px 3px 3px;">
 			<div style="cursor:pointer">
 				<h3 class="d-inline-block">Other</h3>
 				<i class="bi bi-caret-down h3 float-end"></i>
@@ -58,9 +60,9 @@
 			<div id="dropDownCategory">
 			@foreach (AddServiceReservationVM sr in Model.Other)
 			{
-				<div class="d-flex align-items-center justify-content-between fw-bold" style="height:70px;color:black !important;font-weight:700">
+				<div class="d-flex align-items-center justify-content-between fw-bold" style="height:70px;color:black !important;font-weight:700;border-top:2px solid #a55233;">
 					<div>
-						@sr.Service.Name
+						<b>@sr.Service.Name</b>
 						<br>
 						@sr.Service.Duration min
 					</div>

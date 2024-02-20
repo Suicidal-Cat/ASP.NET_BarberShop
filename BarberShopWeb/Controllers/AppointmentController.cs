@@ -46,7 +46,7 @@ namespace BarberShopWeb.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult NextChoseBarber(ListAddServicesReservationVM list) {
+        public IActionResult NextChooseBarber(ListAddServicesReservationVM list) {
 
 			AddServiceReservationVM? hair = list.Haircuts.FirstOrDefault(h => h.IsChecked == true);
 			AddServiceReservationVM? beard = list.Beard.FirstOrDefault(h => h.IsChecked == true);
@@ -73,10 +73,10 @@ namespace BarberShopWeb.Controllers
         [Authorize]
         [HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult NextChoseDateTime(AddBarberReservationVM list)
+		public IActionResult NextChooseDateTime(AddBarberReservationVM list)
 		{
 
-			NextChoseDateTimeVM vm=new NextChoseDateTimeVM();
+			NextChooseDateTimeVM vm=new NextChooseDateTimeVM();
 			Appointment app = new Appointment();
 			foreach(Service service in list.Services)
 			{
@@ -128,7 +128,7 @@ namespace BarberShopWeb.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateAppointment(NextChoseDateTimeVM vm)
+        public IActionResult CreateAppointment(NextChooseDateTimeVM vm)
 		{
 			vm.Appointment.IdentityUser = new IdentityUser();
 			vm.Appointment.IdentityUser.Id = userManager.GetUserId(this.User);
@@ -147,6 +147,23 @@ namespace BarberShopWeb.Controllers
 				return PartialView("ShowNextAppointmentPV", appointment);
 			}
 			else return Ok(204);	
+		}
+		[HttpGet]
+		public IActionResult ShowAppointments()
+		{
+			return View();
+		}
+		[HttpGet]
+		public IActionResult GetAllAppointmentsDatePV(string reservationDate)
+		{
+			List<Appointment> appointments=appointmentService.SearchByDate(reservationDate);
+			return PartialView(appointments);
+		}
+		[HttpPost]
+		public IActionResult DeleteAppointment(int appId)
+		{
+			appointmentService.Delete(appId);
+			return Ok(200);
 		}
 	}
 }

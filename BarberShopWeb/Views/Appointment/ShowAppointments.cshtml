@@ -1,0 +1,75 @@
+﻿
+<div class="p-3 mt-3" style="width:100%">
+	<input id="Appointment_Date" type="date" style="box-shadow:1px 1px 2px #a55233" />
+	<div id="appointmentTimes">
+
+	</div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+	//date picker setup
+	var date = document.getElementById("Appointment_Date");
+	let today = new Date();
+	let dd = String(today.getDate()).padStart(2, '0');
+	let mm = String(today.getMonth() + 1).padStart(2, '0');
+	let yyyy = today.getFullYear();
+
+
+	let maxDate = new Date();
+	maxDate.setMonth(maxDate.getMonth() + 3);
+	let max_dd = String(maxDate.getDate()).padStart(2, '0');
+	let max_mm = String(maxDate.getMonth() + 1).padStart(2, '0');
+	var max_yyyy = maxDate.getFullYear();
+
+	today = yyyy + '-' + mm + '-' + dd;
+	maxDate = max_yyyy + '-' + max_mm + '-' + max_dd;
+	date.setAttribute("min", today);
+	date.setAttribute("value", today);
+	date.setAttribute("max", maxDate);
+
+	function getAppointments() {
+		let url = '@Url.Action("GetAllAppointmentsDatePV", "Appointment")';
+		let element = document.getElementById('appointmentTimes');
+		$.ajax({
+			url: url,
+			type: 'GET',
+			data: { reservationDate: date.value },
+			success: function (result) {
+				element.innerHTML = '';
+				element.insertAdjacentHTML('beforeend', result);
+				$('.delete-appointment').click(function () {
+					console.log(this);
+					let id = $(this).data('appointment-id');
+					deleteAppointment($(this).parent().parent(), id);
+				});
+			}
+		});
+	}
+
+	function deleteAppointment(parent,id) {
+		let url = '@Url.Action("DeleteAppointment", "Appointment")';
+		$.ajax({
+			url: url,
+			type: 'POST',
+			data: { appId: id },
+			success: function (result) {
+				parent.addClass("zoom");
+			}
+		});
+	}
+
+
+
+	$(document).ready(function () {
+		getAppointments();
+		//getNextApp()
+	});
+
+
+	date.addEventListener('change', function () {
+		getAppointments();
+	});
+
+
+</script>

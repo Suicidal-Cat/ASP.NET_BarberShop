@@ -27,5 +27,7 @@ namespace BarberShop.Domain
 		[ValidateNever]
 		[DisplayName("Image")]
 		public string ImageUrl { get; set; } = null!;
-    }
+		public string? StartWorkingHours { get; set; }
+		public string? EndWorkingHours { get; set; }
+	}
 }

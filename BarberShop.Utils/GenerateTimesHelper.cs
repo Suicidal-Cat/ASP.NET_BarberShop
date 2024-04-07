@@ -10,6 +10,8 @@ namespace BarberShop.Utils
 	{
 		public static List<string> GenereteTimes(string startTime,string endTime)
 		{
+			if (string.IsNullOrEmpty(startTime) || string.IsNullOrEmpty(endTime)) return new List<string>();
+
 			DateTime start = DateTime.ParseExact(startTime, "HH:mm", null);
 			DateTime end = DateTime.ParseExact(endTime, "HH:mm", null);
 			List<string> result = new List<string>();

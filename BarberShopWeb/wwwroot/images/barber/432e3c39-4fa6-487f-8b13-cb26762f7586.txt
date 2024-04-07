@@ -1,0 +1,18 @@
+Angular
+declarations: dodajemo kada kreiramo novu komponentu
+imports: dodajemo module
+
+Selektor je naziv komponente koji koristimo u html
+
+
+@input dekoratori: povezemo parent i child componentu
+uvodimo koncept direktiva kako bi vrsili iteraciju
+
+@output moze i roditelji da ga vide
+
+dependecy kroz konsturktor on automatski ga dodaje
+
+------------------------------------------------------------------
+slotovi se odnose na parent componentu, a ubacuju u child
+ionic pagestacking - life cycle of pages, ngDestory se pokrece kada popujemo sa stack-a, procitaj detaljnije dokumentaciju
+tabovi posmatraju page stack odvojeno

@@ -48,7 +48,7 @@ namespace BarberShop.Infrastructure.Migrations
                     b.Property<int>("AppDuration")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BarberId")
+                    b.Property<int>("BarberId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
@@ -82,6 +82,9 @@ namespace BarberShop.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BarberId"), 1L, 1);
 
+                    b.Property<string>("EndWorkingHours")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -96,6 +99,9 @@ namespace BarberShop.Infrastructure.Migrations
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StartWorkingHours")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Status")
@@ -406,7 +412,9 @@ namespace BarberShop.Infrastructure.Migrations
                 {
                     b.HasOne("BarberShop.Domain.Barber", "Barber")
                         .WithMany()
-                        .HasForeignKey("BarberId");
+                        .HasForeignKey("BarberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
                         .WithMany()

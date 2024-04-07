@@ -96,9 +96,18 @@ namespace BarberShopWeb.Controllers
 		{
             List<Appointment> reservations= appointmentService.SearchByDateBarber(reservationDate, id).OrderBy(ap=>ap.StartTime).ToList();
 
-			List<string> reservationTimes = GenerateTimesReservationHelper.GenereteTimes("10:00", "20:00");
+			Barber b = barberService.Get(id);
+
+			List<string> reservationTimes = GenerateTimesReservationHelper.GenereteTimes(b.StartWorkingHours, b.EndWorkingHours);
 
 			GenerateTimesVM vm = new GenerateTimesVM();
+
+			if (reservationTimes.Count == 0)
+			{
+				vm.Times = reservationTimes;
+				return PartialView("GenerateTimes", vm);
+			}
+
 			if (reservations.Count > 0)
 			{
 				for(int i=0;i<reservationTimes.Count;i++) { 

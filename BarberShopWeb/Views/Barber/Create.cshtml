@@ -1,4 +1,8 @@
 ﻿@model Barber
+@{
+	string[] workingHours = { "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00",
+	"15:00", "16:00", "17:00", "18:00", "19:00", "20:00" };
+}
 
 <form method="POST" enctype="multipart/form-data">
 	<div class="border p-3 mt-4" style="font-weight:400;color:black">
@@ -22,13 +26,33 @@
 			<span asp-validation-for="PhoneNumber" class="text-danger"></span>
 		</div>
 		<div class="row">
-			<div class="col-md mb-3">
+		<div class="col-md mb-3">
 			<label asp-for="Status"></label>
 			<select class="form-select" asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()"></select>
 		</div>
 		<div class="col-md mb-3">
 			<label asp-for="ImageUrl"></label>
 			<input type="file" name="file" class="form-control" />
+		</div>
+		<div class="col-md mb-3">
+				<label asp-for="StartWorkingHours">Start working hours:</label>
+			<select class="form-select" asp-for="StartWorkingHours">
+				<option value=""></option>
+				@foreach (string time in workingHours)
+				{
+					<option value="@time">@time</option>
+				}
+			</select>
+		</div>
+		<div class="col-md mb-3">
+				<label asp-for="EndWorkingHours">End working hours:</label>
+				<select class="form-select" asp-for="EndWorkingHours">
+					<option value=""></option>
+					@foreach (string time in workingHours)
+					{
+						<option value="@time">@time</option>
+					}
+				</select>
 		</div>
 		</div>
 		<button type="submit" class="btn btn-primary" style="width:200px">Create</button>

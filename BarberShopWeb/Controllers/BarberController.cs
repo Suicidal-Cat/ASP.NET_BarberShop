@@ -46,6 +46,7 @@ namespace BarberShopWeb.Controllers
         }
         public IActionResult Create()
         {
+            
 
             return View();
         }
@@ -55,23 +56,32 @@ namespace BarberShopWeb.Controllers
         {
             if(ModelState.IsValid)
             {
-                string wwwRootPath = webHostEnvironment.WebRootPath;
-                if (file != null)
-                {
-                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                    string imagePath = Path.Combine(wwwRootPath, @"images\barber");
-                    using (var fileStream = new FileStream(Path.Combine(imagePath, fileName), FileMode.Create))
-                    {
-                        file.CopyTo(fileStream);
-                    }
-                    barber.ImageUrl = @"\images\barber\" + fileName;
-					barberService.Add(barber);
-					TempData["success"] = "Barber created successfully";
-					return RedirectToAction("Index");
+                if (string.IsNullOrEmpty(barber.StartWorkingHours) && string.IsNullOrEmpty(barber.EndWorkingHours) || (string.Compare(barber.StartWorkingHours,barber.EndWorkingHours)<0))
+
+				{
+					string wwwRootPath = webHostEnvironment.WebRootPath;
+					if (file != null)
+					{
+						string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+						string imagePath = Path.Combine(wwwRootPath, @"images\barber");
+						using (var fileStream = new FileStream(Path.Combine(imagePath, fileName), FileMode.Create))
+						{
+							file.CopyTo(fileStream);
+						}
+						barber.ImageUrl = @"\images\barber\" + fileName;
+						barberService.Add(barber);
+						TempData["success"] = "Barber created successfully";
+						return RedirectToAction("Index");
+					}
+					else
+					{
+						TempData["error"] = "Please select image!";
+						return View(barber);
+					}
 				}
                 else
                 {
-					TempData["error"] = "Please select image!";
+					TempData["error"] = "Please select valid time!";
 					return View(barber);
 				}
 

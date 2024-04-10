@@ -7,7 +7,10 @@
 			<div class="h4 p-1" style="font-weight:700">
 				@app.StartTime @(string.Compare(@app.StartTime, "12:00") < 0 ? "AM" : "PM")
 				<i class="bi bi-clock"></i>
-				<i class="bi bi-trash2-fill float-end h4 delete-appointment" style="color:red;cursor:pointer" data-appointment-id="@app.AppointmentId"></i>
+				@if (app.IsCanceled)
+				{
+					<i class="bi bi-trash2-fill float-end h4 delete-appointment mt-1" style="color:red;cursor:pointer;font-size:0.8rem" data-appointment-id="@app.AppointmentId">Canceled</i>
+				}
 			</div>
 			<div class="d-flex align-items-center p-2">
 				<img src=@app.Barber.ImageUrl style="width:105px;height:105px;border-radius:50%">

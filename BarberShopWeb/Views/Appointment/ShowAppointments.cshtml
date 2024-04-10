@@ -39,7 +39,6 @@
 				element.innerHTML = '';
 				element.insertAdjacentHTML('beforeend', result);
 				$('.delete-appointment').click(function () {
-					console.log(this);
 					let id = $(this).data('appointment-id');
 					deleteAppointment($(this).parent().parent(), id);
 				});

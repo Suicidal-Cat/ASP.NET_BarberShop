@@ -51,7 +51,7 @@ namespace BarberShop.Services.ImplementationDatabase
 		{
 			Func<Appointment, bool> func = (ap => string.Compare(ap.Date.ToString("yyyy-MM-dd"), date) >= 0 && ap.IdentityUserId == idUser);
 			string time = DateTime.Now.ToString("HH:mm");
-			return uow.AppointmentRepository.GetByCondition(func).OrderBy(ap=>ap.Date).FirstOrDefault(ap=> !(string.Compare(ap.StartTime, time) < 0 && ap.Date==DateTime.Now.Date));
+			return uow.AppointmentRepository.GetByCondition(func).OrderBy(ap=>ap.Date).FirstOrDefault(ap=> !(string.Compare(ap.StartTime, time) < 0 && ap.Date==DateTime.Now.Date) && ap.IsCanceled==false);
 		}
 
 

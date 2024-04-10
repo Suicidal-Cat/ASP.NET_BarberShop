@@ -18,6 +18,7 @@ namespace BarberShop.Domain
         public string StartTime { get; set; } = null!;
 		public int AppDuration { get; set; }
 		public int Price { get; set; }
+        public bool IsCanceled { get; set; } = false;
         public Barber Barber { get; set; } = null!;
         [Required]
         public IdentityUser IdentityUser { get; set; } = null!;

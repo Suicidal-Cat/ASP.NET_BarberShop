@@ -88,6 +88,10 @@ input[type=date] {
     animation-fill-mode: forwards;
 }
 
+.nextAppShow.zoom {
+        animation: zoom forwards 1.7s ease-out 1;
+}
+
 @keyframes right{
     from {
         right: -100px;

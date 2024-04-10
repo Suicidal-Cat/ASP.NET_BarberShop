@@ -58,6 +58,9 @@ namespace BarberShop.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<bool>("IsCanceled")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
 

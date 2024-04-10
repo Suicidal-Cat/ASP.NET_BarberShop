@@ -15,5 +15,11 @@
                 Price: @Model.Price RSD
             </p>
         </div>
+        <div style="width:100%">
+            <button id="cancelApp" type="submit" class="btn btn-outline-primary btn-sm float-start mb-2 ms-3" style="font-size:0.8rem">
+                Cancel appointment
+            </button>
+            <input id="appId" value="@Model.AppointmentId" hidden />
+        </div>
     </div>
 </div>

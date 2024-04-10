@@ -63,7 +63,6 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-
 <script>
     //generate next appointment
     var url2 = '@Url.Action("ShowNextAppointmentPV", "Appointment")';
@@ -78,11 +77,31 @@
                     if (result !== 204) {
                         element.innerHTML = '';
                         element.insertAdjacentHTML('beforeend', result);
+                        let cancelButton = document.getElementById("cancelApp");
+                        console.log(cancelButton);
+                        cancelButton.onclick = function () {
+                            cancelApp(document.getElementById("appId").value);
+                        }
                     }
                 }
             });
-        }  
+        }
     }
+
+    function cancelApp(id) {
+        let url = '@Url.Action("CancelAppointment", "Appointment")';
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: { appId: id},
+            success: function (result) {
+                //remove animation, dodas onu klasu kao sto si vamo brisao
+                console.log($(".nextAppShow"));
+                $(".nextAppShow").addClass("zoom");
+            }
+        });
+    }
+
 
     $(document).ready(function () {
         getNextApp();

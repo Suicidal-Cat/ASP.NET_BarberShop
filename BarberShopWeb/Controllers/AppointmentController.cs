@@ -117,12 +117,12 @@ namespace BarberShopWeb.Controllers
 					{
 						DateTime startRES = DateTime.ParseExact(appointment.StartTime, "HH:mm", null);
 						DateTime endRES = startRES.AddMinutes(appointment.AppDuration);
-						if (start <= startRES && end >= startRES)
+						if (start <= startRES && end >= startRES && appointment.IsCanceled==false)
 						{
 							reservationTimes[i] = "0";
 							break;
 						}
-						else if(start>=startRES && end<=endRES)
+						else if(start>=startRES && end<=endRES && appointment.IsCanceled == false)
 						{
 							reservationTimes[i] = "0";
 							break;
@@ -151,7 +151,7 @@ namespace BarberShopWeb.Controllers
 			string idUser = userManager.GetUserId(this.User) ?? "";
 			if (idUser == "") return Ok(204);
 			Appointment appointment = appointmentService.SearchByDateFirst(now,idUser);
-			if (appointment != null )
+			if (appointment != null && appointment.IsCanceled==false)
 			{
 				return PartialView("ShowNextAppointmentPV", appointment);
 			}
@@ -172,6 +172,14 @@ namespace BarberShopWeb.Controllers
 		public IActionResult DeleteAppointment(int appId)
 		{
 			appointmentService.Delete(appId);
+			return Ok(200);
+		}
+		[HttpPost]
+		public IActionResult CancelAppointment(int appId)
+		{
+			Appointment app=appointmentService.Get(appId);
+			app.IsCanceled = true;
+			appointmentService.Update(app);
 			return Ok(200);
 		}
 	}

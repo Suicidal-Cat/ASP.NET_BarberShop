@@ -117,12 +117,12 @@ namespace BarberShopWeb.Controllers
 					{
 						DateTime startRES = DateTime.ParseExact(appointment.StartTime, "HH:mm", null);
 						DateTime endRES = startRES.AddMinutes(appointment.AppDuration);
-						if (start <= startRES && end >= startRES && appointment.IsCanceled==false)
+						if (start <= startRES && end > startRES && appointment.IsCanceled==false)
 						{
 							reservationTimes[i] = "0";
 							break;
 						}
-						else if(start>=startRES && end<=endRES && appointment.IsCanceled == false)
+						if(start>=startRES && start<=endRES && appointment.IsCanceled == false)
 						{
 							reservationTimes[i] = "0";
 							break;

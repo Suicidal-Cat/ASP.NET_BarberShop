@@ -4,8 +4,10 @@ using BarberShop.Utils;
 using BarberShopWeb.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Configuration;
+using System.Security.Claims;
 
 namespace BarberShopWeb.Controllers
 {
@@ -15,13 +17,15 @@ namespace BarberShopWeb.Controllers
 		private readonly IAppointmentService appointmentService;
 		private readonly IBarberService barberService;
 		private readonly UserManager<IdentityUser> userManager;
+		private readonly IEmailSender emailSender;
 
-		public AppointmentController(IServiceService serviceService, IAppointmentService appointmentService,IBarberService barberService,UserManager<IdentityUser> userManager)
+		public AppointmentController(IServiceService serviceService, IAppointmentService appointmentService,IBarberService barberService,UserManager<IdentityUser> userManager,IEmailSender emailSender)
         {
 			this.serviceService = serviceService;
 			this.appointmentService = appointmentService;
 			this.barberService = barberService;
 			this.userManager = userManager;
+			this.emailSender = emailSender;
 		}
 		//services
         public IActionResult Index()
@@ -137,11 +141,24 @@ namespace BarberShopWeb.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateAppointment(NextChooseDateTimeVM vm)
+        public async Task<IActionResult> CreateAppointment(NextChooseDateTimeVM vm)
 		{
 			vm.Appointment.IdentityUser = new IdentityUser();
 			vm.Appointment.IdentityUser.Id = userManager.GetUserId(this.User);
+			//definisi get za usera i procitaj mejl
+			//proveri dokumentaciju
+			vm.Appointment.Barber = barberService.Get(vm.Appointment.Barber.BarberId);
+
 			appointmentService.Add(vm.Appointment);
+
+
+			string emailBody = "Starts: " + vm.Appointment.Date.ToString("dd/MM/yyyy") + (string.Compare(vm.Appointment.StartTime, "12:00") < 0 ? "AM" : "PM") + "\n"+"Barber: "+vm.Appointment.Barber.FirstName+" "+vm.Appointment.Barber.LastName+"\n"+"Duration: "+vm.Appointment.AppDuration+"\n"+"Price: "+vm.Appointment.Price+"\n";
+
+
+
+			await emailSender.SendEmailAsync(User?.Identity?.Name, "[BARBERSHOP] Potvrda rezervacije broj: " + vm.Appointment.AppointmentId, emailBody);
+
+
 			return RedirectToAction("Index", "Home");
 		}
         [HttpGet]

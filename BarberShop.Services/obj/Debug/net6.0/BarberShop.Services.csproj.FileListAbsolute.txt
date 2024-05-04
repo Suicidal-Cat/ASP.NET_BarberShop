@@ -17,3 +17,22 @@ C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Services\obj\Debug\net6.0\Barber
 C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Services\obj\Debug\net6.0\refint\BarberShop.Services.dll
 C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Services\obj\Debug\net6.0\BarberShop.Services.pdb
 C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Services\obj\Debug\net6.0\ref\BarberShop.Services.dll
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\bin\Debug\net6.0\BarberShop.Services.deps.json
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\bin\Debug\net6.0\BarberShop.Services.dll
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\bin\Debug\net6.0\BarberShop.Services.pdb
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\bin\Debug\net6.0\BarberShop.Domain.dll
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\bin\Debug\net6.0\BarberShop.Infrastructure.dll
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\bin\Debug\net6.0\DataAccessLayer.dll
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\bin\Debug\net6.0\BarberShop.Domain.pdb
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\bin\Debug\net6.0\DataAccessLayer.pdb
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\bin\Debug\net6.0\BarberShop.Infrastructure.pdb
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\obj\Debug\net6.0\BarberShop.Services.csproj.AssemblyReference.cache
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\obj\Debug\net6.0\BarberShop.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\obj\Debug\net6.0\BarberShop.Services.AssemblyInfoInputs.cache
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\obj\Debug\net6.0\BarberShop.Services.AssemblyInfo.cs
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\obj\Debug\net6.0\BarberShop.Services.csproj.CoreCompileInputs.cache
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\obj\Debug\net6.0\BarberShop.Services.csproj.CopyComplete
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\obj\Debug\net6.0\BarberShop.Services.dll
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\obj\Debug\net6.0\refint\BarberShop.Services.dll
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\obj\Debug\net6.0\BarberShop.Services.pdb
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Services\obj\Debug\net6.0\ref\BarberShop.Services.dll

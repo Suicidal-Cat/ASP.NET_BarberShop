@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YMiP+AKmd2653QiR8/uA87dkE0GDpNDuv6ICSvHxcQiRi7d6LKylCNHap4LS/Es8iPXj/dKsx3NrFelziwFVwA==",
+  "dgSpecHash": "8KVWxb5tUFJXV/AWSOn70QsrB3wrz8sjk41XSoWfF3o41wPpKi0jNT9Lb0NaSEA1VFYyxHAVC85lebwDPNBpbQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Services\\BarberShop.Services.csproj",
+  "projectFilePath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Services\\BarberShop.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\darek\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\darek\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

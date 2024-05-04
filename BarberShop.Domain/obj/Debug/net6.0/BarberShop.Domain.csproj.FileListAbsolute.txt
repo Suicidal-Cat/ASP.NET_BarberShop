@@ -10,3 +10,15 @@ C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Domain\obj\Debug\net6.0\refint\B
 C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Domain\obj\Debug\net6.0\BarberShop.Domain.pdb
 C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Domain\obj\Debug\net6.0\ref\BarberShop.Domain.dll
 C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Domain\obj\Debug\net6.0\BarberShop.Domain.csproj.AssemblyReference.cache
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\bin\Debug\net6.0\BarberShop.Domain.deps.json
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\bin\Debug\net6.0\BarberShop.Domain.dll
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\bin\Debug\net6.0\BarberShop.Domain.pdb
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\obj\Debug\net6.0\BarberShop.Domain.csproj.AssemblyReference.cache
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\obj\Debug\net6.0\BarberShop.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\obj\Debug\net6.0\BarberShop.Domain.AssemblyInfoInputs.cache
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\obj\Debug\net6.0\BarberShop.Domain.AssemblyInfo.cs
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\obj\Debug\net6.0\BarberShop.Domain.csproj.CoreCompileInputs.cache
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\obj\Debug\net6.0\BarberShop.Domain.dll
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\obj\Debug\net6.0\refint\BarberShop.Domain.dll
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\obj\Debug\net6.0\BarberShop.Domain.pdb
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\obj\Debug\net6.0\ref\BarberShop.Domain.dll

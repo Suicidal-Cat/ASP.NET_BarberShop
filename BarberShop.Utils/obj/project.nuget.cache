@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jgwTTpQjOMp2o1TEk6b7posBT2kxBdtEh2XHkTFazetOQ489VJvXB2Y8vm4M1bpG7YC4MPzfvp3qNbpUGaAuIw==",
+  "dgSpecHash": "7vWqL4Vb6taauFmfBxjI8uVqM+eZFRzHPk/CE0TTDr1OluYbTVAqI52KKrzz4q4KmkHeWYhJIEW2EoeQs/BRzw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Utils\\BarberShop.Utils.csproj",
+  "projectFilePath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Utils\\BarberShop.Utils.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\darek\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.0\\microsoft.aspnetcore.cryptography.internal.6.0.0.nupkg.sha512",
     "C:\\Users\\darek\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.0\\microsoft.aspnetcore.cryptography.keyderivation.6.0.0.nupkg.sha512",

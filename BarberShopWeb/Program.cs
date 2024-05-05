@@ -16,32 +16,62 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<BarberShopDbContext>();
 builder.Services.AddRazorPages();
-builder.Services.AddIdentity<IdentityUser,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<BarberShopDbContext>().AddDefaultTokenProviders();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+	.AddEntityFrameworkStores<BarberShopDbContext>()
+	.AddDefaultTokenProviders();
+builder.Services
+.AddAuthentication() // Cookie by default
+	.AddCookie(options =>
+	{
+		options.LoginPath = "/Account/Unauthorized/";
+		options.AccessDeniedPath = "/Account/Forbidden/";
+	})
+	.AddJwtBearer(options =>
+	{
+		options.TokenValidationParameters = new TokenValidationParameters
+		{
+			ValidateIssuer = true,
+			ValidateAudience = false,
+			ValidateLifetime = true,
+			ValidateIssuerSigningKey = true,
+			ValidIssuer = builder.Configuration["JWT:Issuer"],
+			IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
+		};
+	});
+/*builder.Services.AddAuthentication(options =>
+{
+	//options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+	//options.DefaultChallengeScheme=JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+	options.TokenValidationParameters = new TokenValidationParameters
+	{
+		ValidateIssuerSigningKey = true,
+		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
+		ValidateIssuer = false,
+		ValidateAudience = false,
+	};
+});*/
+
+/*builder.Services.AddIdentityCore<IdentityUser>()
+	.AddRoles<IdentityRole>()
+	.AddRoleManager<RoleManager<IdentityRole>>()
+	.AddEntityFrameworkStores<BarberShopDbContext>()
+	.AddSignInManager<SignInManager<IdentityUser>>()
+	.AddUserManager<UserManager<IdentityUser>>()
+	.AddDefaultTokenProviders();*/
+
 builder.Services.AddScoped<IEmailSender, EmailSender> ();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IServiceService,ServiceService>();
 builder.Services.AddScoped<IServiceCategoryService, ServiceCategoryService>();
 builder.Services.AddScoped<IBarberService, BarberService>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
-
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-	.AddJwtBearer(options =>
-	{
-		options.TokenValidationParameters = new TokenValidationParameters
-		{
-			ValidateIssuerSigningKey=true,
-			IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
-			ValidateIssuer=true,
-			ValidateAudience=false,
-		};
-	});
-
 builder.Services.AddScoped<JWTService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

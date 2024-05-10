@@ -5,7 +5,7 @@ namespace BarberShopWeb.DTOs
 	public class RegisterDto
 	{
 		[Required]
-		[StringLength(20,MinimumLength =3,ErrorMessage ="First name must have at least 3 characters")]
+		[StringLength(20, MinimumLength = 3, ErrorMessage = "First name must have at least 3 characters")]
 		public string FirstName { get; set; }
 		[Required]
 		[StringLength(20, MinimumLength = 3, ErrorMessage = "Last name must have at least 3 characters")]

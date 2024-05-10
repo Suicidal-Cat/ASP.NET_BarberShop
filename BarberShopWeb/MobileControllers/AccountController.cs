@@ -6,10 +6,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Security.Claims;
 
 namespace BarberShopWeb.MobileControllers
 {
+	[Route("mobile/account")]
+	[ApiController]
 	public class AccountController : Controller
 	{
 		private readonly JWTService jwtService;
@@ -26,14 +29,14 @@ namespace BarberShopWeb.MobileControllers
 		}
 
 		[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-		[HttpGet]
+		[HttpGet("refreshToken")]
 		public async Task<ActionResult<UserDto>> RefreshToken()
 		{
             var user = await userManager.FindByNameAsync(User.FindFirst(ClaimTypes.Email)?.Value);
 			return CreateApplicationUserDto((ApplicationUser)user);
 		}
 
-		[HttpPost]
+		[HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login([FromBody]LoginDto model)
 		{
 			var user = await userManager.FindByEmailAsync(model.Email);
@@ -47,7 +50,7 @@ namespace BarberShopWeb.MobileControllers
 
 			return CreateApplicationUserDto((ApplicationUser)user);
 		}
-		[HttpPost]
+		[HttpPost("register")]
 		public async Task<IActionResult> Register([FromBody]RegisterDto model)
 		{
 			if (await CheckEmailExistsAsync(model.Email)) return BadRequest("Email is already taken!");

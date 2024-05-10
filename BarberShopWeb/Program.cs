@@ -16,7 +16,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<BarberShopDbContext>();
 builder.Services.AddRazorPages();
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+	{
+		options.Password.RequiredLength = 8;
+		options.Password.RequireDigit = false;
+		options.Password.RequireLowercase = false;
+		options.Password.RequireUppercase = false;
+		options.Password.RequireNonAlphanumeric = false;
+		options.SignIn.RequireConfirmedAccount = false;
+	})
 	.AddEntityFrameworkStores<BarberShopDbContext>()
 	.AddDefaultTokenProviders();
 builder.Services
@@ -38,28 +46,6 @@ builder.Services
 			IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
 		};
 	});
-/*builder.Services.AddAuthentication(options =>
-{
-	//options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-	//options.DefaultChallengeScheme=JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
-{
-	options.TokenValidationParameters = new TokenValidationParameters
-	{
-		ValidateIssuerSigningKey = true,
-		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
-		ValidateIssuer = false,
-		ValidateAudience = false,
-	};
-});*/
-
-/*builder.Services.AddIdentityCore<IdentityUser>()
-	.AddRoles<IdentityRole>()
-	.AddRoleManager<RoleManager<IdentityRole>>()
-	.AddEntityFrameworkStores<BarberShopDbContext>()
-	.AddSignInManager<SignInManager<IdentityUser>>()
-	.AddUserManager<UserManager<IdentityUser>>()
-	.AddDefaultTokenProviders();*/
 
 builder.Services.AddScoped<IEmailSender, EmailSender> ();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -91,8 +77,8 @@ app.MapRazorPages();
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapControllerRoute(
+/*app.MapControllerRoute(
 	name: "MobileControllers",
-	pattern: "mobile/{controller}/{action}/{id?}");
+	pattern: "mobile/{controller}/{action}/{id?}");*/
 
 app.Run();

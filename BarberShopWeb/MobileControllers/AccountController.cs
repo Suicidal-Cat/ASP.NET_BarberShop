@@ -122,8 +122,7 @@ namespace BarberShopWeb.MobileControllers
 		[HttpPost("resend-email-confirmation/{email}")]
 		public async Task<IActionResult> ResendEmailConfirmation(string email)
 		{
-			if (string.IsNullOrEmpty(email)) return BadRequest("Invalid email.");
-			
+			if (string.IsNullOrEmpty(email)) return BadRequest("Invalid email.");	
 			IdentityUser user=await userManager.FindByEmailAsync(email);
 
 			if (user == null) return Unauthorized("Email is not registered yet.");
@@ -145,6 +144,73 @@ namespace BarberShopWeb.MobileControllers
 
 		}
 
+		[HttpPost("forgotPassword/{email}")]
+		public async Task<IActionResult> ForgotPassword(string email)
+		{
+			if (string.IsNullOrEmpty(email)) return BadRequest("Invalid email.");
+			IdentityUser user = await userManager.FindByEmailAsync(email);
+
+			if (user == null) return Unauthorized("Email is not registered yet.");
+			if (user.EmailConfirmed == false) return BadRequest("Please confirm your email first.");
+
+			try
+			{
+				if(await SendForgotPasswordEmail((ApplicationUser)user))
+				{
+					return Ok(new JsonResult(new {message="Please check your email to reset your password."}));
+				}
+				return BadRequest("Failed to send confirmation email. Contact support.");
+			}
+			catch (Exception)
+			{
+				return BadRequest("Failed to send confirmation email. Contact support.");
+			}
+		}
+
+		[HttpPut("resetPassword")]
+		public async Task<IActionResult> ResetPassword(ResetPasswordDto model)
+		{
+			IdentityUser user = await userManager.FindByEmailAsync(model.Email);
+			if (user == null) return Unauthorized("Email is not registered yet.");
+
+			if (user.EmailConfirmed == false) return BadRequest("Please confirm your email first.");
+
+			try
+			{
+				var decodeToken = WebEncoders.Base64UrlDecode(model.Token);
+				string decodedToken = Encoding.UTF8.GetString(decodeToken);
+
+				var result = await userManager.ResetPasswordAsync(user, decodedToken,model.NewPassword);
+				if (result.Succeeded == true) return Ok(new JsonResult(new
+				{
+					message = "You password has been reset."
+				}));
+
+				return BadRequest("Invalid request. Try again later.");
+
+			}
+			catch (Exception)
+			{
+				return BadRequest("Invalid request. Try again later."); ;
+			}
+		}
+
+		//helper methods
+
+		private async Task<bool> SendForgotPasswordEmail(ApplicationUser user)
+		{
+			string token = await userManager.GeneratePasswordResetTokenAsync(user);
+			token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
+			string url = $"{configuration["JWT:Issuer"]}/{configuration["Email:ResetPasswordPath"]}?token={token}&email={user.Email}";
+
+			string body = $"<p>Hi, {user.FirstName} {user.LastName}<p>" +
+				"<p>Please reset your password by following this link: <p>" +
+				$"<a href=\"{url}\">Click here</a>";
+
+			await emailSender.SendEmailAsync(user.Email, "[BARBESHOP] Confirm your password", body);
+
+			return true;
+		}
 
 		private async Task<bool> SendConfirmationEmail(ApplicationUser user)
 		{
@@ -152,7 +218,7 @@ namespace BarberShopWeb.MobileControllers
 			token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
 			string url = $"{configuration["JWT:Issuer"]}/{configuration["Email:ConfirmEmailPath"]}?token={token}&email={user.Email}";
 
-			string body = $"<p>Welcome {user.FirstName}<p>" +
+			string body = $"<p>Welcome {user.FirstName} {user.LastName}<p>" +
 				"<p>Please confirm your email by following this link: <p>" +
 				$"<a href=\"{url}\">Click here</a>" +
 				"<br><p>Welcome to our community.<p>";

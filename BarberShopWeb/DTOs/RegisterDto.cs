@@ -11,7 +11,7 @@ namespace BarberShopWeb.DTOs
 		[StringLength(20, MinimumLength = 3, ErrorMessage = "Last name must have at least 3 characters")]
 		public string LastName { get; set; }
 		[Required]
-		[EmailAddress(ErrorMessage = "Enter valid email address")]
+		[RegularExpression("^[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$", ErrorMessage = "Invalid email address")]
 		public string Email { get; set; }
 		[Required]
 		[Phone(ErrorMessage ="Enter valid phone number")]

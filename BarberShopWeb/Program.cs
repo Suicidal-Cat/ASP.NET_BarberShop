@@ -23,7 +23,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 		options.Password.RequireLowercase = false;
 		options.Password.RequireUppercase = false;
 		options.Password.RequireNonAlphanumeric = false;
-		options.SignIn.RequireConfirmedAccount = false;
+		options.SignIn.RequireConfirmedEmail = true;
 	})
 	.AddEntityFrameworkStores<BarberShopDbContext>()
 	.AddDefaultTokenProviders();
@@ -54,11 +54,20 @@ builder.Services.AddScoped<IServiceCategoryService, ServiceCategoryService>();
 builder.Services.AddScoped<IBarberService, BarberService>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 builder.Services.AddScoped<JWTService>();
+builder.Services.AddCors();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+
 var app = builder.Build();
 // Configure the HTTP request pipeline.
+
+app.UseCors(opt =>
+{
+	opt.AllowAnyHeader().AllowAnyHeader().AllowCredentials().WithOrigins(builder.Configuration["JWT:ClientUrl"]);
+});
+
 if (!app.Environment.IsDevelopment())
 {
 	app.UseExceptionHandler("/Home/Error");

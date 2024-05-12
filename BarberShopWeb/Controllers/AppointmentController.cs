@@ -145,14 +145,14 @@ namespace BarberShopWeb.Controllers
 		{
 			vm.Appointment.IdentityUser = new IdentityUser();
 			vm.Appointment.IdentityUser.Id = userManager.GetUserId(this.User);
-			//definisi get za usera i procitaj mejl
-			//proveri dokumentaciju
+
 			vm.Appointment.Barber = barberService.Get(vm.Appointment.Barber.BarberId);
 
 			appointmentService.Add(vm.Appointment);
 
 
-			string emailBody = "Starts: " + vm.Appointment.Date.ToString("dd/MM/yyyy") + (string.Compare(vm.Appointment.StartTime, "12:00") < 0 ? "AM" : "PM") + "\n"+"Barber: "+vm.Appointment.Barber.FirstName+" "+vm.Appointment.Barber.LastName+"\n"+"Duration: "+vm.Appointment.AppDuration+"\n"+"Price: "+vm.Appointment.Price+"\n";
+			string emailBody = "<p>Starts: " + vm.Appointment.Date.ToString("dd/MM/yyyy") + (string.Compare(vm.Appointment.StartTime, "12:00") < 0 ? "AM" : "PM") + "</p>" +
+				"<p>Barber: "+vm.Appointment.Barber.FirstName+" "+vm.Appointment.Barber.LastName+"</p>"+"<p>Duration: "+vm.Appointment.AppDuration+"</p>"+"<p>Price: "+vm.Appointment.Price+"</p>";
 
 
 

@@ -28,12 +28,22 @@ namespace BarberShop.Utils
 				Credentials = new NetworkCredential(configuration["MailSettings:UserName"], configuration["MailSettings:Password"])
 			};
 
-			return client.SendMailAsync(
+			/*return client.SendMailAsync(
 			new MailMessage(from: configuration["MailSettings:SenderEmail"],
 							to: email,
 							subject,
 							message
-							));
+							));*/
+			var mailMessage = new MailMessage
+			{
+				From = new MailAddress(configuration["MailSettings:SenderEmail"]),
+				To = { new MailAddress(email) },
+				Subject = subject,
+				Body = message,
+				IsBodyHtml = true // Set IsBodyHtml to true for HTML content
+			};
+
+			return client.SendMailAsync(mailMessage);
 		}
 	}
 }

@@ -105,10 +105,10 @@ namespace BarberShopWeb.MobileControllers
 				string decodedToken=Encoding.UTF8.GetString(decodeToken);
 
 				var result=await userManager.ConfirmEmailAsync(user,decodedToken);
-				if (result.Succeeded == true) return Ok(new JsonResult(new
+				if (result.Succeeded == true) return Ok(new
 				{
 					message = "Your email is confirmed. You can login now."
-				}));
+				});
 
 				return BadRequest("Invalid request. Try again later.");
 
@@ -131,10 +131,11 @@ namespace BarberShopWeb.MobileControllers
 			try
 			{
 				if (await SendConfirmationEmail((ApplicationUser)user))
-					return Ok(new JsonResult(new
+					
+					return Ok(new
 					{
-						message = "Confirmation link is sent. Please confirm you email."
-					}));
+						message = "Confirmation link is sent. Please confirm you email.",
+					});
 				return BadRequest("Failed to send confirmation email. Contact support.");
 			}
 			catch
@@ -157,7 +158,7 @@ namespace BarberShopWeb.MobileControllers
 			{
 				if(await SendForgotPasswordEmail((ApplicationUser)user))
 				{
-					return Ok(new JsonResult(new {message="Please check your email to reset your password."}));
+					return Ok(new {message="Please check your email to reset your password."});
 				}
 				return BadRequest("Failed to send confirmation email. Contact support.");
 			}
@@ -181,10 +182,10 @@ namespace BarberShopWeb.MobileControllers
 				string decodedToken = Encoding.UTF8.GetString(decodeToken);
 
 				var result = await userManager.ResetPasswordAsync(user, decodedToken,model.NewPassword);
-				if (result.Succeeded == true) return Ok(new JsonResult(new
+				if (result.Succeeded == true) return Ok(new
 				{
 					message = "Your password has been reset."
-				}));
+				});
 
 				return BadRequest("Invalid request. Try again later.");
 

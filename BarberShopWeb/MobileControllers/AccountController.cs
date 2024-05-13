@@ -1,5 +1,6 @@
 ﻿using BarberShop.Domain;
 using BarberShop.Services.JWT;
+using BarberShop.Utils;
 using BarberShopWeb.DTOs;
 using BarberShopWeb.DTOs.Account;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -48,7 +49,7 @@ namespace BarberShopWeb.MobileControllers
 
 			if (!result.Succeeded) return BadRequest("Invalid email or password");
 
-			return CreateApplicationUserDto((ApplicationUser)user);
+			return await CreateApplicationUserDto((ApplicationUser)user);
 		}
 
 		[HttpPost("register")]
@@ -88,7 +89,7 @@ namespace BarberShopWeb.MobileControllers
 		public async Task<ActionResult<UserDto>> RefreshToken()
 		{
 			var user = await userManager.FindByNameAsync(User.FindFirst(ClaimTypes.Email)?.Value);
-			return CreateApplicationUserDto((ApplicationUser)user);
+			return await CreateApplicationUserDto((ApplicationUser)user);
 		}
 
 		[HttpPut("confirmEmail")]
@@ -134,7 +135,7 @@ namespace BarberShopWeb.MobileControllers
 					
 					return Ok(new
 					{
-						message = "Confirmation link is sent. Please confirm you email.",
+						message = "Confirmation link is sent. Please confirm your email.",
 					});
 				return BadRequest("Failed to send confirmation email. Contact support.");
 			}
@@ -196,9 +197,16 @@ namespace BarberShopWeb.MobileControllers
 			}
 		}
 
-		//helper methods
+/*		[HttpGet("test")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,Roles =UserRoles.Role_Admin)]
+		public IActionResult Test()
+		{
+			return Ok("TEST");
+		}*/
 
-		private async Task<bool> SendForgotPasswordEmail(ApplicationUser user)
+        //helper methods
+
+        private async Task<bool> SendForgotPasswordEmail(ApplicationUser user)
 		{
 			string token = await userManager.GeneratePasswordResetTokenAsync(user);
 			token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
@@ -229,14 +237,14 @@ namespace BarberShopWeb.MobileControllers
 			return true;
 		}
 
-		private UserDto CreateApplicationUserDto(ApplicationUser user)
+		private async Task<UserDto> CreateApplicationUserDto(ApplicationUser user)
 		{
 			return new UserDto
 			{
 				FirstName = user.FirstName,
 				LastName = user.LastName,
 				Email= user.Email,
-				JWT = jwtService.CreateJWT(user)
+				JWT = await jwtService.CreateJWT(user)
 			};
 		}
 		//check if email already exists

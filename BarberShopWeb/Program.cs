@@ -24,9 +24,11 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 		options.Password.RequireUppercase = false;
 		options.Password.RequireNonAlphanumeric = false;
 		options.SignIn.RequireConfirmedEmail = true;
+		options.SignIn.RequireConfirmedAccount= true;
 	})
 	.AddEntityFrameworkStores<BarberShopDbContext>()
 	.AddDefaultTokenProviders();
+
 builder.Services
 .AddAuthentication() // Cookie by default
 	.AddCookie(options =>

@@ -1,6 +1,7 @@
 ﻿using BarberShop.Domain;
 using BarberShop.Services.JWT;
 using BarberShopWeb.DTOs;
+using BarberShopWeb.DTOs.Account;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -8,13 +9,12 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Security.Claims;
 using System.Text;
 
 namespace BarberShopWeb.MobileControllers
 {
-	[Route("mobile/account")]
+    [Route("mobile/account")]
 	[ApiController]
 	public class AccountController : Controller
 	{
@@ -183,7 +183,7 @@ namespace BarberShopWeb.MobileControllers
 				var result = await userManager.ResetPasswordAsync(user, decodedToken,model.NewPassword);
 				if (result.Succeeded == true) return Ok(new JsonResult(new
 				{
-					message = "You password has been reset."
+					message = "Your password has been reset."
 				}));
 
 				return BadRequest("Invalid request. Try again later.");
@@ -201,7 +201,7 @@ namespace BarberShopWeb.MobileControllers
 		{
 			string token = await userManager.GeneratePasswordResetTokenAsync(user);
 			token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
-			string url = $"{configuration["JWT:Issuer"]}/{configuration["Email:ResetPasswordPath"]}?token={token}&email={user.Email}";
+			string url = $"{configuration["JWT:Issuer"]}/{configuration["MailSettings:ResetPasswordPath"]}?token={token}&email={user.Email}";
 
 			string body = $"<p>Hi, {user.FirstName} {user.LastName}<p>" +
 				"<p>Please reset your password by following this link: <p>" +
@@ -216,12 +216,12 @@ namespace BarberShopWeb.MobileControllers
 		{
 			string token = await userManager.GenerateEmailConfirmationTokenAsync(user);
 			token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
-			string url = $"{configuration["JWT:Issuer"]}/{configuration["Email:ConfirmEmailPath"]}?token={token}&email={user.Email}";
+			string url = $"{configuration["JWT:Issuer"]}/{configuration["MailSettings:ConfirmEmailPath"]}?token={token}&email={user.Email}";
 
 			string body = $"<p>Welcome {user.FirstName} {user.LastName}<p>" +
 				"<p>Please confirm your email by following this link: <p>" +
 				$"<a href=\"{url}\">Click here</a>" +
-				"<br><p>Welcome to our community.<p>";
+				"<br><p>Thanks for joining our community.<p>";
 
 			await emailSender.SendEmailAsync(user.Email, "[BARBESHOP] Confirm your email", body);
 

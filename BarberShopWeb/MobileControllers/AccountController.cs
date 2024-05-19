@@ -13,10 +13,11 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using System.Text;
+using System.Xml.Linq;
 
 namespace BarberShopWeb.MobileControllers
 {
-    [Route("mobile/account")]
+    [Route("mobile/[controller]")]
 	[ApiController]
 	public class AccountController : Controller
 	{
@@ -43,37 +44,39 @@ namespace BarberShopWeb.MobileControllers
 		[HttpGet("/mobile")]
 		public IActionResult AccountRotes() {
 
-			List<Link> links = new List<Link>();
-			links.Add(new Link()
+			List<Link> links = new List<Link>
 			{
-				Method = "POST",
-				Rel="login",
-				Href=linkGenerator.GetUriByAction(HttpContext,nameof(Login))
-			});
-            links.Add(new Link()
-            {
-                Method = "POST",
-                Rel = "register",
-                Href = linkGenerator.GetUriByAction(HttpContext, nameof(Register))
-            });
-            links.Add(new Link()
-            {
-                Method = "GET",
-                Rel = "refreshToken",
-                Href = linkGenerator.GetUriByAction(HttpContext, nameof(RefreshToken))
-            });
-            links.Add(new Link()
-            {
-                Method = "POST",
-                Rel = "resendEmail",
-                Href = linkGenerator.GetUriByAction(HttpContext, "resend-email-confirmation")
-            });
-            links.Add(new Link()
-            {
-                Method = "POST",
-                Rel = "forgotPassword",
-                Href = linkGenerator.GetUriByAction(HttpContext, "forgotPassword")
-            });
+				new Link()
+				{
+					Method = "POST",
+					Rel = "login",
+					Href = linkGenerator.GetUriByAction(HttpContext, nameof(Login))
+				},
+				new Link()
+				{
+					Method = "POST",
+					Rel = "register",
+					Href = linkGenerator.GetUriByAction(HttpContext, nameof(Register))
+				},
+				new Link()
+				{
+					Method = "GET",
+					Rel = "refreshToken",
+					Href = linkGenerator.GetUriByAction(HttpContext, nameof(RefreshToken))
+				},
+				new Link()
+				{
+					Method = "POST",
+					Rel = "resendEmail",
+					Href = $"{configuration["JWT:Issuer"]}/mobile/account/resend-email-confirmation"
+				},
+				new Link()
+				{
+					Method = "POST",
+					Rel = "forgotPassword",
+                    Href = $"{configuration["JWT:Issuer"]}/mobile/account/forgotPassword"
+                }
+            };
 
             LinkCollectionWrapper<string> result=new LinkCollectionWrapper<string>("navigation",links);
 
@@ -81,7 +84,7 @@ namespace BarberShopWeb.MobileControllers
 		}
 
 		[HttpPost("login")]
-        public async Task<ActionResult<UserDto>> Login([FromBody]LoginDto model)
+        public async Task<ActionResult<LinkCollectionWrapper<UserDto>>> Login([FromBody]LoginDto model)
 		{
 			var user = await userManager.FindByEmailAsync(model.Email);
 			if (user == null) return BadRequest("Invalid email or password");
@@ -92,7 +95,7 @@ namespace BarberShopWeb.MobileControllers
 
 			if (!result.Succeeded) return BadRequest("Invalid email or password");
 
-			return await CreateApplicationUserDto((ApplicationUser)user);
+            return await CreateApplicationUserDto((ApplicationUser)user);
 		}
 
 		[HttpPost("register")]
@@ -118,7 +121,7 @@ namespace BarberShopWeb.MobileControllers
             try
 			{
 				if(await SendConfirmationEmail(userToAdd)) 
-					return Ok("Your account has been created, please confirm your email.");
+					return Ok(new { message="Your account has been created, please confirm your email." });
 				return BadRequest("Failed to send confirmation email. Contact support.");
 			}
 			catch
@@ -131,7 +134,7 @@ namespace BarberShopWeb.MobileControllers
 
 		[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 		[HttpGet("refreshToken")]
-		public async Task<ActionResult<UserDto>> RefreshToken()
+		public async Task<ActionResult<LinkCollectionWrapper<UserDto>>> RefreshToken()
 		{
 			var user = await userManager.FindByNameAsync(User.FindFirst(ClaimTypes.Email)?.Value);
 			return await CreateApplicationUserDto((ApplicationUser)user);
@@ -187,9 +190,8 @@ namespace BarberShopWeb.MobileControllers
 			catch
 			{
 				return BadRequest("Failed to send confirmation email. Contact support.");
-			}
-
-		}
+            }
+        }
 
 		[HttpPost("forgotPassword/{email}")]
 		public async Task<IActionResult> ForgotPassword(string email)
@@ -242,15 +244,6 @@ namespace BarberShopWeb.MobileControllers
 			}
 		}
 
-
-
-/*		[HttpGet("test")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,Roles =UserRoles.Role_Admin)]
-		public IActionResult Test()
-		{
-			return Ok("TEST");
-		}*/
-
         //helper methods
 
         private async Task<bool> SendForgotPasswordEmail(ApplicationUser user)
@@ -284,15 +277,37 @@ namespace BarberShopWeb.MobileControllers
 			return true;
 		}
 
-		private async Task<UserDto> CreateApplicationUserDto(ApplicationUser user)
+		private async Task<LinkCollectionWrapper<UserDto>> CreateApplicationUserDto(ApplicationUser user)
 		{
-			return new UserDto
+			var roles=await userManager.GetRolesAsync(user);
+			
+			var userDTO= new UserDto
 			{
 				FirstName = user.FirstName,
 				LastName = user.LastName,
 				Email= user.Email,
+				Role = roles[0],
 				JWT = await jwtService.CreateJWT(user)
 			};
+
+			List<Link> links = new List<Link>()
+			{
+				new Link()
+				{
+					Method="GET",
+					Rel="service",
+					Href=Url.ActionLink("service","Service")
+				}
+			};
+			if (userDTO.Role == "Admin") links.Add(
+				new Link() { 
+					Method = "GET", 
+					Rel = "barber", 
+					Href = Url.ActionLink("barber", "Barber")
+				});
+
+			return new LinkCollectionWrapper<UserDto>(userDTO,links);
+
 		}
 		//check if email already exists
 		private async Task<bool> CheckEmailExistsAsync(string email)

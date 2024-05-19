@@ -11,6 +11,7 @@ using BarberShop.Services.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using BarberShopWeb.Hateoas;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,7 +59,10 @@ builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 builder.Services.AddScoped<JWTService>();
 builder.Services.AddCors();
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(opt =>
+{
+    opt.OutputFormatters.Add(new HateoasJsonOutputFormmater());
+});
 
 
 

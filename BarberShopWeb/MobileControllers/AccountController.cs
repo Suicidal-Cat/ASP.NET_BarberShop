@@ -3,6 +3,7 @@ using BarberShop.Services.JWT;
 using BarberShop.Utils;
 using BarberShopWeb.DTOs;
 using BarberShopWeb.DTOs.Account;
+using BarberShopWeb.Hateoas;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -27,14 +28,56 @@ namespace BarberShopWeb.MobileControllers
 		//email sender
 		private readonly IEmailSender emailSender;
 		private readonly IConfiguration configuration;
+        private readonly LinkGenerator linkGenerator;
 
-		public AccountController(JWTService jwtService,SignInManager<IdentityUser> signInManager,UserManager<IdentityUser> userManager,IEmailSender emailSender,IConfiguration configuration)
+        public AccountController(JWTService jwtService,SignInManager<IdentityUser> signInManager,UserManager<IdentityUser> userManager,IEmailSender emailSender,IConfiguration configuration,LinkGenerator linkGenerator)
         {
 			this.jwtService = jwtService;
 			this.signInManager = signInManager;
 			this.userManager = userManager;
 			this.emailSender = emailSender;
 			this.configuration = configuration;
+            this.linkGenerator = linkGenerator;
+        }
+
+		[HttpGet("/mobile")]
+		public IActionResult AccountRotes() {
+
+			List<Link> links = new List<Link>();
+			links.Add(new Link()
+			{
+				Method = "POST",
+				Rel="login",
+				Href=linkGenerator.GetUriByAction(HttpContext,nameof(Login))
+			});
+            links.Add(new Link()
+            {
+                Method = "POST",
+                Rel = "register",
+                Href = linkGenerator.GetUriByAction(HttpContext, nameof(Register))
+            });
+            links.Add(new Link()
+            {
+                Method = "GET",
+                Rel = "refreshToken",
+                Href = linkGenerator.GetUriByAction(HttpContext, nameof(RefreshToken))
+            });
+            links.Add(new Link()
+            {
+                Method = "POST",
+                Rel = "resendEmail",
+                Href = linkGenerator.GetUriByAction(HttpContext, "resend-email-confirmation")
+            });
+            links.Add(new Link()
+            {
+                Method = "POST",
+                Rel = "forgotPassword",
+                Href = linkGenerator.GetUriByAction(HttpContext, "forgotPassword")
+            });
+
+            LinkCollectionWrapper<string> result=new LinkCollectionWrapper<string>("navigation",links);
+
+            return Ok(result);
 		}
 
 		[HttpPost("login")]
@@ -53,7 +96,7 @@ namespace BarberShopWeb.MobileControllers
 		}
 
 		[HttpPost("register")]
-		public async Task<IActionResult> Register([FromBody]RegisterDto model)
+        public async Task<IActionResult> Register([FromBody]RegisterDto model)
 		{
 			if (await CheckEmailExistsAsync(model.Email)) return BadRequest("Email is already taken!");
 
@@ -69,8 +112,10 @@ namespace BarberShopWeb.MobileControllers
 			var result=await userManager.CreateAsync(userToAdd,model.Password);
 			if (!result.Succeeded) return BadRequest(result.Errors);
 
+            var addRoleResult=await userManager.AddToRoleAsync(userToAdd, UserRoles.Role_User);
+            if (!addRoleResult.Succeeded) return BadRequest(result.Errors);
 
-			try
+            try
 			{
 				if(await SendConfirmationEmail(userToAdd)) 
 					return Ok("Your account has been created, please confirm your email.");
@@ -196,6 +241,8 @@ namespace BarberShopWeb.MobileControllers
 				return BadRequest("Invalid request. Try again later."); ;
 			}
 		}
+
+
 
 /*		[HttpGet("test")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,Roles =UserRoles.Role_Admin)]

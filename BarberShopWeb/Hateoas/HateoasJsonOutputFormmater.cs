@@ -26,12 +26,12 @@ namespace BarberShopWeb.Hateoas
 
         protected override bool CanWriteType(Type? type)
         {
-            if (typeof(LinkCollectionWrapper<>) == (type?.BaseType)) return true;
-            else if (type?.AssemblyQualifiedName != null &&
-                type.AssemblyQualifiedName.StartsWith("System.Collections.Generic.List`1[[TestHateoas.LinkCollectionWrapper")) return true;
+            if (typeof(LinkCollectionWrapper<>) == (type?.BaseType) || typeof(LinkCollectionWrapper<>).Name == type?.Name) return true;
 
             return false;
         }
 
     }
 }
+/*type?.AssemblyQualifiedName != null &&
+                type.AssemblyQualifiedName.Contains("LinkCollectionWrapper")) return true;*/

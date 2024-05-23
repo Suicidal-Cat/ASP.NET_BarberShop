@@ -151,7 +151,7 @@ namespace BarberShopWeb.Controllers
 			appointmentService.Add(vm.Appointment);
 
 
-			string emailBody = "<p>Starts: " + vm.Appointment.Date.ToString("dd/MM/yyyy") + (string.Compare(vm.Appointment.StartTime, "12:00") < 0 ? "AM" : "PM") + "</p>" +
+			string emailBody = "<p>Starts: " + vm.Appointment.Date.ToString("dd/MM/yyyy") +" "+vm.Appointment.StartTime + (string.Compare(vm.Appointment.StartTime, "12:00") < 0 ? " AM" : " PM") + "</p>" +
 				"<p>Barber: "+vm.Appointment.Barber.FirstName+" "+vm.Appointment.Barber.LastName+"</p>"+"<p>Duration: "+vm.Appointment.AppDuration+"</p>"+"<p>Price: "+vm.Appointment.Price+"</p>";
 
 

@@ -1,24 +1,33 @@
 ﻿using BarberShop.Domain;
 using BarberShop.Services.Interfaces;
+using BarberShop.Utils;
 using BarberShopWeb.Hateoas;
+using BarberShopWeb.ViewModels;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Configuration;
 
 namespace BarberShopWeb.MobileControllers
 {
     [Route("mobile/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = UserRoles.Role_Admin)]
     public class ServiceController : Controller
     {
         private readonly IServiceService serviceService;
         private readonly LinkGenerator linkGenerator;
         private readonly IConfiguration configuration;
+        private readonly IServiceCategoryService serviceCategory;
 
-        public ServiceController(IServiceService serviceService,LinkGenerator linkGenerator,IConfiguration configuration)
+        public ServiceController(IServiceService serviceService,LinkGenerator linkGenerator,IConfiguration configuration,IServiceCategoryService serviceCategory)
         {
             this.serviceService = serviceService;
             this.linkGenerator = linkGenerator;
             this.configuration = configuration;
+            this.serviceCategory = serviceCategory;
         }
+
         [HttpGet("")]
         public IActionResult GetServices(int pageNumber = 1, string? search = "", string? category = "")
         {
@@ -47,26 +56,33 @@ namespace BarberShopWeb.MobileControllers
                 {
                     new Link(){
                         Method = "POST",
-                        Rel = "create",
-                        Href = linkGenerator.GetUriByAction(HttpContext, nameof(Create))
-                    },
-                    new Link(){
-                        Method = "POST",
                         Rel = "update",
                         Href = linkGenerator.GetUriByAction(HttpContext, nameof(Update))
                     },
                     new Link(){
                         Method = "DELETE",
                         Rel = "delete",
-                        Href = $"{configuration["JWT:Issuer"]}/mobile/Service/delete/{service.ServiceId}"
+                        Href = linkGenerator.GetUriByAction(httpContext: HttpContext,
+                                action: nameof(Delete),
+                                controller: "Service",
+                                values: new { id = service.ServiceId })
                     }
                 };
 
                 result.Add(new LinkCollectionWrapper<Service>(service,links));
 
             }
+
             List<Link> paginationLinks = new List<Link>();
-            if(pageNumber<maxPages)paginationLinks.Add(new Link() {
+
+            paginationLinks.Add(new Link()
+            {
+                Method = "POST",
+                Rel = "create",
+                Href = linkGenerator.GetUriByAction(HttpContext, nameof(Create))
+            });
+
+            if (pageNumber<maxPages)paginationLinks.Add(new Link() {
                 Method = "GET",
                 Rel = "next",
                 Href = linkGenerator.GetUriByAction(HttpContext, nameof(GetServices))+$"?pageNumber={pageNumber+1}"
@@ -76,26 +92,36 @@ namespace BarberShopWeb.MobileControllers
                 Rel = "prev",
                 Href = linkGenerator.GetUriByAction(HttpContext, nameof(GetServices)) + $"?pageNumber={pageNumber - 1}"
             });
+
+
             LinkCollectionWrapper<List<LinkCollectionWrapper<Service>>> r=new LinkCollectionWrapper<List<LinkCollectionWrapper<Service>>>(result,paginationLinks);
 
             return Ok(r);
         }
         [HttpPost("create")]
-        public IActionResult Create()
+        public IActionResult Create(Service service)
         {
-            return Ok();
+            service.ServiceCategory = serviceCategory.ServiceCategories.Single(sc => sc.Id == service.ServiceCategory.Id);
+            serviceService.Add(service);
+
+            return Ok(new{message="Service is successfully created"});
         }
 
         [HttpPut("update")]
-        public IActionResult Update(int id)
+        public IActionResult Update(Service service)
         {
-            return Ok();
+            if(service.ServiceId==0) return BadRequest();
+            service.ServiceCategory = serviceCategory.ServiceCategories.Single(sc => sc.Id == service.ServiceCategory.Id);
+            serviceService.Update(service);
+
+            return Ok(new { message = "Service is successfully updated" });
         }
 
         [HttpDelete("delete/{id}")]
-        public IActionResult Delete()
+        public IActionResult Delete(int id)
         {
-            return Ok();
+            serviceService.Delete(id);
+            return Ok(new { message = "Service is successfully deleted" });
         }
     }
 }

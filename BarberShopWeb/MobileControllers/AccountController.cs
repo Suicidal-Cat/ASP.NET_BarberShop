@@ -10,11 +10,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.DotNet.Scaffolding.Shared.CodeModifier.CodeChange;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using System.Text;
-using System.Xml.Linq;
 
 namespace BarberShopWeb.MobileControllers
 {

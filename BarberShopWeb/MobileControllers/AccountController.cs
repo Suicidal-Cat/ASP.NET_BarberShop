@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.DotNet.Scaffolding.Shared.CodeModifier.CodeChange;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using System.Text;
@@ -64,17 +65,23 @@ namespace BarberShopWeb.MobileControllers
 					Rel = "refreshToken",
 					Href = linkGenerator.GetUriByAction(HttpContext, nameof(RefreshToken))
 				},
-				new Link()
-				{
-					Method = "POST",
-					Rel = "resendEmail",
-					Href = $"{configuration["JWT:Issuer"]}/mobile/account/resend-email-confirmation"
-				},
-				new Link()
+                new Link()
+                {
+                    Method = "POST",
+                    Rel = "resendEmail",
+                    Href = linkGenerator.GetUriByAction(httpContext: HttpContext,
+					action: nameof(ResendEmailConfirmation),
+					controller: "Account",
+					values: new { email = "email" })
+                },
+                new Link()
 				{
 					Method = "POST",
 					Rel = "forgotPassword",
-                    Href = $"{configuration["JWT:Issuer"]}/mobile/account/forgotPassword"
+                    Href = linkGenerator.GetUriByAction(httpContext: HttpContext,
+                    action: nameof(ForgotPassword),
+                    controller: "Account",
+                    values: new { email = "email" })
                 }
             };
 

@@ -71,7 +71,7 @@ var app = builder.Build();
 
 app.UseCors(opt =>
 {
-	opt.AllowAnyHeader().AllowAnyHeader().AllowCredentials().WithOrigins(builder.Configuration["JWT:ClientUrl"]);
+	opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins(builder.Configuration["JWT:ClientUrl"]);
 });
 
 if (!app.Environment.IsDevelopment())

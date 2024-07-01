@@ -295,21 +295,62 @@ namespace BarberShopWeb.MobileControllers
 				JWT = await jwtService.CreateJWT(user)
 			};
 
-			List<Link> links = new List<Link>()
+			List<Link> links = new List<Link>();
+			if (userDTO.Role == "Admin")
 			{
-				new Link()
+                links.Add(new Link()
+                {
+                    Method = "GET",
+                    Rel = "allBarbers",
+                    Href = linkGenerator.GetUriByAction(httpContext: HttpContext,
+                                action: "all",
+                                controller: "Barber")
+                });
+                links.Add(new Link()
 				{
-					Method="GET",
-					Rel="service",
-					Href=Url.ActionLink("service","Service")
-				}
-			};
-			if (userDTO.Role == "Admin") links.Add(
-				new Link() { 
-					Method = "GET", 
-					Rel = "barber", 
-					Href = Url.ActionLink("barber", "Barber")
+					Method = "GET",
+					Rel = "barberPagination",
+                    Href = linkGenerator.GetUriByAction(httpContext: HttpContext,
+                                action: "GetBarbersPagination",
+                                controller: "Barber",
+                                values: new { pageNumber = 1 })
+                });
+                links.Add(new Link()
+                {
+                    Method = "POST",
+                    Rel = "createBarber",
+                    Href = linkGenerator.GetUriByAction(HttpContext, action: "Create", controller: "Barber")
+                });
+                links.Add(new Link()
+                {
+                    Method = "GET",
+                    Rel = "allServices",
+                    Href = linkGenerator.GetUriByAction(httpContext: HttpContext,
+                                action: "all",
+                                controller: "Service")
+                });
+                links.Add(new Link()
+				{
+					Method = "GET",
+					Rel = "servicePagination",
+					Href = linkGenerator.GetUriByAction(httpContext: HttpContext,
+								action: "GetServicesPagination",
+								controller: "Service",
+								values: new { pageNumber = 1 })
 				});
+				links.Add(new Link()
+				{
+					Method = "POST",
+					Rel = "createService",
+					Href = linkGenerator.GetUriByAction(HttpContext, action:"Create", controller:"Service")
+				});
+				links.Add(new Link()
+				{
+					Method = "GET",
+					Rel = "serviceCategories",
+					Href = linkGenerator.GetUriByAction(HttpContext, action: "GetServiceCategories", controller:"Service")
+				});
+            }
 
 			return new LinkCollectionWrapper<UserDto>(userDTO,links);
 

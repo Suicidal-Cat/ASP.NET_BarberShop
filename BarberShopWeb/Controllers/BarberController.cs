@@ -46,8 +46,6 @@ namespace BarberShopWeb.Controllers
         }
         public IActionResult Create()
         {
-            
-
             return View();
         }
         [HttpPost]

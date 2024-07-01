@@ -29,6 +29,7 @@ namespace BarberShopWeb.Hateoas
             if (typeof(LinkCollectionWrapper<>) == (type?.BaseType) || typeof(LinkCollectionWrapper<>).Name == type?.Name) return true;
 
             return false;
+            //return true;
         }
 
     }

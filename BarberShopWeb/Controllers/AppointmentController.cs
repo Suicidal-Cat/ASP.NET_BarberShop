@@ -39,7 +39,7 @@ namespace BarberShopWeb.Controllers
 			{
 				if (service.ServiceCategory.Name == "Haircuts") list.Haircuts.Add(new AddServiceReservationVM() { Service=service}
 					);
-				else if (service.ServiceCategory.Name == "Beard cuts") list.Beard.Add(new AddServiceReservationVM() { Service = service }
+				else if (service.ServiceCategory.Name == "Beard") list.Beard.Add(new AddServiceReservationVM() { Service = service }
 					);
 				else if (service.ServiceCategory.Name == "Other") list.Other.Add(new AddServiceReservationVM() { Service = service }
 					);

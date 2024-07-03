@@ -296,59 +296,65 @@ namespace BarberShopWeb.MobileControllers
 			};
 
 			List<Link> links = new List<Link>();
-			if (userDTO.Role == "Admin")
+            links.Add(new Link()
+            {
+                Method = "GET",
+                Rel = "allBarbers",
+                Href = linkGenerator.GetUriByAction(httpContext: HttpContext,
+                                action: "GetBarbers",
+                                controller: "BarberMobile")
+            });
+
+            links.Add(new Link()
+            {
+                Method = "GET",
+                Rel = "allServices",
+                Href = linkGenerator.GetUriByAction(httpContext: HttpContext,
+                                action: "GetServices",
+                                controller: "ServiceMobile")
+            });
+
+            links.Add(new Link()
+            {
+                Method = "GET",
+                Rel = "serviceCategories",
+                Href = linkGenerator.GetUriByAction(HttpContext, action: "GetServiceCategories", controller: "ServiceMobile")
+            });
+
+            if (userDTO.Role == "Admin")
 			{
-                links.Add(new Link()
-                {
-                    Method = "GET",
-                    Rel = "allBarbers",
-                    Href = linkGenerator.GetUriByAction(httpContext: HttpContext,
-                                action: "all",
-                                controller: "Barber")
-                });
+                
                 links.Add(new Link()
 				{
 					Method = "GET",
 					Rel = "barberPagination",
                     Href = linkGenerator.GetUriByAction(httpContext: HttpContext,
                                 action: "GetBarbersPagination",
-                                controller: "Barber",
+                                controller: "BarberMobile",
                                 values: new { pageNumber = 1 })
                 });
                 links.Add(new Link()
                 {
                     Method = "POST",
                     Rel = "createBarber",
-                    Href = linkGenerator.GetUriByAction(HttpContext, action: "Create", controller: "Barber")
+                    Href = linkGenerator.GetUriByAction(HttpContext, action: "Create", controller: "BarberMobile")
                 });
-                links.Add(new Link()
-                {
-                    Method = "GET",
-                    Rel = "allServices",
-                    Href = linkGenerator.GetUriByAction(httpContext: HttpContext,
-                                action: "all",
-                                controller: "Service")
-                });
+                
                 links.Add(new Link()
 				{
 					Method = "GET",
 					Rel = "servicePagination",
 					Href = linkGenerator.GetUriByAction(httpContext: HttpContext,
 								action: "GetServicesPagination",
-								controller: "Service",
+								controller: "ServiceMobile",
 								values: new { pageNumber = 1 })
 				});
+
 				links.Add(new Link()
 				{
 					Method = "POST",
 					Rel = "createService",
-					Href = linkGenerator.GetUriByAction(HttpContext, action:"Create", controller:"Service")
-				});
-				links.Add(new Link()
-				{
-					Method = "GET",
-					Rel = "serviceCategories",
-					Href = linkGenerator.GetUriByAction(HttpContext, action: "GetServiceCategories", controller:"Service")
+					Href = linkGenerator.GetUriByAction(HttpContext, action:"Create", controller:"ServiceMobile")
 				});
             }
 

@@ -12,7 +12,9 @@ namespace BarberShopWeb.MobileControllers
 {
     [Route("mobile/[controller]")]
     [ApiController]
-    public class ServiceMobileController : Controller
+	[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
+	public class ServiceMobileController : Controller
     {
         private readonly IServiceService serviceService;
         private readonly LinkGenerator linkGenerator;

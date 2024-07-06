@@ -45,15 +45,6 @@ namespace DataAccessLayer.AppointmentRepo
 
 		public IQueryable<Result> GetByConditionGroupBy<GroupAttribute,Result>(Func<Appointment, bool> where, Func<Appointment, GroupAttribute> groupBy, Func<IGrouping<GroupAttribute, Appointment>, Result> select)
 		{
-			/*return context.Appointments
-				.Where(a => a.Barber.BarberId == barberId && a.Date >= startDate && a.Date <= endDate)
-				.GroupBy(a => a.Date)
-				.Select(g => new DateCountResult
-				{
-					Date = g.Key,
-					Count = g.Count()
-				})
-				.AsQueryable();*/
 			return context.Appointments
 				.Include(ap => ap.Barber)
 				.Where(where)

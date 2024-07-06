@@ -15,7 +15,8 @@ namespace BarberShopWeb.MobileControllers
 {
     [Route("mobile/[controller]")]
     [ApiController]
-    public class BarberMobileController : Controller
+	[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+	public class BarberMobileController : Controller
     {
         private readonly IBarberService barberService;
         private readonly LinkGenerator linkGenerator;
@@ -96,7 +97,7 @@ namespace BarberShopWeb.MobileControllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = UserRoles.Role_Admin)]
         public IActionResult Create(Barber barber)
         {
-            return Ok();
+			return Ok();
         }
 
 
@@ -153,6 +154,13 @@ namespace BarberShopWeb.MobileControllers
                         Href = linkGenerator.GetUriByAction(HttpContext,action: "GetAvailableAppointments",
                                 controller: "AppointmentMobile",
                                 values: new { barberId = barber.BarberId,startDate= "startDate",endDate="endDate"}),
+					},
+					new Link(){
+						Method = "GET",
+						Rel = "getAvailableTimes",
+						Href = linkGenerator.GetUriByAction(HttpContext,action: "GetAvailableTimes",
+								controller: "AppointmentMobile",
+								values: new { barberId = barber.BarberId,date= "date",duration="duration"}),
 					},
 			};
             return links;

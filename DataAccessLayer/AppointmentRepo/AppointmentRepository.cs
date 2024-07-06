@@ -1,5 +1,6 @@
 ﻿using BarberShop.Domain;
 using BarberShop.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,25 @@ namespace DataAccessLayer.AppointmentRepo
 		public IQueryable<Appointment> GetByCondition(Func<Appointment, bool> predicate)
 		{
 			return context.Appointments.Include(ap=>ap.Barber).Where(predicate).AsQueryable();
+		}
+
+		public IQueryable<Result> GetByConditionGroupBy<GroupAttribute,Result>(Func<Appointment, bool> where, Func<Appointment, GroupAttribute> groupBy, Func<IGrouping<GroupAttribute, Appointment>, Result> select)
+		{
+			/*return context.Appointments
+				.Where(a => a.Barber.BarberId == barberId && a.Date >= startDate && a.Date <= endDate)
+				.GroupBy(a => a.Date)
+				.Select(g => new DateCountResult
+				{
+					Date = g.Key,
+					Count = g.Count()
+				})
+				.AsQueryable();*/
+			return context.Appointments
+				.Include(ap => ap.Barber)
+				.Where(where)
+				.GroupBy(groupBy)
+				.Select(select)
+				.AsQueryable();
 		}
 
 		public Appointment GetById(int id)

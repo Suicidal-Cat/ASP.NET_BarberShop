@@ -35,6 +35,7 @@ namespace BarberShop.Services.ImplementationDatabase
 			return uow.AppointmentRepository.GetById(id);
 		}
 
+
 		public List<Appointment> SearchByDate(string date)
 		{
 			Func<Appointment, bool> func = (ap => ap.Date.ToString("yyyy-MM-dd") == date);
@@ -52,6 +53,19 @@ namespace BarberShop.Services.ImplementationDatabase
 			Func<Appointment, bool> func = (ap => string.Compare(ap.Date.ToString("yyyy-MM-dd"), date) >= 0 && ap.IdentityUserId == idUser);
 			string time = DateTime.Now.ToString("HH:mm");
 			return uow.AppointmentRepository.GetByCondition(func).OrderBy(ap=>ap.Date).FirstOrDefault(ap=> !(string.Compare(ap.StartTime, time) < 0 && ap.Date==DateTime.Now.Date) && ap.IsCanceled==false);
+		}
+
+		public IEnumerable<DateCountResult> GetAvaiableAppointments(int barberId, DateTime startDate, DateTime endDate)
+		{
+			Func<Appointment, bool> where = (a => a.Barber.BarberId == barberId && a.Date >= startDate && a.Date <= endDate);
+			Func<Appointment, DateTime> groupBy = (a => a.Date);
+			Func<IGrouping<DateTime, Appointment>, DateCountResult> select = (g => new DateCountResult
+			{
+				Date = g.Key.Date.ToString("yyyy-MM-dd"),
+				Count = g.Count()
+			});
+
+			return uow.AppointmentRepository.GetByConditionGroupBy<DateTime, DateCountResult>(where, groupBy,select).ToList();
 		}
 
 

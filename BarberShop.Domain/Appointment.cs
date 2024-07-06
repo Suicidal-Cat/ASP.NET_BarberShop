@@ -25,4 +25,10 @@ namespace BarberShop.Domain
         public string IdentityUserId { get; set; } = null!;
         public List<Service> Services { get; set; } = null!;
     }
+
+	public class DateCountResult
+	{
+		public string? Date { get; set; }
+		public int Count { get; set; }
+	}
 }

@@ -20,5 +20,7 @@ namespace BarberShop.Services.Interfaces
 		public Appointment? SearchByDateFirst(string date,string idUser);
 
 		public List<Appointment> SearchByDate(string date);
+
+		public IEnumerable<DateCountResult> GetAvaiableAppointments(int barberId, DateTime startDate, DateTime endDate);
 	}
 }

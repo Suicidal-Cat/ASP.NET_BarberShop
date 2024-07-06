@@ -57,7 +57,7 @@ namespace BarberShop.Services.ImplementationDatabase
 
 		public IEnumerable<DateCountResult> GetAvaiableAppointments(int barberId, DateTime startDate, DateTime endDate)
 		{
-			Func<Appointment, bool> where = (a => a.Barber.BarberId == barberId && a.Date >= startDate && a.Date <= endDate);
+			Func<Appointment, bool> where = (a => a.Barber.BarberId == barberId && a.Date >= startDate && a.Date <= endDate && a.IsCanceled==false);
 			Func<Appointment, DateTime> groupBy = (a => a.Date);
 			Func<IGrouping<DateTime, Appointment>, DateCountResult> select = (g => new DateCountResult
 			{

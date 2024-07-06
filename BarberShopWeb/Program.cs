@@ -92,8 +92,5 @@ app.MapRazorPages();
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
-/*app.MapControllerRoute(
-	name: "MobileControllers",
-	pattern: "mobile/{controller}/{action}/{id?}");*/
 
 app.Run();

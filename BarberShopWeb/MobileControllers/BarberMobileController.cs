@@ -147,7 +147,13 @@ namespace BarberShopWeb.MobileControllers
                         Rel = "update",
                         Href = linkGenerator.GetUriByAction(HttpContext, nameof(Update))
                     },
-            };
+					new Link(){
+						Method = "GET",
+						Rel = "getAvailableAppointments",
+						Href = linkGenerator.GetUriByAction(HttpContext,action: nameof(GetBarber),
+								controller: "AppointmentMobile")+ $"/{barber.BarberId}/startDate/endDate"
+					},
+			};
             return links;
         }
 

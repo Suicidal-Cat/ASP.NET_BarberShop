@@ -2,6 +2,8 @@
 using BarberShop.Services.ImplementationDatabase;
 using BarberShop.Services.Interfaces;
 using BarberShop.Utils;
+using BarberShopWeb.DTOs;
+using BarberShopWeb.Hateoas;
 using BarberShopWeb.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -75,8 +77,25 @@ namespace BarberShopWeb.MobileControllers
 		}
 
 		[HttpPost("create")]
-		public async Task<IActionResult> CreateAppointmnet(Appointment ap)
+		public async Task<IActionResult> CreateAppointmnet(AppointmentDTO appointment)
 		{
+			Appointment ap = new Appointment
+			{
+				AppDuration = appointment.AppDuration,
+				Barber= appointment.Barber,
+				Date= appointment.Date,
+				IsCanceled= appointment.IsCanceled,
+				Price= appointment.Price,
+				Services= appointment.Services,
+				StartTime= appointment.StartTime,
+			};
+
+			foreach(Service service in appointment.Services)
+			{
+				service.ServiceCategory = null;
+			}
+
+
 			var user = await userManager.FindByNameAsync(User.FindFirst(ClaimTypes.Email)?.Value);
 			ap.IdentityUser = user;
 			appointmentService.Add(ap);
@@ -87,6 +106,26 @@ namespace BarberShopWeb.MobileControllers
 			await emailSender.SendEmailAsync(user.Email, "[BARBERSHOP] Potvrda rezervacije broj: " + ap.AppointmentId, emailBody);
 
 			return Ok(new { message = "Appointment is successfully created" });
+		}
+
+		[HttpGet("latestAppointment")]
+		public async Task<IActionResult> LatestAppointment()
+		{
+			string now = DateTime.Now.Date.ToString("yyyy-MM-dd");
+
+			var user = await userManager.FindByNameAsync(User.FindFirst(ClaimTypes.Email)?.Value);
+
+			Appointment? appointment = appointmentService.SearchByDateFirst(now, user.Id);
+			if (appointment != null && appointment.IsCanceled == false)
+			{
+				appointment.IdentityUser = null;
+
+				LinkCollectionWrapper<Appointment> result = new LinkCollectionWrapper<Appointment>();
+				result.Value = appointment;
+				result.Links = null;
+				return Ok(result);
+			}
+			else return StatusCode(204);
 		}
 
 	}

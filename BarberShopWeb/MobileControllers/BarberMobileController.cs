@@ -162,6 +162,12 @@ namespace BarberShopWeb.MobileControllers
 								controller: "AppointmentMobile",
 								values: new { barberId = barber.BarberId,date= "date",duration="duration"}),
 					},
+                    new Link()
+                    {
+                        Method = "POST",
+                        Rel = "createAppointment",
+                        Href = linkGenerator.GetUriByAction(HttpContext, action: "CreateAppointmnet", controller: "AppointmentMobile"),
+                    },
 			};
             return links;
         }

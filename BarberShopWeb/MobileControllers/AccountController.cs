@@ -321,7 +321,14 @@ namespace BarberShopWeb.MobileControllers
                 Href = linkGenerator.GetUriByAction(HttpContext, action: "GetServiceCategories", controller: "ServiceMobile")
             });
 
-            if (userDTO.Role == "Admin")
+			links.Add(new Link()
+			{
+				Method = "GET",
+				Rel = "latestAppointment",
+				Href = linkGenerator.GetUriByAction(HttpContext, action: "LatestAppointment", controller: "AppointmentMobile")
+			});
+
+			if (userDTO.Role == "Admin")
 			{
                 
                 links.Add(new Link()
@@ -355,13 +362,6 @@ namespace BarberShopWeb.MobileControllers
 					Method = "POST",
 					Rel = "createService",
 					Href = linkGenerator.GetUriByAction(HttpContext, action:"Create", controller:"ServiceMobile")
-				});
-
-				links.Add(new Link()
-				{
-					Method = "POST",
-					Rel = "createAppointment",
-					Href = linkGenerator.GetUriByAction(HttpContext, action: "CreateAppointmnet", controller: "AppointmentMobile")
 				});
 			}
 

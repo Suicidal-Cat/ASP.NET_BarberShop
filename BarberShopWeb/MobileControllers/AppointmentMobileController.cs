@@ -128,5 +128,22 @@ namespace BarberShopWeb.MobileControllers
 			else return StatusCode(204);
 		}
 
+		[HttpGet("appointments/{date}")]
+		[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = UserRoles.Role_Admin)]
+		public IActionResult GetAllAppointments(string date)
+		{
+			List<Appointment> appointments = appointmentService.SearchByDate(date);
+
+			List<LinkCollectionWrapper<Appointment>> result = new List<LinkCollectionWrapper<Appointment>>();
+
+			foreach (Appointment appointment in appointments)
+			{
+				result.Add(new LinkCollectionWrapper<Appointment>(appointment,null));
+			}
+
+			return Ok(result);
+
+		}
+
 	}
 }

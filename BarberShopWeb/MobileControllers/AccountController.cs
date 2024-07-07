@@ -363,6 +363,16 @@ namespace BarberShopWeb.MobileControllers
 					Rel = "createService",
 					Href = linkGenerator.GetUriByAction(HttpContext, action:"Create", controller:"ServiceMobile")
 				});
+
+				links.Add(new Link()
+				{
+					Method = "GET",
+					Rel = "getAllAppointments",
+					Href = linkGenerator.GetUriByAction(httpContext: HttpContext,
+								action: "GetAllAppointments",
+								controller: "AppointmentMobile",
+								values: new { date = "date" })
+				});
 			}
 
 			return new LinkCollectionWrapper<UserDto>(userDTO,links);

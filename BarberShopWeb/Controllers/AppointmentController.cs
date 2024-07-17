@@ -154,9 +154,15 @@ namespace BarberShopWeb.Controllers
 			string emailBody = "<p>Starts: " + vm.Appointment.Date.ToString("dd/MM/yyyy") +" "+vm.Appointment.StartTime + (string.Compare(vm.Appointment.StartTime, "12:00") < 0 ? " AM" : " PM") + "</p>" +
 				"<p>Barber: "+vm.Appointment.Barber.FirstName+" "+vm.Appointment.Barber.LastName+"</p>"+"<p>Duration: "+vm.Appointment.AppDuration+"</p>"+"<p>Price: "+vm.Appointment.Price+"</p>";
 
+			string[] splitTime = vm.Appointment.StartTime.Split(':');
+			DateTime startDate = new DateTime(vm.Appointment.Date.Year, vm.Appointment.Date.Month, vm.Appointment.Date.Day, int.Parse(splitTime[0]), int.Parse(splitTime[1]), 0, DateTimeKind.Unspecified);
+			DateTime endDate = startDate.AddMinutes(vm.Appointment.AppDuration);
+
+			ICSGenerator icsGenerator = new ICSGenerator();
+			string ics = icsGenerator.GenerateIcs(startDate, endDate);
 
 
-			await emailSender.SendEmailAsync(User?.Identity?.Name, "[BARBERSHOP] Potvrda rezervacije broj: " + vm.Appointment.AppointmentId, emailBody);
+			await emailSender.SendEmailAsync(User?.Identity?.Name, "[BARBERSHOP] Potvrda rezervacije broj: " + vm.Appointment.AppointmentId, emailBody + $"ics:{ics}");
 
 
 			return RedirectToAction("Index", "Home");

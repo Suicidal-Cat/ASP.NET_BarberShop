@@ -11,7 +11,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
+using System.Collections.Generic;
 using System.Security.Claims;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace BarberShopWeb.MobileControllers
 {
@@ -24,13 +27,15 @@ namespace BarberShopWeb.MobileControllers
 		private readonly IBarberService barberService;
 		private readonly IEmailSender emailSender;
 		private readonly UserManager<IdentityUser> userManager;
+		private readonly LinkGenerator linkGenerator;
 
-		public AppointmentMobileController(IAppointmentService appointmentService,IBarberService barberService, IEmailSender emailSender, UserManager<IdentityUser> userManager)
+		public AppointmentMobileController(IAppointmentService appointmentService,IBarberService barberService, IEmailSender emailSender, UserManager<IdentityUser> userManager, LinkGenerator linkGenerator)
         {
 			this.appointmentService = appointmentService;
 			this.barberService = barberService;
 			this.emailSender = emailSender;
 			this.userManager = userManager;
+			this.linkGenerator = linkGenerator;
 		}
 
 		[HttpGet("getAvailableAppointments/{barberId}/{startDate}/{endDate}")]
@@ -102,8 +107,14 @@ namespace BarberShopWeb.MobileControllers
 
 			string emailBody = "<p>Starts: " + ap.Date.ToString("dd/MM/yyyy") + " " + ap.StartTime + (string.Compare(ap.StartTime, "12:00") < 0 ? " AM" : " PM") + "</p>" + "<p>Barber: " + ap.Barber.FirstName + " " + ap.Barber.LastName + "</p>" + "<p>Duration: " + ap.AppDuration + "</p>" + "<p>Price: " + ap.Price + "</p>";
 
+			string[] splitTime=ap.StartTime.Split(':');
+			DateTime startDate=new DateTime(ap.Date.Year, ap.Date.Month, ap.Date.Day, int.Parse(splitTime[0]), int.Parse(splitTime[1]),0,DateTimeKind.Unspecified);
+			DateTime endDate = startDate.AddMinutes(ap.AppDuration);
 
-			await emailSender.SendEmailAsync(user.Email, "[BARBERSHOP] Potvrda rezervacije broj: " + ap.AppointmentId, emailBody);
+			ICSGenerator icsGenerator = new ICSGenerator();
+			string ics=icsGenerator.GenerateIcs(startDate, endDate);
+
+			await emailSender.SendEmailAsync(user.Email, "[BARBERSHOP] Potvrda rezervacije broj: " + ap.AppointmentId, emailBody + $"ics:{ics}");
 
 			return Ok(new { message = "Appointment is successfully created" });
 		}
@@ -122,7 +133,7 @@ namespace BarberShopWeb.MobileControllers
 
 				LinkCollectionWrapper<Appointment> result = new LinkCollectionWrapper<Appointment>();
 				result.Value = appointment;
-				result.Links = null;
+				result.Links = GenerateLinksForAppointment(appointment);
 				return Ok(result);
 			}
 			else return StatusCode(204);
@@ -134,15 +145,43 @@ namespace BarberShopWeb.MobileControllers
 		{
 			List<Appointment> appointments = appointmentService.SearchByDate(date);
 
-			List<LinkCollectionWrapper<Appointment>> result = new List<LinkCollectionWrapper<Appointment>>();
+			List<LinkCollectionWrapper<Appointment>> apps = new List<LinkCollectionWrapper<Appointment>>();
 
 			foreach (Appointment appointment in appointments)
 			{
-				result.Add(new LinkCollectionWrapper<Appointment>(appointment,null));
+				apps.Add(new LinkCollectionWrapper<Appointment>(appointment, GenerateLinksForAppointment(appointment)));
 			}
+
+			LinkCollectionWrapper<List<LinkCollectionWrapper<Appointment>>> result = new LinkCollectionWrapper<List<LinkCollectionWrapper<Appointment>>>(apps, null);
 
 			return Ok(result);
 
+		}
+
+		[HttpPost("appointments/cancel/{appId}")]
+		public IActionResult CancelAppointment(int appId)
+		{
+			Appointment app = appointmentService.Get(appId);
+			if (app == null) return BadRequest();
+			app.IsCanceled = true;
+			appointmentService.Update(app);
+			return StatusCode(200);
+		}
+
+		//////////////////////////////////
+		private List<Link> GenerateLinksForAppointment(Appointment appointment)
+		{
+			List<Link> links = new List<Link>()
+			{
+				new Link(){
+					Method = "POST",
+					Rel = "cancelAppointment",
+					Href = linkGenerator.GetUriByAction(HttpContext,action: nameof(CancelAppointment),
+							controller: "AppointmentMobile",
+							values: new { appId = appointment.AppointmentId })
+				},
+			};
+			return links;
 		}
 
 	}

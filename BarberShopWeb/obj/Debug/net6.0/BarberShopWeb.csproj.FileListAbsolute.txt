@@ -582,7 +582,6 @@ C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\obj\Debug\net6.0\stati
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\obj\Debug\net6.0\scopedcss\bundle\BarberShopWeb.styles.css
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\obj\Debug\net6.0\scopedcss\projectbundle\BarberShopWeb.bundle.scp.css
-C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\obj\Debug\net6.0\BarberShopWeb.csproj.CopyComplete
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\obj\Debug\net6.0\BarberShopWeb.dll
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\obj\Debug\net6.0\refint\BarberShopWeb.dll
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\obj\Debug\net6.0\BarberShopWeb.pdb
@@ -590,3 +589,5 @@ C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\obj\Debug\net6.0\Barbe
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\obj\Debug\net6.0\ref\BarberShopWeb.dll
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\obj\Debug\net6.0\BarberShopWeb.sourcelink.json
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\obj\Debug\net6.0\BarberSh.E9103D52.Up2Date

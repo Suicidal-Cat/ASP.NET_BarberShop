@@ -33,7 +33,7 @@ namespace BarberShopWeb.MobileControllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = UserRoles.Role_Admin)]
         public IActionResult GetServicesPagination(int pageNumber = 1, string? search = "", string? category = "")
         {
-            const int perPage = 5;
+            const int perPage = 4;
             search = search ?? "";
             category = category ?? "";
             IEnumerable<Service> services;

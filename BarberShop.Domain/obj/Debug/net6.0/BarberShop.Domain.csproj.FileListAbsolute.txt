@@ -22,3 +22,4 @@ C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\obj\Debug\net6.0\B
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\obj\Debug\net6.0\refint\BarberShop.Domain.dll
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\obj\Debug\net6.0\BarberShop.Domain.pdb
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\obj\Debug\net6.0\ref\BarberShop.Domain.dll
+C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Domain\obj\Debug\net6.0\BarberShop.Domain.sourcelink.json

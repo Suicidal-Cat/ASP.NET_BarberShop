@@ -40,7 +40,7 @@ namespace DataAccessLayer.AppointmentRepo
 
 		public IQueryable<Appointment> GetByCondition(Func<Appointment, bool> predicate)
 		{
-			return context.Appointments.Include(ap=>ap.Barber).Where(predicate).AsQueryable();
+			return context.Appointments.Include(ap=>ap.Barber).Include(ap=>ap.Services).Where(predicate).AsQueryable();
 		}
 
 		public IQueryable<Result> GetByConditionGroupBy<GroupAttribute,Result>(Func<Appointment, bool> where, Func<Appointment, GroupAttribute> groupBy, Func<IGrouping<GroupAttribute, Appointment>, Result> select)
@@ -55,13 +55,14 @@ namespace DataAccessLayer.AppointmentRepo
 
 		public Appointment GetById(int id)
 		{
-			return context.Appointments.Single(ap=>ap.AppointmentId == id);
+			return context.Appointments.Include(ap=>ap.Services).Single(ap=>ap.AppointmentId == id);
 
 		}
 
 		public void Update(Appointment t)
 		{
 			context.Update(t);
+			context.Entry(t.IdentityUser).State = EntityState.Unchanged;
 			context.SaveChanges();
 		}
 	}

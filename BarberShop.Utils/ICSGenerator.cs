@@ -23,6 +23,7 @@ namespace BarberShop.Utils
 			sb.AppendLine("DTEND:" + endDate.ToString("yyyyMMddTHHmmss"));
 			sb.AppendLine("SUMMARY:BARBERSHOP APPOINTMENT");
 			sb.AppendLine("DESCRIPTION:You successfully made your appointment. Please add it to your calendar.");
+			sb.AppendLine("ORGANIZER;CN=Barbershop:dk20200125@student.fon.bg.ac.rs");
 			sb.AppendLine("PRIORITY:3");
 			sb.AppendLine("END:VEVENT");
 			sb.AppendLine("END:VCALENDAR");

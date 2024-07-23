@@ -10,7 +10,6 @@ C:\Users\darek\Desktop\BarberShopMVC\DataAccessLayer\obj\Debug\net6.0\DataAccess
 C:\Users\darek\Desktop\BarberShopMVC\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.AssemblyInfoInputs.cache
 C:\Users\darek\Desktop\BarberShopMVC\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.AssemblyInfo.cs
 C:\Users\darek\Desktop\BarberShopMVC\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.csproj.CoreCompileInputs.cache
-C:\Users\darek\Desktop\BarberShopMVC\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.csproj.CopyComplete
 C:\Users\darek\Desktop\BarberShopMVC\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.dll
 C:\Users\darek\Desktop\BarberShopMVC\DataAccessLayer\obj\Debug\net6.0\refint\DataAccessLayer.dll
 C:\Users\darek\Desktop\BarberShopMVC\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.pdb
@@ -33,3 +32,5 @@ C:\Users\darek\Desktop\BarberShopMVC - Copy\DataAccessLayer\obj\Debug\net6.0\Dat
 C:\Users\darek\Desktop\BarberShopMVC - Copy\DataAccessLayer\obj\Debug\net6.0\ref\DataAccessLayer.dll
 C:\Users\darek\Desktop\BarberShopMVC - Copy\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.sourcelink.json
 C:\Users\darek\Desktop\BarberShopMVC - Copy\DataAccessLayer\obj\Debug\net6.0\DataAcce.E67BD773.Up2Date
+C:\Users\darek\Desktop\BarberShopMVC\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.sourcelink.json
+C:\Users\darek\Desktop\BarberShopMVC\DataAccessLayer\obj\Debug\net6.0\DataAcce.E67BD773.Up2Date

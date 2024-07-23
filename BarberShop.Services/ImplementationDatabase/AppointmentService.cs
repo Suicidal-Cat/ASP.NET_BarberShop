@@ -27,7 +27,7 @@ namespace BarberShop.Services.ImplementationDatabase
 
 		public void Delete(int id)
 		{
-			uow.AppointmentRepository.Delete(new Appointment { AppointmentId = id });
+            uow.AppointmentRepository.Delete(new Appointment { AppointmentId = id });
 		}
 
 		public Appointment Get(int id)
@@ -38,29 +38,29 @@ namespace BarberShop.Services.ImplementationDatabase
 
 		public List<Appointment> SearchByDate(string date)
 		{
-			Func<Appointment, bool> func = (ap => ap.Date.ToString("yyyy-MM-dd") == date);
+            Func<Appointment, bool> func = (ap => ap.Date.ToString("yyyy-MM-dd") == date);
 			return uow.AppointmentRepository.GetByCondition(func).OrderBy(ap=>ap.StartTime).ToList();
 		}
 
 		public List<Appointment> SearchByDateBarber(string date,int idBarber)
 		{
-			Func<Appointment, bool> func = (ap => ap.Date.ToString("yyyy-MM-dd") == date && ap.Barber?.BarberId == idBarber);
+            Func<Appointment, bool> func = (ap => ap.Date.ToString("yyyy-MM-dd") == date && ap.Barber?.BarberId == idBarber);
 			return uow.AppointmentRepository.GetByCondition(func).ToList();
 		}
 
 		public Appointment? SearchByDateFirst(string date,string idUser)
 		{
-			Func<Appointment, bool> func = (ap => string.Compare(ap.Date.ToString("yyyy-MM-dd"), date) >= 0 && ap.IdentityUserId == idUser);
+            Func<Appointment, bool> func = (ap => string.Compare(ap.Date.ToString("yyyy-MM-dd"), date) >= 0 && ap.IdentityUserId == idUser);
 			string time = DateTime.Now.ToString("HH:mm");
 			return uow.AppointmentRepository.GetByCondition(func).OrderBy(ap=>ap.Date).FirstOrDefault(ap=> !(string.Compare(ap.StartTime, time) < 0 && ap.Date==DateTime.Now.Date) && ap.IsCanceled==false);
 		}
 
 		public IEnumerable<DateCountResult> GetAvaiableAppointments(int barberId, DateTime startDate, DateTime endDate)
 		{
-			Func<Appointment, bool> where = (a => a.Barber.BarberId == barberId && a.Date >= startDate && a.Date <= endDate && a.IsCanceled==false);
-			Func<Appointment, DateTime> groupBy = (a => a.Date);
-			Func<IGrouping<DateTime, Appointment>, DateCountResult> select = (g => new DateCountResult
-			{
+            Func<Appointment, bool> where = (a => a.Barber.BarberId == barberId && a.Date >= startDate && a.Date <= endDate && a.IsCanceled==false);
+            Func<Appointment, DateTime> groupBy = (a => a.Date);
+            Func<IGrouping<DateTime, Appointment>, DateCountResult> select = (g => new DateCountResult
+            {
 				Date = g.Key.Date.ToString("yyyy-MM-dd"),
 				Count = g.Count()
 			});

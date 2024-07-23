@@ -166,7 +166,6 @@ C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\bin\Debug\net6.0\tr\Microsoft
 C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\obj\Debug\net6.0\BarberShopWeb.csproj.AssemblyReference.cache
-C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\obj\Debug\net6.0\BarberShopWeb.csproj.CopyComplete
 C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\bin\Debug\net6.0\Microsoft.NET.StringTools.dll
 C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll
@@ -591,3 +590,7 @@ C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\bin\Debug\net6.0\Micro
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\obj\Debug\net6.0\BarberShopWeb.sourcelink.json
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShopWeb\obj\Debug\net6.0\BarberSh.E9103D52.Up2Date
+C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\obj\Debug\net6.0\BarberShopWeb.sourcelink.json
+C:\Users\darek\Desktop\BarberShopMVC\BarberShopWeb\obj\Debug\net6.0\BarberSh.E9103D52.Up2Date

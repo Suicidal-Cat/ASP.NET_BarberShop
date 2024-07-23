@@ -9,7 +9,6 @@ C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\
 C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.AssemblyInfoInputs.cache
 C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.AssemblyInfo.cs
 C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.csproj.CoreCompileInputs.cache
-C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.csproj.CopyComplete
 C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.dll
 C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\refint\BarberShop.Infrastructure.dll
 C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.pdb
@@ -33,3 +32,5 @@ C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Infrastructure\obj\Debug\
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Infrastructure\obj\Debug\net6.0\ref\BarberShop.Infrastructure.dll
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.sourcelink.json
 C:\Users\darek\Desktop\BarberShopMVC - Copy\BarberShop.Infrastructure\obj\Debug\net6.0\BarberSh.0B04D891.Up2Date
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberShop.Infrastructure.sourcelink.json
+C:\Users\darek\Desktop\BarberShopMVC\BarberShop.Infrastructure\obj\Debug\net6.0\BarberSh.0B04D891.Up2Date

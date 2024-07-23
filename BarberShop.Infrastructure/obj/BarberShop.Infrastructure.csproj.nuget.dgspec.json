@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj": {}
+    "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\BarberShop.Domain.csproj": {
+    "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\BarberShop.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\BarberShop.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\BarberShop.Domain.csproj",
         "projectName": "BarberShop.Domain",
-        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\BarberShop.Domain.csproj",
+        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\BarberShop.Domain.csproj",
         "packagesPath": "C:\\Users\\darek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\obj\\",
+        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -79,14 +79,14 @@
         }
       }
     },
-    "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj": {
+    "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj",
         "projectName": "BarberShop.Infrastructure",
-        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\darek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -108,8 +108,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\BarberShop.Domain.csproj": {
-                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\BarberShop.Domain.csproj"
+              "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\BarberShop.Domain.csproj": {
+                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\BarberShop.Domain.csproj"
               }
             }
           }

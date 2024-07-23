@@ -14,7 +14,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using System.Collections.Generic;
 using System.Security.Claims;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace BarberShopWeb.MobileControllers
 {
@@ -25,14 +24,16 @@ namespace BarberShopWeb.MobileControllers
 	{
 		private readonly IAppointmentService appointmentService;
 		private readonly IBarberService barberService;
+		private readonly IServiceService serviceService;
 		private readonly IEmailSender emailSender;
 		private readonly UserManager<IdentityUser> userManager;
 		private readonly LinkGenerator linkGenerator;
 
-		public AppointmentMobileController(IAppointmentService appointmentService,IBarberService barberService, IEmailSender emailSender, UserManager<IdentityUser> userManager, LinkGenerator linkGenerator)
+		public AppointmentMobileController(IAppointmentService appointmentService,IBarberService barberService,IServiceService serviceService, IEmailSender emailSender, UserManager<IdentityUser> userManager, LinkGenerator linkGenerator)
         {
 			this.appointmentService = appointmentService;
 			this.barberService = barberService;
+			this.serviceService = serviceService;
 			this.emailSender = emailSender;
 			this.userManager = userManager;
 			this.linkGenerator = linkGenerator;
@@ -47,7 +48,7 @@ namespace BarberShopWeb.MobileControllers
 		[HttpGet("getAvailableTimes/{barberId}/{date}/{duration}")]
 		public IActionResult GetAvailableTimes(int barberId, string date ,int duration)
 		{
-			List<Appointment> reservations = appointmentService.SearchByDateBarber(date, barberId).OrderBy(ap => ap.StartTime).ToList();
+            List<Appointment> reservations = appointmentService.SearchByDateBarber(date, barberId).OrderBy(ap => ap.StartTime).ToList();
 
 			Barber b = barberService.Get(barberId);
 
@@ -62,8 +63,8 @@ namespace BarberShopWeb.MobileControllers
 					DateTime end = start.AddMinutes(duration);
 					foreach (Appointment appointment in reservations)
 					{
-						DateTime startRES = DateTime.ParseExact(appointment.StartTime, "HH:mm", null);
-						DateTime endRES = startRES.AddMinutes(appointment.AppDuration);
+                        DateTime startRES = DateTime.ParseExact(appointment.StartTime, "HH:mm", null);
+                        DateTime endRES = startRES.AddMinutes(appointment.AppDuration);
 						if (start <= startRES && end > startRES && appointment.IsCanceled == false)
 						{
 							reservationTimes[i] = "0";
@@ -84,7 +85,7 @@ namespace BarberShopWeb.MobileControllers
 		[HttpPost("create")]
 		public async Task<IActionResult> CreateAppointmnet(AppointmentDTO appointment)
 		{
-			Appointment ap = new Appointment
+            Appointment ap = new Appointment
 			{
 				AppDuration = appointment.AppDuration,
 				Barber= appointment.Barber,
@@ -126,12 +127,12 @@ namespace BarberShopWeb.MobileControllers
 
 			var user = await userManager.FindByNameAsync(User.FindFirst(ClaimTypes.Email)?.Value);
 
-			Appointment? appointment = appointmentService.SearchByDateFirst(now, user.Id);
+            Appointment? appointment = appointmentService.SearchByDateFirst(now, user.Id);
 			if (appointment != null && appointment.IsCanceled == false)
 			{
 				appointment.IdentityUser = null;
 
-				LinkCollectionWrapper<Appointment> result = new LinkCollectionWrapper<Appointment>();
+                LinkCollectionWrapper<Appointment> result = new LinkCollectionWrapper<Appointment>();
 				result.Value = appointment;
 				result.Links = GenerateLinksForAppointment(appointment);
 				return Ok(result);
@@ -143,16 +144,16 @@ namespace BarberShopWeb.MobileControllers
 		[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = UserRoles.Role_Admin)]
 		public IActionResult GetAllAppointments(string date)
 		{
-			List<Appointment> appointments = appointmentService.SearchByDate(date);
+            List<Appointment> appointments = appointmentService.SearchByDate(date);
 
-			List<LinkCollectionWrapper<Appointment>> apps = new List<LinkCollectionWrapper<Appointment>>();
+            List<LinkCollectionWrapper<Appointment>> apps = new List<LinkCollectionWrapper<Appointment>>();
 
 			foreach (Appointment appointment in appointments)
 			{
 				apps.Add(new LinkCollectionWrapper<Appointment>(appointment, GenerateLinksForAppointment(appointment)));
 			}
 
-			LinkCollectionWrapper<List<LinkCollectionWrapper<Appointment>>> result = new LinkCollectionWrapper<List<LinkCollectionWrapper<Appointment>>>(apps, null);
+            LinkCollectionWrapper<List<LinkCollectionWrapper<Appointment>>> result = new LinkCollectionWrapper<List<LinkCollectionWrapper<Appointment>>>(apps, null);
 
 			return Ok(result);
 
@@ -161,12 +162,63 @@ namespace BarberShopWeb.MobileControllers
 		[HttpPost("appointments/cancel/{appId}")]
 		public IActionResult CancelAppointment(int appId)
 		{
-			Appointment app = appointmentService.Get(appId);
+            Appointment app = appointmentService.Get(appId);
 			if (app == null) return BadRequest();
 			app.IsCanceled = true;
 			appointmentService.Update(app);
 			return StatusCode(200);
 		}
+
+		[HttpPut("appointments/update/{appId}")]
+		public async Task<IActionResult> UpdateAppointment([FromRoute] int appId, [FromBody] AppointmentDTO appointment)
+		{
+            Appointment app = appointmentService.Get(appId);
+			app.AppDuration = appointment.AppDuration;
+			app.Barber = appointment.Barber;
+			app.Date = appointment.Date;
+			app.IsCanceled = appointment.IsCanceled;
+			app.Price = appointment.Price;
+			app.StartTime = appointment.StartTime;
+
+			//delete existing
+			for(int i=0;i<app.Services.Count();i++)
+			{
+				bool found = false;
+				foreach (Service serviceToUpdate in appointment.Services)
+					if (app.Services[i].ServiceId == serviceToUpdate.ServiceId)
+					{
+						found = true;
+						break;
+					}
+				if (found == false) app.Services.Remove(app.Services[i]);
+					//delete appointmentService
+			}
+
+			//add new
+			List<Service> servicesToUpdate = appointment.Services.Select((service) => new Service { ServiceId = service.ServiceId }).ToList();
+			//List<Service> serviceToAdd = new List<Service>();
+			for (int i = 0; i < servicesToUpdate.Count(); i++)
+			{
+				bool found = false;
+				foreach (Service s in app.Services)
+					if (s.ServiceId == servicesToUpdate[i].ServiceId)
+					{
+						found = true;
+						break;
+					}
+				if (found == false) app.Services.Add(serviceService.Get(servicesToUpdate[i].ServiceId));
+			}
+			//app.Services = servicesToUpdate;
+
+
+			var user = await userManager.FindByNameAsync(User.FindFirst(ClaimTypes.Email)?.Value);
+			app.IdentityUser = user;
+
+			app.AppointmentId = appId;
+			appointmentService.Update(app);
+			return StatusCode(200);
+		}
+
 
 		//////////////////////////////////
 		private List<Link> GenerateLinksForAppointment(Appointment appointment)
@@ -177,6 +229,13 @@ namespace BarberShopWeb.MobileControllers
 					Method = "POST",
 					Rel = "cancelAppointment",
 					Href = linkGenerator.GetUriByAction(HttpContext,action: nameof(CancelAppointment),
+							controller: "AppointmentMobile",
+							values: new { appId = appointment.AppointmentId })
+				},
+				new Link(){
+					Method = "PUT",
+					Rel = "updateAppointment",
+					Href = linkGenerator.GetUriByAction(HttpContext,action: nameof(UpdateAppointment),
 							controller: "AppointmentMobile",
 							values: new { appId = appointment.AppointmentId })
 				},

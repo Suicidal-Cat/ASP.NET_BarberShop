@@ -18,7 +18,8 @@ namespace DataAccessLayer.UnitOfWork
 		public IServiceRepository ServiceRepository { get; set; }
         public IServiceCategoryRepository ServiceCategoryRepository { get; set; }
         public IAppointmentRepository AppointmentRepository { get; set; }
-        public UnitOfWork(BarberShopDbContext context)
+
+		public UnitOfWork(BarberShopDbContext context)
         {
             this.context = context;
 			BarberRepository=new BarberRepository(context);

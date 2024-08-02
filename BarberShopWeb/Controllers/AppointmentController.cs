@@ -126,7 +126,7 @@ namespace BarberShopWeb.Controllers
 							reservationTimes[i] = "0";
 							break;
 						}
-						if(start>=startRES && start<=endRES && appointment.IsCanceled == false)
+						if(start>=startRES && start<endRES && appointment.IsCanceled == false)
 						{
 							reservationTimes[i] = "0";
 							break;

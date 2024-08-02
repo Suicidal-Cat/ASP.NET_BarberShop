@@ -70,7 +70,7 @@ namespace BarberShopWeb.MobileControllers
 							reservationTimes[i] = "0";
 							break;
 						}
-						if (start >= startRES && start <= endRES && appointment.IsCanceled == false)
+						if (start >= startRES && start < endRES && appointment.IsCanceled == false)
 						{
 							reservationTimes[i] = "0";
 							break;
@@ -160,11 +160,13 @@ namespace BarberShopWeb.MobileControllers
 		}
 
 		[HttpPost("appointments/cancel/{appId}")]
-		public IActionResult CancelAppointment(int appId)
+		public async Task<IActionResult> CancelAppointment(int appId)
 		{
             Appointment app = appointmentService.Get(appId);
 			if (app == null) return BadRequest();
 			app.IsCanceled = true;
+			var user = await userManager.FindByNameAsync(User.FindFirst(ClaimTypes.Email)?.Value);
+			app.IdentityUser = user;
 			appointmentService.Update(app);
 			return StatusCode(200);
 		}

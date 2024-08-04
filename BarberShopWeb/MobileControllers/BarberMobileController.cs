@@ -32,7 +32,7 @@ namespace BarberShopWeb.MobileControllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = UserRoles.Role_Admin)]
         public IActionResult GetBarbersPagination(int pageNumber = 1, string? search = "")
         {
-            const int perPage = 3;
+            const int perPage = 4;
             search = search ?? "";
             int maxPages = 1;
             IEnumerable<Barber> model;

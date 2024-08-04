@@ -56,6 +56,7 @@ builder.Services.AddScoped<IServiceService,ServiceService>();
 builder.Services.AddScoped<IServiceCategoryService, ServiceCategoryService>();
 builder.Services.AddScoped<IBarberService, BarberService>();
 builder.Services.AddScoped<IAppointmentService, BarberShop.Services.ImplementationDatabase.AppointmentService>();
+builder.Services.AddHttpClient();
 builder.Services.AddScoped<JWTService>();
 builder.Services.AddCors();
 // Add services to the container.

@@ -93,11 +93,13 @@ namespace BarberShopWeb.MobileControllers
         }
 
 
-        [HttpPut("create")]
+        [HttpPost("create")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = UserRoles.Role_Admin)]
         public IActionResult Create(Barber barber)
         {
-			return Ok();
+            barberService.Add(barber);
+
+            return Ok(new { message = "Barber is successfully created" });
         }
 
 
@@ -107,7 +109,8 @@ namespace BarberShopWeb.MobileControllers
         public IActionResult Update(Barber barber)
         {
             if (barber.BarberId == 0) return BadRequest();
-            return Ok();
+            barberService.Update(barber);
+            return Ok(new { message = "Barber is successfully updated" });
         }
 
         [HttpGet("{id}")]

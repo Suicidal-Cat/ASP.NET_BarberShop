@@ -52,5 +52,20 @@ namespace BarberShopWeb.MobileControllers
             else
                 return BadRequest("Error uploading the file");
         }
+
+        [HttpDelete("delete/{fileName}")]
+        public async Task<IActionResult> DeleteImageFromDrive(string fileName)
+        {
+            var client = httpClientFactory.CreateClient();
+            string url = $"{configuration["Drive:Host"]}/api/v2/firms/files/{configuration["Drive:Root"]}/{fileName}";
+            var response=await client.DeleteAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                return Ok(new { message = "File is successfully deleted" });
+            }
+                
+            else
+                return BadRequest("Error deleting the file");
+        }
     }
 }

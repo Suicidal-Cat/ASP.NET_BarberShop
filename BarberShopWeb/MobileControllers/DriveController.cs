@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol;
 using System.Net.Http;
 using System.Text;
 
@@ -8,7 +9,7 @@ namespace BarberShopWeb.MobileControllers
 {
     [Route("[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class DriveController : Controller
     {
         private readonly IHttpClientFactory httpClientFactory;
@@ -67,5 +68,23 @@ namespace BarberShopWeb.MobileControllers
             else
                 return BadRequest("Error deleting the file");
         }
+
+        [HttpGet("downloadLink/{fileName}")]
+        public async Task<IActionResult> GetFileContent(string fileName)
+        {
+            var client = httpClientFactory.CreateClient();
+            string url = $"{configuration["Drive:Host"]}/api/v2/firms/files/{configuration["Drive:Root"]}/{fileName}";
+            var response = await client.GetAsync(url);
+            Console.WriteLine("*********************************");
+            Console.WriteLine(url);
+            Console.WriteLine();
+            var body = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                return Ok(body);
+            }
+            else return BadRequest("Error while downloading content");
+        }
+
     }
 }

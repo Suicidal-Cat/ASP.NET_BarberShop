@@ -132,7 +132,7 @@
               "RelativeDocumentMoniker": "BarberShopWeb\\MobileControllers\\DriveController.cs",
               "ToolTip": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\MobileControllers\\DriveController.cs",
               "RelativeToolTip": "BarberShopWeb\\MobileControllers\\DriveController.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAowDwAAAA3AAAA",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAswEcAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-04T20:34:10.976Z",
               "EditorCaption": ""
@@ -147,8 +147,7 @@
               "RelativeToolTip": "BarberShopWeb\\MobileControllers\\AppointmentMobileController.cs",
               "ViewState": "AQIAABcAAAAAAAAAAAAkwBUAAABMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-05T20:39:29.341Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-05T20:39:29.341Z"
             },
             {
               "$type": "Document",
@@ -160,8 +159,7 @@
               "RelativeToolTip": "BarberShopWeb\\MobileControllers\\BarberMobileController.cs",
               "ViewState": "AQIAAHAAAAAAAAAAAAAmwJYAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T14:35:35.492Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-03T14:35:35.492Z"
             },
             {
               "$type": "Document",
@@ -173,8 +171,7 @@
               "RelativeToolTip": "BarberShopWeb\\MobileControllers\\ServiceMobileController.cs",
               "ViewState": "AQIAAHsAAAAAAAAAAADwv4oAAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T14:35:34.909Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-03T14:35:34.909Z"
             },
             {
               "$type": "Document",
@@ -186,8 +183,7 @@
               "RelativeToolTip": "BarberShopWeb\\MobileControllers\\AccountController.cs",
               "ViewState": "AQIAAE0BAAAAAAAAAAAiwFkBAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T14:35:36.019Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-03T14:35:36.019Z"
             }
           ]
         }

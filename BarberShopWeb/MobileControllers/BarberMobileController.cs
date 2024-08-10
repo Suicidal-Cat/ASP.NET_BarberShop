@@ -89,6 +89,9 @@ namespace BarberShopWeb.MobileControllers
 
             LinkCollectionWrapper<List<LinkCollectionWrapper<Barber>>> r = new LinkCollectionWrapper<List<LinkCollectionWrapper<Barber>>>(result, paginationLinks);
 
+            HttpContext.Response.Headers.Add("maxPages", maxPages.ToString());
+            HttpContext.Response.Headers.Add("Access-Control-Expose-Headers", "maxPages");
+
             return Ok(r);
         }
 

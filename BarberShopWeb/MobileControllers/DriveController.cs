@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using BarberShop.Domain;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 
 namespace BarberShopWeb.MobileControllers
 {
@@ -75,13 +77,22 @@ namespace BarberShopWeb.MobileControllers
             var client = httpClientFactory.CreateClient();
             string url = $"{configuration["Drive:Host"]}/api/v2/firms/files/{configuration["Drive:Root"]}/{fileName}";
             var response = await client.GetAsync(url);
-            Console.WriteLine("*********************************");
-            Console.WriteLine(url);
-            Console.WriteLine();
-            var body = await response.Content.ReadAsStringAsync();
+
             if (response.IsSuccessStatusCode)
             {
-                return Ok(body);
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+
+                using (JsonDocument document = JsonDocument.Parse(jsonResponse))
+                {
+                    JsonElement root = document.RootElement;
+
+                    if (root.TryGetProperty("@microsoft.graph.downloadUrl", out JsonElement downloadUrlElement))
+                    {
+                        string downloadUrl = downloadUrlElement.GetString();
+                        return Ok(downloadUrl);
+                    }
+                };
+                return BadRequest("Error while downloading content");
             }
             else return BadRequest("Error while downloading content");
         }

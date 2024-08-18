@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Security.Claims;
 
 namespace BarberShopWeb.MobileControllers
@@ -28,8 +29,10 @@ namespace BarberShopWeb.MobileControllers
 		private readonly IEmailSender emailSender;
 		private readonly UserManager<IdentityUser> userManager;
 		private readonly LinkGenerator linkGenerator;
+        private readonly IHttpClientFactory httpClientFactory;
+        private readonly IConfiguration configuration;
 
-		public AppointmentMobileController(IAppointmentService appointmentService,IBarberService barberService,IServiceService serviceService, IEmailSender emailSender, UserManager<IdentityUser> userManager, LinkGenerator linkGenerator)
+        public AppointmentMobileController(IAppointmentService appointmentService,IBarberService barberService,IServiceService serviceService, IEmailSender emailSender, UserManager<IdentityUser> userManager, LinkGenerator linkGenerator, IHttpClientFactory httpClientFactory,IConfiguration configuration)
         {
 			this.appointmentService = appointmentService;
 			this.barberService = barberService;
@@ -37,7 +40,9 @@ namespace BarberShopWeb.MobileControllers
 			this.emailSender = emailSender;
 			this.userManager = userManager;
 			this.linkGenerator = linkGenerator;
-		}
+            this.httpClientFactory = httpClientFactory;
+            this.configuration = configuration;
+        }
 
 		[HttpGet("getAvailableAppointments/{barberId}/{startDate}/{endDate}")]
 		public IActionResult GetAvailableAppointments(int barberId,DateTime startDate,DateTime endDate) {
@@ -135,14 +140,27 @@ namespace BarberShopWeb.MobileControllers
                 LinkCollectionWrapper<Appointment> result = new LinkCollectionWrapper<Appointment>();
 				result.Value = appointment;
 				result.Links = GenerateLinksForAppointment(appointment);
-				return Ok(result);
-			}
+                var client = httpClientFactory.CreateClient();
+				string url = $"{configuration["JWT:Issuer"]}/Drive/downloadLink/{appointment.Barber.ImageUrl}";
+                var response = await client.GetAsync(url);
+				if (response.IsSuccessStatusCode)
+				{
+					var imagePath=await response.Content.ReadAsStringAsync();
+					appointment.Barber.ImageUrl = imagePath;
+                    return Ok(result);
+                }
+                else{
+					appointment.Barber.ImageUrl = "";
+                    return Ok(result);
+				}
+
+            }
 			else return StatusCode(204);
 		}
 
 		[HttpGet("appointments/{date}")]
 		[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = UserRoles.Role_Admin)]
-		public IActionResult GetAllAppointments(string date)
+		public async Task<IActionResult> GetAllAppointments(string date)
 		{
             List<Appointment> appointments = appointmentService.SearchByDate(date);
 
@@ -150,7 +168,21 @@ namespace BarberShopWeb.MobileControllers
 
 			foreach (Appointment appointment in appointments)
 			{
-				apps.Add(new LinkCollectionWrapper<Appointment>(appointment, GenerateLinksForAppointment(appointment)));
+                var client = httpClientFactory.CreateClient();
+                string url = $"{configuration["JWT:Issuer"]}/Drive/downloadLink/{appointment.Barber.ImageUrl}";
+                var response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    var imagePath = await response.Content.ReadAsStringAsync();
+                    appointment.Barber.ImageUrl = imagePath;
+                }
+                else
+                {
+                    appointment.Barber.ImageUrl = "";
+                }
+
+
+                apps.Add(new LinkCollectionWrapper<Appointment>(appointment, GenerateLinksForAppointment(appointment)));
 			}
 
             LinkCollectionWrapper<List<LinkCollectionWrapper<Appointment>>> result = new LinkCollectionWrapper<List<LinkCollectionWrapper<Appointment>>>(apps, null);

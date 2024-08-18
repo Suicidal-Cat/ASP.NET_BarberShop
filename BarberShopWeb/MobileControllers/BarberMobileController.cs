@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using System.Net.Http;
 using System.Numerics;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -20,17 +21,21 @@ namespace BarberShopWeb.MobileControllers
     {
         private readonly IBarberService barberService;
         private readonly LinkGenerator linkGenerator;
+        private readonly IHttpClientFactory httpClientFactory;
+        private readonly IConfiguration configuration;
 
-        public BarberMobileController(IBarberService barberService,LinkGenerator linkGenerator)
+        public BarberMobileController(IBarberService barberService,LinkGenerator linkGenerator, IHttpClientFactory httpClientFactory,IConfiguration configuration)
         {
             this.barberService = barberService;
             this.linkGenerator = linkGenerator;
+            this.httpClientFactory = httpClientFactory;
+            this.configuration = configuration;
         }
 
 
         [HttpGet("")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = UserRoles.Role_Admin)]
-        public IActionResult GetBarbersPagination(int pageNumber = 1, string? search = "")
+        public async Task<IActionResult> GetBarbersPagination(int pageNumber = 1, string? search = "")
         {
             const int perPage = 4;
             search = search ?? "";
@@ -47,6 +52,18 @@ namespace BarberShopWeb.MobileControllers
 
             foreach (Barber barber in model)
             {
+                var client = httpClientFactory.CreateClient();
+                string url = $"{configuration["JWT:Issuer"]}/Drive/downloadLink/{barber.ImageUrl}";
+                var response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    var imagePath = await response.Content.ReadAsStringAsync();
+                    barber.ImageUrl = imagePath;
+                }
+                else
+                {
+                    barber.ImageUrl = "";
+                }
                 result.Add(new LinkCollectionWrapper<Barber>(barber, GenerateLinksForBarber(barber)));
             }
 

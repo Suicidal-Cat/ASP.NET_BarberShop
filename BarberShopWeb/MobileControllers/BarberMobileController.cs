@@ -142,13 +142,25 @@ namespace BarberShopWeb.MobileControllers
         }
 
         [HttpGet("all")]
-        public IActionResult GetBarbers()
+        public async Task<IActionResult> GetBarbers()
         {
             List<Barber> barbers = barberService.Barbers.ToList();
             LinkCollectionWrapper<List<LinkCollectionWrapper<Barber>>> result = new LinkCollectionWrapper<List<LinkCollectionWrapper<Barber>>>();
             result.Value = new List<LinkCollectionWrapper<Barber>>();
             foreach (Barber barber in barbers)
             {
+                var client = httpClientFactory.CreateClient();
+                string url = $"{configuration["JWT:Issuer"]}/Drive/downloadLink/{barber.ImageUrl}";
+                var response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    var imagePath = await response.Content.ReadAsStringAsync();
+                    barber.ImageUrl = imagePath;
+                }
+                else
+                {
+                    barber.ImageUrl = "";
+                }
                 result.Value.Add(new LinkCollectionWrapper<Barber>(barber, GenerateLinksForBarber(barber)));
             }
             return Ok(result);

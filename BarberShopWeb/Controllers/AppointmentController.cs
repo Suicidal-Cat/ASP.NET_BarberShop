@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Configuration;
+using System.Net.Http;
 using System.Security.Claims;
+using System.Threading;
 
 namespace BarberShopWeb.Controllers
 {
@@ -18,15 +20,19 @@ namespace BarberShopWeb.Controllers
 		private readonly IBarberService barberService;
 		private readonly UserManager<IdentityUser> userManager;
 		private readonly IEmailSender emailSender;
+        private readonly IHttpClientFactory httpClientFactory;
+        private readonly IConfiguration configuration;
 
-		public AppointmentController(IServiceService serviceService, IAppointmentService appointmentService,IBarberService barberService,UserManager<IdentityUser> userManager,IEmailSender emailSender)
+        public AppointmentController(IServiceService serviceService, IAppointmentService appointmentService,IBarberService barberService,UserManager<IdentityUser> userManager,IEmailSender emailSender, IHttpClientFactory httpClientFactory, IConfiguration configuration)
         {
 			this.serviceService = serviceService;
 			this.appointmentService = appointmentService;
 			this.barberService = barberService;
 			this.userManager = userManager;
 			this.emailSender = emailSender;
-		}
+            this.httpClientFactory = httpClientFactory;
+            this.configuration = configuration;
+        }
 		//services
         public IActionResult Index()
 		{	
@@ -50,7 +56,7 @@ namespace BarberShopWeb.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult NextChooseBarber(ListAddServicesReservationVM list) {
+        public async Task<IActionResult> NextChooseBarber(ListAddServicesReservationVM list) {
 
 			AddServiceReservationVM? hair = list.Haircuts.FirstOrDefault(h => h.IsChecked == true);
 			AddServiceReservationVM? beard = list.Beard.FirstOrDefault(h => h.IsChecked == true);
@@ -69,6 +75,24 @@ namespace BarberShopWeb.Controllers
 
 			AddBarberReservationVM addBarberReservationVM = new AddBarberReservationVM();
 			addBarberReservationVM.Barbers = barberService.Barbers.Where(b=>b.Status==Status.Active).Select(b=>new BarberCheckBox { Barber=b}).ToList();
+
+			foreach(BarberCheckBox b in addBarberReservationVM.Barbers)
+			{
+                var client = httpClientFactory.CreateClient();
+                string url = $"{configuration["JWT:Issuer"]}/Drive/downloadLink/{b.Barber.ImageUrl}";
+                var response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    var imagePath = await response.Content.ReadAsStringAsync();
+                    b.Barber.ImageUrl = imagePath;
+                }
+                else
+                {
+                    b.Barber.ImageUrl = "";
+                }
+            }
+
+
 			addBarberReservationVM.Services = services;
 
 			return View(addBarberReservationVM);

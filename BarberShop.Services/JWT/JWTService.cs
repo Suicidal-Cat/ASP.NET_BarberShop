@@ -1,4 +1,5 @@
 ﻿using BarberShop.Domain;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -14,15 +15,17 @@ namespace BarberShop.Services.JWT
 	public class JWTService
 	{
 		private readonly IConfiguration _config;
-		private readonly SymmetricSecurityKey _jwtKey;
+        private readonly UserManager<IdentityUser> userManager;
+        private readonly SymmetricSecurityKey _jwtKey;
 
-		public JWTService(IConfiguration config)
+		public JWTService(IConfiguration config,UserManager<IdentityUser> userManager)
         {
 			this._config = config;
-			this._jwtKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Key"]));
+            this.userManager = userManager;
+            this._jwtKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Key"]));
 
 		}
-        public string CreateJWT(ApplicationUser user)
+        public async Task<string> CreateJWT(ApplicationUser user)
 		{
 			var userClaims = new List<Claim>
 			{
@@ -32,7 +35,11 @@ namespace BarberShop.Services.JWT
 				new Claim(ClaimTypes.Surname,user.LastName),
 			};
 
-			var credentials = new SigningCredentials(_jwtKey, SecurityAlgorithms.HmacSha512Signature);
+			var roles = await userManager.GetRolesAsync(user);
+			userClaims.AddRange(roles.Select(role=>new Claim(ClaimTypes.Role,role)));
+
+
+			var credentials = new SigningCredentials(_jwtKey, SecurityAlgorithms.HmacSha256Signature);
 
 			var tokenDescriptior = new SecurityTokenDescriptor
 			{

@@ -28,7 +28,9 @@ namespace DataAccessLayer.ServiceRepo
 			try
 			{
 				context.SaveChanges();
-			}catch (Exception ex) { }
+			}catch (Exception ex) {
+				throw new Exception(ex.Message);
+			}
 			
 		}
 

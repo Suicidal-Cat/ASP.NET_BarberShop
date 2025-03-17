@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mJjwdKC9FLUB9r1DlrQzXWBp35nqyCY9Gg0ZU9Om5KYhOzh6kSDR2pC81RuNVf4HqO6Tg+hA4ZCuncTw4bx8/g==",
+  "dgSpecHash": "57R7ZjEbxpU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShopWeb\\BarberShopWeb.csproj",
+  "projectFilePath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\BarberShopWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\darek\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\darek\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

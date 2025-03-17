@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShopWeb\\BarberShopWeb.csproj": {}
+    "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\BarberShopWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\BarberShop.Domain.csproj": {
+    "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\BarberShop.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\BarberShop.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\BarberShop.Domain.csproj",
         "projectName": "BarberShop.Domain",
-        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\BarberShop.Domain.csproj",
+        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\BarberShop.Domain.csproj",
         "packagesPath": "C:\\Users\\darek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\obj\\",
+        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -39,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -70,18 +75,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj": {
+    "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj",
         "projectName": "BarberShop.Infrastructure",
-        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\darek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -103,8 +108,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\BarberShop.Domain.csproj": {
-                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\BarberShop.Domain.csproj"
+              "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\BarberShop.Domain.csproj": {
+                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\BarberShop.Domain.csproj"
               }
             }
           }
@@ -113,6 +118,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -156,18 +166,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Services\\BarberShop.Services.csproj": {
+    "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Services\\BarberShop.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Services\\BarberShop.Services.csproj",
+        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Services\\BarberShop.Services.csproj",
         "projectName": "BarberShop.Services",
-        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Services\\BarberShop.Services.csproj",
+        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Services\\BarberShop.Services.csproj",
         "packagesPath": "C:\\Users\\darek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Services\\obj\\",
+        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -189,11 +199,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\BarberShop.Domain.csproj": {
-                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\BarberShop.Domain.csproj"
+              "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\BarberShop.Domain.csproj": {
+                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\BarberShop.Domain.csproj"
               },
-              "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\DataAccessLayer\\DataAccessLayer.csproj"
+              "C:\\Users\\darek\\Desktop\\BarberShopMVC\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\DataAccessLayer\\DataAccessLayer.csproj"
               }
             }
           }
@@ -202,6 +212,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -223,18 +238,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Utils\\BarberShop.Utils.csproj": {
+    "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Utils\\BarberShop.Utils.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Utils\\BarberShop.Utils.csproj",
+        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Utils\\BarberShop.Utils.csproj",
         "projectName": "BarberShop.Utils",
-        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Utils\\BarberShop.Utils.csproj",
+        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Utils\\BarberShop.Utils.csproj",
         "packagesPath": "C:\\Users\\darek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Utils\\obj\\",
+        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Utils\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -262,6 +277,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -289,18 +309,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShopWeb\\BarberShopWeb.csproj": {
+    "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\BarberShopWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShopWeb\\BarberShopWeb.csproj",
+        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\BarberShopWeb.csproj",
         "projectName": "BarberShopWeb",
-        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShopWeb\\BarberShopWeb.csproj",
+        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\BarberShopWeb.csproj",
         "packagesPath": "C:\\Users\\darek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShopWeb\\obj\\",
+        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -322,17 +342,17 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj"
+              "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj"
               },
-              "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Services\\BarberShop.Services.csproj": {
-                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Services\\BarberShop.Services.csproj"
+              "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Services\\BarberShop.Services.csproj": {
+                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Services\\BarberShop.Services.csproj"
               },
-              "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Utils\\BarberShop.Utils.csproj": {
-                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Utils\\BarberShop.Utils.csproj"
+              "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Utils\\BarberShop.Utils.csproj": {
+                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Utils\\BarberShop.Utils.csproj"
               },
-              "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\DataAccessLayer\\DataAccessLayer.csproj"
+              "C:\\Users\\darek\\Desktop\\BarberShopMVC\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\DataAccessLayer\\DataAccessLayer.csproj"
               }
             }
           }
@@ -341,6 +361,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -401,18 +426,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "C:\\Users\\darek\\Desktop\\BarberShopMVC\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\DataAccessLayer\\DataAccessLayer.csproj",
         "packagesPath": "C:\\Users\\darek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\DataAccessLayer\\obj\\",
+        "outputPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -434,11 +459,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\BarberShop.Domain.csproj": {
-                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Domain\\BarberShop.Domain.csproj"
+              "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\BarberShop.Domain.csproj": {
+                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Domain\\BarberShop.Domain.csproj"
               },
-              "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC - Copy\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj"
+              "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShop.Infrastructure\\BarberShop.Infrastructure.csproj"
               }
             }
           }
@@ -447,6 +472,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -468,7 +498,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     }

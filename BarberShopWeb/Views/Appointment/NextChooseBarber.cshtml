@@ -1,7 +1,7 @@
 ﻿@model AddBarberReservationVM
 
-<h3 class="mt-4 mb-3">Chose your barber</h3>
-<div class="p-3 mt-2" style="width:95%">
+<h3 class="mt-4 mb-3">Choose your barber</h3>
+<div class="p-3 mt-2" style="width:95%" id="delayedDiv" style="display:none;">
 	<form method="POST" asp-controller="Appointment" asp-action="NextChooseDateTime">
 	@for(int i = 0; i < Model.Services.Count; i++)
 	{
@@ -53,6 +53,12 @@
 			updateCheckboxes.call(this, checkBoxes);
 		})
 	})
+
+	document.addEventListener("DOMContentLoaded", function () {
+		setTimeout(function () {
+			document.getElementById("delayedDiv").style.display = "block";
+		}, 2000);
+	});
 
 
 </script>

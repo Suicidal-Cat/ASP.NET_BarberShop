@@ -11,38 +11,70 @@ using BarberShop.Services.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using BarberShopWeb.Hateoas;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<BarberShopDbContext>();
 builder.Services.AddRazorPages();
-builder.Services.AddIdentity<IdentityUser,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<BarberShopDbContext>().AddDefaultTokenProviders();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+	{
+		options.Password.RequiredLength = 8;
+		options.Password.RequireDigit = false;
+		options.Password.RequireLowercase = false;
+		options.Password.RequireUppercase = false;
+		options.Password.RequireNonAlphanumeric = false;
+		options.SignIn.RequireConfirmedEmail = true;
+		options.SignIn.RequireConfirmedAccount= true;
+	})
+	.AddEntityFrameworkStores<BarberShopDbContext>()
+	.AddDefaultTokenProviders();
+
+builder.Services
+.AddAuthentication() // Cookie by default
+	.AddCookie(options =>
+	{
+		options.LoginPath = "/Account/Unauthorized/";
+		options.AccessDeniedPath = "/Account/Forbidden/";
+	})
+	.AddJwtBearer(options =>
+	{
+		options.TokenValidationParameters = new TokenValidationParameters
+		{
+			ValidateIssuer = true,
+			ValidateAudience = false,
+			ValidateLifetime = true,
+			ValidateIssuerSigningKey = true,
+			ValidIssuer = builder.Configuration["JWT:Issuer"],
+			IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
+		};
+	});
+
 builder.Services.AddScoped<IEmailSender, EmailSender> ();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IServiceService,ServiceService>();
 builder.Services.AddScoped<IServiceCategoryService, ServiceCategoryService>();
 builder.Services.AddScoped<IBarberService, BarberService>();
-builder.Services.AddScoped<IAppointmentService, AppointmentService>();
-
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-	.AddJwtBearer(options =>
-	{
-		options.TokenValidationParameters = new TokenValidationParameters
-		{
-			ValidateIssuerSigningKey=true,
-			IssuerSigningKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
-			ValidateIssuer=true,
-			ValidateAudience=false,
-		};
-	});
-
+builder.Services.AddScoped<IAppointmentService, BarberShop.Services.ImplementationDatabase.AppointmentService>();
+builder.Services.AddHttpClient();
 builder.Services.AddScoped<JWTService>();
+builder.Services.AddCors();
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(opt =>
+{
+    opt.OutputFormatters.Add(new HateoasJsonOutputFormmater());
+});
+
+
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
+
+app.UseCors(opt =>
+{
+	opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins(builder.Configuration["JWT:ClientUrl"]);
+});
+
 if (!app.Environment.IsDevelopment())
 {
 	app.UseExceptionHandler("/Home/Error");
@@ -61,8 +93,5 @@ app.MapRazorPages();
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapControllerRoute(
-	name: "MobileControllers",
-	pattern: "mobile/{controller}/{action}/{id?}");
 
 app.Run();

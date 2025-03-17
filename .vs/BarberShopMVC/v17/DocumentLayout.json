@@ -1,0 +1,245 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|c:\\users\\darek\\desktop\\barbershopmvc\\barbershopweb\\views\\appointment\\nextchoosebarber.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|solutionrelative:barbershopweb\\views\\appointment\\nextchoosebarber.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|c:\\users\\darek\\desktop\\barbershopmvc\\barbershopweb\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|solutionrelative:barbershopweb\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|c:\\users\\darek\\desktop\\barbershopmvc\\barbershopweb\\mobilecontrollers\\appointmentmobilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|solutionrelative:barbershopweb\\mobilecontrollers\\appointmentmobilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|c:\\users\\darek\\desktop\\barbershopmvc\\barbershopweb\\mobilecontrollers\\barbermobilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|solutionrelative:barbershopweb\\mobilecontrollers\\barbermobilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|c:\\users\\darek\\desktop\\barbershopmvc\\barbershopweb\\controllers\\barbercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|solutionrelative:barbershopweb\\controllers\\barbercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|c:\\users\\darek\\desktop\\barbershopmvc\\barbershopweb\\mobilecontrollers\\drivecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|solutionrelative:barbershopweb\\mobilecontrollers\\drivecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|c:\\users\\darek\\desktop\\barbershopmvc\\barbershopweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|solutionrelative:barbershopweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|c:\\users\\darek\\desktop\\barbershopmvc\\barbershopweb\\mobilecontrollers\\servicemobilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|solutionrelative:barbershopweb\\mobilecontrollers\\servicemobilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|c:\\users\\darek\\desktop\\barbershopmvc\\barbershopweb\\mobilecontrollers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B31AF12-F0C7-4A72-97AA-EAF7E6EDA61D}|BarberShopWeb\\BarberShopWeb.csproj|solutionrelative:barbershopweb\\mobilecontrollers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 19,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0849e941-4665-42e5-8dd0-e4c8da15dbd0}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:137:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{0849e941-4665-42e5-8dd0-e4c8da15dbd0}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NextChooseBarber.cshtml",
+              "DocumentMoniker": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\Views\\Appointment\\NextChooseBarber.cshtml",
+              "RelativeDocumentMoniker": "BarberShopWeb\\Views\\Appointment\\NextChooseBarber.cshtml",
+              "ToolTip": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\Views\\Appointment\\NextChooseBarber.cshtml",
+              "RelativeToolTip": "BarberShopWeb\\Views\\Appointment\\NextChooseBarber.cshtml",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAADMAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-23T14:52:17.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppointmentController.cs",
+              "DocumentMoniker": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\Controllers\\AppointmentController.cs",
+              "RelativeDocumentMoniker": "BarberShopWeb\\Controllers\\AppointmentController.cs",
+              "ToolTip": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\Controllers\\AppointmentController.cs",
+              "RelativeToolTip": "BarberShopWeb\\Controllers\\AppointmentController.cs",
+              "ViewState": "AQIAAEwAAAAAAAAAAAAgwFoAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T14:48:25.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BarberController.cs",
+              "DocumentMoniker": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\Controllers\\BarberController.cs",
+              "RelativeDocumentMoniker": "BarberShopWeb\\Controllers\\BarberController.cs",
+              "ToolTip": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\Controllers\\BarberController.cs",
+              "RelativeToolTip": "BarberShopWeb\\Controllers\\BarberController.cs",
+              "ViewState": "AQIAAMEAAAAAAAAAAAAswMEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-22T16:49:55.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\Program.cs",
+              "RelativeDocumentMoniker": "BarberShopWeb\\Program.cs",
+              "ToolTip": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\Program.cs",
+              "RelativeToolTip": "BarberShopWeb\\Program.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAADAAAABmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-21T13:14:21.756Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DriveController.cs",
+              "DocumentMoniker": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\MobileControllers\\DriveController.cs",
+              "RelativeDocumentMoniker": "BarberShopWeb\\MobileControllers\\DriveController.cs",
+              "ToolTip": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\MobileControllers\\DriveController.cs",
+              "RelativeToolTip": "BarberShopWeb\\MobileControllers\\DriveController.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAYwDMAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T20:34:10.976Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppointmentMobileController.cs",
+              "DocumentMoniker": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\MobileControllers\\AppointmentMobileController.cs",
+              "RelativeDocumentMoniker": "BarberShopWeb\\MobileControllers\\AppointmentMobileController.cs",
+              "ToolTip": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\MobileControllers\\AppointmentMobileController.cs",
+              "RelativeToolTip": "BarberShopWeb\\MobileControllers\\AppointmentMobileController.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAAACIAAAAuAQAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T20:39:29.341Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BarberMobileController.cs",
+              "DocumentMoniker": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\MobileControllers\\BarberMobileController.cs",
+              "RelativeDocumentMoniker": "BarberShopWeb\\MobileControllers\\BarberMobileController.cs",
+              "ToolTip": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\MobileControllers\\BarberMobileController.cs",
+              "RelativeToolTip": "BarberShopWeb\\MobileControllers\\BarberMobileController.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAYwEEAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T14:35:35.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ServiceMobileController.cs",
+              "DocumentMoniker": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\MobileControllers\\ServiceMobileController.cs",
+              "RelativeDocumentMoniker": "BarberShopWeb\\MobileControllers\\ServiceMobileController.cs",
+              "ToolTip": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\MobileControllers\\ServiceMobileController.cs",
+              "RelativeToolTip": "BarberShopWeb\\MobileControllers\\ServiceMobileController.cs",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAowGYAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T14:35:34.909Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\MobileControllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "BarberShopWeb\\MobileControllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\darek\\Desktop\\BarberShopMVC\\BarberShopWeb\\MobileControllers\\AccountController.cs",
+              "RelativeToolTip": "BarberShopWeb\\MobileControllers\\AccountController.cs",
+              "ViewState": "AQIAAE0BAAAAAAAAAAAiwFkBAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T14:35:36.019Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Configuration;
+using System.Net.Http;
 using System.Security.Claims;
+using System.Threading;
 
 namespace BarberShopWeb.Controllers
 {
@@ -18,15 +20,19 @@ namespace BarberShopWeb.Controllers
 		private readonly IBarberService barberService;
 		private readonly UserManager<IdentityUser> userManager;
 		private readonly IEmailSender emailSender;
+        private readonly IHttpClientFactory httpClientFactory;
+        private readonly IConfiguration configuration;
 
-		public AppointmentController(IServiceService serviceService, IAppointmentService appointmentService,IBarberService barberService,UserManager<IdentityUser> userManager,IEmailSender emailSender)
+        public AppointmentController(IServiceService serviceService, IAppointmentService appointmentService,IBarberService barberService,UserManager<IdentityUser> userManager,IEmailSender emailSender, IHttpClientFactory httpClientFactory, IConfiguration configuration)
         {
 			this.serviceService = serviceService;
 			this.appointmentService = appointmentService;
 			this.barberService = barberService;
 			this.userManager = userManager;
 			this.emailSender = emailSender;
-		}
+            this.httpClientFactory = httpClientFactory;
+            this.configuration = configuration;
+        }
 		//services
         public IActionResult Index()
 		{	
@@ -39,7 +45,7 @@ namespace BarberShopWeb.Controllers
 			{
 				if (service.ServiceCategory.Name == "Haircuts") list.Haircuts.Add(new AddServiceReservationVM() { Service=service}
 					);
-				else if (service.ServiceCategory.Name == "Beard cuts") list.Beard.Add(new AddServiceReservationVM() { Service = service }
+				else if (service.ServiceCategory.Name == "Beard") list.Beard.Add(new AddServiceReservationVM() { Service = service }
 					);
 				else if (service.ServiceCategory.Name == "Other") list.Other.Add(new AddServiceReservationVM() { Service = service }
 					);
@@ -50,7 +56,7 @@ namespace BarberShopWeb.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult NextChooseBarber(ListAddServicesReservationVM list) {
+        public async Task<IActionResult> NextChooseBarber(ListAddServicesReservationVM list) {
 
 			AddServiceReservationVM? hair = list.Haircuts.FirstOrDefault(h => h.IsChecked == true);
 			AddServiceReservationVM? beard = list.Beard.FirstOrDefault(h => h.IsChecked == true);
@@ -69,6 +75,24 @@ namespace BarberShopWeb.Controllers
 
 			AddBarberReservationVM addBarberReservationVM = new AddBarberReservationVM();
 			addBarberReservationVM.Barbers = barberService.Barbers.Where(b=>b.Status==Status.Active).Select(b=>new BarberCheckBox { Barber=b}).ToList();
+
+			foreach(BarberCheckBox b in addBarberReservationVM.Barbers)
+			{
+                var client = httpClientFactory.CreateClient();
+                string url = $"{configuration["JWT:Issuer"]}/Drive/downloadLink/{b.Barber.ImageUrl}";
+                var response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    var imagePath = await response.Content.ReadAsStringAsync();
+                    b.Barber.ImageUrl = imagePath;
+                }
+                else
+                {
+                    b.Barber.ImageUrl = "";
+                }
+            }
+
+
 			addBarberReservationVM.Services = services;
 
 			return View(addBarberReservationVM);
@@ -126,7 +150,7 @@ namespace BarberShopWeb.Controllers
 							reservationTimes[i] = "0";
 							break;
 						}
-						if(start>=startRES && start<=endRES && appointment.IsCanceled == false)
+						if(start>=startRES && start<endRES && appointment.IsCanceled == false)
 						{
 							reservationTimes[i] = "0";
 							break;
@@ -145,18 +169,24 @@ namespace BarberShopWeb.Controllers
 		{
 			vm.Appointment.IdentityUser = new IdentityUser();
 			vm.Appointment.IdentityUser.Id = userManager.GetUserId(this.User);
-			//definisi get za usera i procitaj mejl
-			//proveri dokumentaciju
+
 			vm.Appointment.Barber = barberService.Get(vm.Appointment.Barber.BarberId);
 
 			appointmentService.Add(vm.Appointment);
 
 
-			string emailBody = "Starts: " + vm.Appointment.Date.ToString("dd/MM/yyyy") + (string.Compare(vm.Appointment.StartTime, "12:00") < 0 ? "AM" : "PM") + "\n"+"Barber: "+vm.Appointment.Barber.FirstName+" "+vm.Appointment.Barber.LastName+"\n"+"Duration: "+vm.Appointment.AppDuration+"\n"+"Price: "+vm.Appointment.Price+"\n";
+			string emailBody = "<p>Starts: " + vm.Appointment.Date.ToString("dd/MM/yyyy") +" "+vm.Appointment.StartTime + (string.Compare(vm.Appointment.StartTime, "12:00") < 0 ? " AM" : " PM") + "</p>" +
+				"<p>Barber: "+vm.Appointment.Barber.FirstName+" "+vm.Appointment.Barber.LastName+"</p>"+"<p>Duration: "+vm.Appointment.AppDuration+"</p>"+"<p>Price: "+vm.Appointment.Price+"</p>";
+
+			string[] splitTime = vm.Appointment.StartTime.Split(':');
+			DateTime startDate = new DateTime(vm.Appointment.Date.Year, vm.Appointment.Date.Month, vm.Appointment.Date.Day, int.Parse(splitTime[0]), int.Parse(splitTime[1]), 0, DateTimeKind.Unspecified);
+			DateTime endDate = startDate.AddMinutes(vm.Appointment.AppDuration);
+
+			ICSGenerator icsGenerator = new ICSGenerator();
+			string ics = icsGenerator.GenerateIcs(startDate, endDate);
 
 
-
-			await emailSender.SendEmailAsync(User?.Identity?.Name, "[BARBERSHOP] Potvrda rezervacije broj: " + vm.Appointment.AppointmentId, emailBody);
+			await emailSender.SendEmailAsync(User?.Identity?.Name, "[BARBERSHOP] Potvrda rezervacije broj: " + vm.Appointment.AppointmentId, emailBody + $"ics:{ics}");
 
 
 			return RedirectToAction("Index", "Home");

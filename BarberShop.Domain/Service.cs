@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace BarberShop.Domain
@@ -21,6 +22,7 @@ namespace BarberShop.Domain
 		public int Duration { get; set; }
 		[ValidateNever]
 		public ServiceCategory ServiceCategory { get; set; } = null!;
+		[JsonIgnore]
         public List<Appointment>? Appointments { get; set; }
 
     }

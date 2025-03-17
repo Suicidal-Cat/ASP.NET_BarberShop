@@ -20,9 +20,14 @@ namespace BarberShop.Domain
 		public int Price { get; set; }
         public bool IsCanceled { get; set; } = false;
         public Barber Barber { get; set; } = null!;
-        [Required]
         public IdentityUser IdentityUser { get; set; } = null!;
         public string IdentityUserId { get; set; } = null!;
         public List<Service> Services { get; set; } = null!;
     }
+
+	public class DateCountResult
+	{
+		public string? Date { get; set; }
+		public int Count { get; set; }
+	}
 }
